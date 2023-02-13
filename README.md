@@ -24,7 +24,7 @@ This is a Hangman game built with React and Redux Toolkit. The game allows the u
 4. Open your browser to http://localhost:3000 to play the game.
 ## Contributing
 
-This project is contribute by: 
+This project is contributed by: 
 
 
 | Name | GitHub Address |
