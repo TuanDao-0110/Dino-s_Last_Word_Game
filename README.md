@@ -1,46 +1,38 @@
-# Getting Started with Create React App
+# Hangman Game with React & Redux Toolkit
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app), using the [Redux](https://redux.js.org/) and [Redux Toolkit](https://redux-toolkit.js.org/) TS template.
+This is a Hangman game built with React and Redux Toolkit. The game allows the user to guess a randomly generated word by entering letters one at a time. The user has a limited number of incorrect guesses, and each incorrect guess adds a part to a hangman figure. The game is won by guessing the word before the hangman is fully drawn, or lost by making too many incorrect guesses.
 
-## Available Scripts
+## Technologies
 
-In the project directory, you can run:
+|  | Technology |
+|------|----------------|
+| Front_End | React Typescript|
+| State Management | Redux Tool Kit |
+| UI | Figma, |
+| Tesing | Jest, |
 
-### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Features
+1. Randomly generated word for each game
+2. Keeps track of correct and incorrect guesses
+3. Displays hangman figure as incorrect guesses are made
+4. Shows a win or loss message at the end of the game
+## Getting Started
+1. Clone the repository: git clone https://github.com/TuanDao-0110/Hang_Man_Game.git
+2. Install dependencies: npm install or yarn install
+3. Start the development server: npm start or yarn start
+4. Open your browser to http://localhost:3000 to play the game.
+## Contributing
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+This project is contribute by: 
 
-### `npm test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+| Name | GitHub Address |
+|------|----------------|
+| Valeria | https://github.com/pixelsnow |
+| Eyvaz Alishov | https://github.com/CodeLaMat |
 
-### `npm run build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+License
+This project is licensed under the MIT License. See LICENSE for more information.
