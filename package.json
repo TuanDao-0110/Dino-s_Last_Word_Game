@@ -1,46 +1,27 @@
 {
   "name": "hangman_game",
-  "version": "0.1.0",
-  "private": true,
-  "dependencies": {
-    "@reduxjs/toolkit": "^1.9.2",
-    "@testing-library/jest-dom": "^5.16.5",
-    "@testing-library/react": "^13.4.0",
-    "@testing-library/user-event": "^14.4.3",
-    "@types/jest": "^27.5.2",
-    "@types/node": "^17.0.45",
-    "@types/react": "^18.0.28",
-    "@types/react-dom": "^18.0.10",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-redux": "^8.0.5",
-    "react-router-dom": "^6.8.1",
-    "react-scripts": "5.0.1",
-    "typescript": "^4.9.5",
-    "web-vitals": "^2.1.4"
-  },
+  "description": "This is a Hangman game built with React and Redux Toolkit. The game allows the user to guess a randomly generated word by entering letters one at a time. The user has a limited number of incorrect guesses, and each incorrect guess adds a part to a hangman figure. The game is won by guessing the word before the hangman is fully drawn, or lost by making too many incorrect guesses.",
+  "version": "1.0.0",
+  "main": "index.js",
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "installAll": "concurrently \"cd back-end && npm install\" \"cd front-end && npm install\"",
+    "startfrontend": "cd front-end && npm start",
+    "startbackend": "cd back-end && npm start",
+    "startall": "concurrently \"npm run startfrontend\" \"npm run startbackend\"",
+    "buildall": "concurrently \"cd back-end && npm run buildUI\" \"cd back-end && npm run tsc\""
   },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TuanDao-0110/HangMan_Game.git"
   },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  }
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/TuanDao-0110/HangMan_Game/issues"
+  },
+  "dependencies": {
+    "concurrently": "^7.6.0"
+  },
+  "homepage": "https://github.com/TuanDao-0110/HangMan_Game#readme"
 }
