@@ -11,6 +11,17 @@ This is a Hangman game built with React and Redux Toolkit. The game allows the u
 | UI | Figma, |
 | Tesing | Jest, |
 
+## CLI: 
+
+1. run install main folder
+```
+npm i
+```
+2. run install all back-end front-end
+```
+npm run installAll
+```
+3. 
 
 ## Features
 1. Randomly generated word for each game
