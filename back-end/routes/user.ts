@@ -8,11 +8,11 @@ interface CustomRequest extends Request {
 }
 // router.use(checkToken);
 router
-  .post("/", async (_req: CustomRequest, res: Response) => {
-    let data = _req.body;
-    // console.log(_req.currentUser);
+  .post("/", async (req: CustomRequest, res: Response) => {
+    let data = req.body;
+    // console.log(req.currentUser);
     data.timestamp = admin.database.ServerValue.TIMESTAMP;
-    data.uid = _req.currentUser.uid;
+    data.uid = req.currentUser.uid;
     const userScoresRef = admin.database().ref(`scores/${data.uid}`);
     try {
       await userScoresRef.push(data);
@@ -21,14 +21,14 @@ router
       return res.status(500).json({ msg: "Error storing data" });
     }
   })
-  .get("/", async (_req: Request, res: Response) => {
+  .get("/", async (req: Request, res: Response) => {
     await scoreDB.once("value", (snapshot) => {
       let result = snapshot.val();
       return res.status(200).json({ result });
     });
   })
-  .get("/:id", async (_req: Request, res: Response) => {
-    const id = _req.params.id;
+  .get("/:id", async (req: Request, res: Response) => {
+    const id = req.params.id;
     try {
       const scoreRef = admin.database().ref(`scores/${id}`);
       await scoreRef.once("value", (snapshot) => {

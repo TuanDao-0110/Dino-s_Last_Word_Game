@@ -31,5 +31,8 @@ export const errorHandler = (err: Error, req: CustomRequest, res: Response, next
   if (err.name === "auth/argument-error") {
     return res.status(401).send(err.message);
   }
+  if (err.name === "auth/id-token-expired"){
+    return res.status(401).send(err.message);
+  } 
   return res.status(500).send("Something broke!");
 };
