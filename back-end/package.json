@@ -4,11 +4,12 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "tsc": "tsc",
     "start": "npm run tsc && node dist/server.js",
     "dev": "ts-node-dev server.ts",
-    "buildUI": "rm -rf build && cd ../front-end && npm run build && cp -r build ../back-end"
+    "buildUI": "rm -rf build && cd ../front-end && npm run build && cp -r build ../back-end",
+    "test": "jest --verbose --runInBand --detectOpenHandles --forceExit",
+    "testWatch": "jest --watch"
   },
   "keywords": [],
   "author": "",
@@ -18,9 +19,11 @@
     "@types/cors": "^2.8.13",
     "@types/dotenv": "^8.2.0",
     "@types/express": "^4.17.17",
+    "@types/jest": "^29.4.0",
     "@types/morgan": "^1.9.4",
     "@types/node": "^18.14.1",
     "@types/supertest": "^2.0.12",
+    "jest": "^29.4.3",
     "supertest": "^6.3.3",
     "ts-node-dev": "^2.0.0",
     "typescript": "^4.9.5"
@@ -31,6 +34,26 @@
     "express": "^4.18.2",
     "firebase": "^9.17.1",
     "firebase-admin": "^11.5.0",
-    "morgan": "^1.10.0"
+    "morgan": "^1.10.0",
+    "ts-jest": "^29.0.5"
+  },
+  "jest": {
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js"
+    ],
+    "transform": {
+      "^.+\\.(ts|tsx)$": "ts-jest"
+    },
+    "globals": {
+      "ts-jest": {
+        "tsConfigFile": "tsconfig.json"
+      }
+    },
+    "testMatch": [
+      "**/__tests__/router/*.+(ts|tsx|js)"
+    ],
+    "testEnvironment": "node"
   }
 }

@@ -17,7 +17,7 @@ export const getALlWord = async (req: Request, res: Response, next: NextFunction
 };
 export const getWordBaseOnLevel = async (req: Request, res: Response, next: NextFunction) => {
   const level = req.params.level;
-  if (!isLevel) {
+  if (!isLevel(level)) {
     const error = createError(Name.BadRequestError400, Message.Invalid_Level_Select);
     return next(error);
   }
@@ -48,10 +48,10 @@ export const postNewWord = async (req: Request, res: Response, next: NextFunctio
     if (!snapshot.exists()) {
       await newWordDB.set([newword]);
     } else {
-        const word = snapshot.val();
-        let updateWord = [...word];
-        updateWord.push(newword);
-        console.log(updateWord);
+      const word = snapshot.val();
+      let updateWord = [...word];
+      updateWord.push(newword);
+      console.log(updateWord);
       await newWordDB.set([...updateWord]);
     }
     return res.status(201).json({ msg: SuccessMessage.AddSuccess });

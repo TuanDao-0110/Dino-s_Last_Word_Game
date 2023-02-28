@@ -9,8 +9,12 @@ admin.initializeApp({
   // databaseURL: "https://hangman-e9ef0-default-rtdb.firebaseio.com",
   databaseURL: env.DATABASE_URL,
 });
+// const auth = getAuth()
+
+
 const db = admin.database();
-const fireStoreDB= getFirestore()
+const fireStoreDB = getFirestore();
+
 const verifyIdToken = async (token: string) => {
   try {
     const decodedToken = await admin.auth().verifyIdToken(token);

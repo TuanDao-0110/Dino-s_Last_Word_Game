@@ -4,8 +4,8 @@ const router = express.Router();
 import { getALlWord, getWordBaseOnLevel, postNewWord } from "../controller/wordController";
 
 router
-.get("/all", getALlWord)
+.get("/", getALlWord)
 .get("/:level", getWordBaseOnLevel)
-.post("/newword", postNewWord);
+.post("/", postNewWord);
 
 export { router as wordRouter };

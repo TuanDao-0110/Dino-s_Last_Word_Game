@@ -26,7 +26,7 @@ export const postingNewScore = async (req: CustomRequest, res: Response, next: N
       updateScore.push(newScore);
       await userScoresRef.set(updateScore);
     }
-    return res.status(200).json({ msg: SuccessMessage.AddSuccess });
+    return res.status(201).json({ msg: SuccessMessage.AddSuccess });
   } catch (error) {
     return next(error);
   }
