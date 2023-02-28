@@ -14,10 +14,12 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.errorHandler = exports.unknowEndpoint = exports.checkToken = void 0;
 const firebase_1 = __importDefault(require("../database/firebase"));
-const checkToken = (err, req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
+const errorType_model_1 = require("../types/errorType.model");
+const ErrorCreate_1 = require("./ErrorCreate");
+const checkToken = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     const authHeader = req.headers.authorization;
     if (!authHeader) {
-        return res.status(401).send("Authorization header missing");
+        return next((0, ErrorCreate_1.createError)(errorType_model_1.Name.Authorization, errorType_model_1.Message.HeaderMissing));
     }
     const token = authHeader.split("Bearer ")[1];
     try {
@@ -26,16 +28,31 @@ const checkToken = (err, req, res, next) => __awaiter(void 0, void 0, void 0, fu
         return next();
     }
     catch (error) {
-        return res.status(401).send("Invalid token");
+        return next((0, ErrorCreate_1.createError)(error.code, error.message));
     }
 });
 exports.checkToken = checkToken;
 const unknowEndpoint = (req, res) => {
-    return res.status(404).json({ error: "unknown endpoint" });
+    return res.status(404).json({ error: errorType_model_1.Message.UnknownEndPoint });
 };
 exports.unknowEndpoint = unknowEndpoint;
 const errorHandler = (err, req, res, next) => {
-    console.error(err.stack);
-    res.status(500).send("Something broke!");
+    console.log(err);
+    if (err.name === errorType_model_1.Name.Authorization) {
+        return res.status(401).send(err.message);
+    }
+    if (err.name === errorType_model_1.Name.Auth_Argument_Error) {
+        return res.status(401).send(err.message);
+    }
+    if (err.name === errorType_model_1.Name.Auth_Token_Expired) {
+        return res.status(401).send(err.message);
+    }
+    if (err.name === errorType_model_1.Name.BadRequestError400) {
+        return res.status(400).send(err.message);
+    }
+    if (err.name === errorType_model_1.Name.BadRequestError404) {
+        return res.status(404).send(err.message);
+    }
+    return res.status(500).send(errorType_model_1.Message.ServerBroken);
 };
 exports.errorHandler = errorHandler;

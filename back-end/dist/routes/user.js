@@ -17,25 +17,53 @@ const express_1 = __importDefault(require("express"));
 const router = express_1.default.Router();
 exports.userRouter = router;
 const firebase_1 = __importDefault(require("../database/firebase"));
-const middleware_1 = require("../utils/middleware");
-const { scoreDB, admin } = firebase_1.default;
-router.use(middleware_1.checkToken);
+const successMessage_model_1 = require("../types/successMessage.model");
+const { scoreDB, admin, firebaseDB } = firebase_1.default;
 router
-    .post("/", (_req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    let data = _req.body;
-    data.timestamp = admin.database.ServerValue.TIMESTAMP;
+    .post("/", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    let newScore = req.body;
+    newScore.timestamp = admin.database.ServerValue.TIMESTAMP;
+    const userScoresRef = admin.database().ref(`scores/${req.currentUser.uid}`);
     try {
-        yield scoreDB.push(data);
-        return res.status(200).json({ msg: "add ok" });
+        const snapshot = yield userScoresRef.once("value");
+        if (!snapshot.exists()) {
+            yield userScoresRef.set([newScore]);
+        }
+        else {
+            let score = snapshot.val();
+            let updateScore = [...score];
+            updateScore.push(newScore);
+            yield userScoresRef.set(updateScore);
+        }
+        return res.status(200).json({ msg: successMessage_model_1.SuccessMessage.AddSuccess });
     }
     catch (error) {
         return res.status(500).json({ msg: "Error storing data" });
     }
 }))
-    .get("/", (_req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    console.log("user router");
-    yield scoreDB.once("value", (snapshot) => {
+    .get("/", (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        let snapshot = yield scoreDB.once("value");
         let result = snapshot.val();
+        const getAll = yield firebaseDB.collection("users").get();
+        console.log(getAll);
         return res.status(200).json({ result });
-    });
+    }
+    catch (error) {
+        return next(error);
+    }
+}))
+    .get("/:id", (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
+    const id = req.params.id;
+    const currentUser = req.currentUser;
+    try {
+        const scoreRef = admin.database().ref(`scores/${id}`);
+        yield scoreRef.once("value", (snapshot) => {
+            const scoreData = snapshot.val();
+            return res.status(200).json({ scoreData, currentUser });
+        });
+    }
+    catch (error) {
+        return next(error);
+    }
 }));

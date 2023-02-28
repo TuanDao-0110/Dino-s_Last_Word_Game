@@ -31,24 +31,31 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 const admin = __importStar(require("firebase-admin"));
+const firestore_1 = require("firebase-admin/firestore");
 const serviceAccount = require("../service/hangman-e9ef0-firebase-adminsdk-ejrss-244a0a8bc2.json");
+const dotenv_1 = __importDefault(require("dotenv"));
+dotenv_1.default.config();
 admin.initializeApp({
     credential: admin.credential.cert(serviceAccount),
-    databaseURL: "https://hangman-e9ef0-default-rtdb.firebaseio.com",
+    // databaseURL: "https://hangman-e9ef0-default-rtdb.firebaseio.com",
+    databaseURL: process.env.DATABASE_URL,
 });
 const db = admin.database();
+const firebaseDB = (0, firestore_1.getFirestore)();
 const verifyIdToken = (token) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const decodedToken = yield admin.auth().verifyIdToken(token);
         return decodedToken;
     }
     catch (error) {
-        console.error("Error verifying ID token:", error);
         throw error;
     }
 });
 const wordDB = db.ref("words");
 const scoreDB = db.ref("scores");
-exports.default = { wordDB, scoreDB, verifyIdToken, admin };
+exports.default = { wordDB, scoreDB, verifyIdToken, admin, firebaseDB };

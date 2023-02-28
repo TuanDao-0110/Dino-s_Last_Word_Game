@@ -44,6 +44,30 @@ This project is contributed by:
 | Eyvaz Alishov | https://github.com/CodeLaMat |
 
 
+## Back End router: 
+
+```
+graph LR;
+  A[Express.js] --> B[CORS];
+  A[Express.js] --> C[Body Parser];
+  A[Express.js] --> D[Morgan];
+  A[Express.js] --> E[Static Files];
+  A[Express.js] --> F[Welcome Router];
+  A[Express.js] --> G[Word Router];
+  A[Express.js] --> H[User Router];
+  A[Express.js] --> I[Unknown Endpoint];
+  A[Express.js] --> J[Error Handler];
+  G --> GA[getALlWord];
+  G --> GB[getWordBaseOnLevel];
+  G --> GC[postNewWord];
+  H --> HA[postingNewScore];
+  H --> HB[getAllScore];
+  H --> HC[getUserScore];
+
+```
+
+
+
 
 License
 This project is licensed under the MIT License. See LICENSE for more information.

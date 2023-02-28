@@ -1,13 +1,11 @@
-import express, { Response, Request } from "express";
+import express from "express";
 const router = express.Router();
-import firebase from "../database/firebase";
-const { wordDB } = firebase;
 
-router.get("/", async (_req: Request, res: Response) => {
-  await wordDB.on("value", (snapshot) => {
-    let result = snapshot.val();
-    return res.status(200).json({ result });
-  });
-});
+import { getALlWord, getWordBaseOnLevel, postNewWord } from "../controller/wordController";
+
+router
+.get("/all", getALlWord)
+.get("/:level", getWordBaseOnLevel)
+.post("/newword", postNewWord);
 
 export { router as wordRouter };

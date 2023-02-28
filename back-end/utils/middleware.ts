@@ -1,14 +1,13 @@
 import { Request, Response, NextFunction } from "express";
 import firebase from "../database/firebase";
+import { Message, Name } from "../types/errorType.model";
+import { CustomRequest } from "../types/httpType.model";
 import { createError } from "./ErrorCreate";
-interface CustomRequest extends Request {
-  currentUser?: any;
-}
 
 export const checkToken = async (req: CustomRequest, res: Response, next: NextFunction) => {
   const authHeader = req.headers.authorization;
   if (!authHeader) {
-    return next(createError("Authorization", "Authorization header missing"));
+    return next(createError(Name.Authorization, Message.HeaderMissing));
   }
   const token = authHeader.split("Bearer ")[1];
   try {
@@ -21,18 +20,25 @@ export const checkToken = async (req: CustomRequest, res: Response, next: NextFu
 };
 
 export const unknowEndpoint = (req: Request, res: Response) => {
-  return res.status(404).json({ error: "unknown endpoint" });
+  return res.status(404).json({ error: Message.UnknownEndPoint });
 };
 
 export const errorHandler = (err: Error, req: CustomRequest, res: Response, next: NextFunction) => {
-  if (err.name === "Authorization") {
+  if (err.name === Name.Authorization) {
     return res.status(401).send(err.message);
   }
-  if (err.name === "auth/argument-error") {
+  if (err.name === Name.Auth_Argument_Error) {
     return res.status(401).send(err.message);
   }
-  if (err.name === "auth/id-token-expired"){
+  if (err.name === Name.Auth_Token_Expired) {
     return res.status(401).send(err.message);
-  } 
-  return res.status(500).send("Something broke!");
+  }
+  if (err.name === Name.BadRequestError400) {
+    return res.status(400).send(err.message);
+  }
+  if (err.name === Name.BadRequestError404) {
+    return res.status(404).send(err.message);
+  }
+
+  return res.status(500).send(Message.ServerBroken);
 };
