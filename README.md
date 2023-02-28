@@ -173,8 +173,6 @@ graph LR;
     Authorization: 'Bearer ${token}'
     ```
   * Request Body
-    ```
-    ```
   * Response Body
     ```
     {
@@ -211,9 +209,9 @@ graph LR;
     Authorization: 'Bearer ${token}'
     ```
   * Request Body
-    ```
-    ```
+  
   * Response Body
+
     ```
     {
     statusCode:200 
