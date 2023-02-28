@@ -69,14 +69,14 @@ graph LR;
 ## API Examples: 
 
 * Welcome Page 
-    * Method
+  * Method
     ```
     POST / HTTP/1.1 
     Host: localhost:4000
     Content-Type: text/html; charset=utf-8
     ```
-    * Request Body
-    * Response Body
+  * Request Body
+  * Response Body
     ```
     {
     statuscode:200
@@ -84,14 +84,14 @@ graph LR;
     }
     ```
 * Word Router
-    * Method GET all word
+  * Method GET all word
     ```
     GET /api/word HTTP/1.1
     Host: localhost:4000
     Content-Type: application/json
     ```
-    * Request Body
-    * Response Body
+  * Request Body
+  * Response Body
     ```
     {
     statusCode:200,  
@@ -110,27 +110,27 @@ graph LR;
       }
     }
     ```
-    * Method GET word by level
+  * Method GET word by level
     ```
     GET /api/word/:level HTTP/1.1
     Host: localhost:4000
     Content-Type: application/json
     ```
-    * Request Body
-    * Response Body
+  * Request Body
+  * Response Body
     ```
     {
     statusCode:200,  
     "result": [ "supperhard","newword"]
     }
     ```
-   * Method POST new word
+  * Method POST new word
     ```
     POST /api/word/:level HTTP/1.1
     Host: localhost:4000
     Content-Type: application/json
     ```
-    * Request Body
+  * Request Body
     ```
     {
       newword:'newword',
@@ -152,13 +152,13 @@ graph LR;
     Content-Type: application/json
     Authorization: 'Bearer ${token}'
     ```
-    * Request Body
+  * Request Body
     ```
     {
     score:100
     }
     ```
-    * Response Body
+  * Response Body
     ```
     {
     statusCode:201,  
@@ -172,31 +172,48 @@ graph LR;
     Content-Type: application/json
     Authorization: 'Bearer ${token}'
     ```
-    * Request Body
+  * Request Body
     ```
     ```
-    * Response Body
+  * Response Body
     ```
     {
     statusCode:200 
     result { 
-      hard:['hard words'],
-      medium:[medium words],
-      easy:[easy words]
+      fowjfiewfijfowijf_uid:[
+        {
+          score:2424
+          timeStamps:242042048
+        },
+         {
+          score:2424
+          timeStamps:242042048
+        }
+      ],
+      2408jc2084hr2309d_uid:[
+        {
+          score:2424
+          timeStamps:242042048
+        },
+         {
+          score:2424
+          timeStamps:242042048
+        }
+      ]
     }
     }
     ```
-    * Method GET score by user uid
+  * Method GET score by user uid
     ```
     GET /api/user/:uid HTTP/1.1
     Host: localhost:4000
     Content-Type: application/json
     Authorization: 'Bearer ${token}'
     ```
-    * Request Body
+  * Request Body
     ```
     ```
-    * Response Body
+  * Response Body
     ```
     {
     statusCode:200 
