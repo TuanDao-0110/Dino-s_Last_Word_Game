@@ -51,7 +51,6 @@ export const postNewWord = async (req: Request, res: Response, next: NextFunctio
       const word = snapshot.val();
       let updateWord = [...word];
       updateWord.push(newword);
-      console.log(updateWord);
       await newWordDB.set([...updateWord]);
     }
     return res.status(201).json({ msg: SuccessMessage.AddSuccess });
