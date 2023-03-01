@@ -14,10 +14,11 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.errorHandler = exports.unknowEndpoint = exports.checkToken = void 0;
 const firebase_1 = __importDefault(require("../database/firebase"));
-const checkToken = (err, req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
+const ErrorCreate_1 = require("./ErrorCreate");
+const checkToken = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     const authHeader = req.headers.authorization;
     if (!authHeader) {
-        return res.status(401).send("Authorization header missing");
+        return next((0, ErrorCreate_1.createError)("Authorization", "Authorization header missing"));
     }
     const token = authHeader.split("Bearer ")[1];
     try {
@@ -26,7 +27,7 @@ const checkToken = (err, req, res, next) => __awaiter(void 0, void 0, void 0, fu
         return next();
     }
     catch (error) {
-        return res.status(401).send("Invalid token");
+        return next((0, ErrorCreate_1.createError)(error.code, error.message));
     }
 });
 exports.checkToken = checkToken;
@@ -35,7 +36,15 @@ const unknowEndpoint = (req, res) => {
 };
 exports.unknowEndpoint = unknowEndpoint;
 const errorHandler = (err, req, res, next) => {
-    console.error(err.stack);
-    res.status(500).send("Something broke!");
+    if (err.name === "Authorization") {
+        return res.status(401).send(err.message);
+    }
+    if (err.name === "auth/argument-error") {
+        return res.status(401).send(err.message);
+    }
+    if (err.name === "auth/id-token-expired") {
+        return res.status(401).send(err.message);
+    }
+    return res.status(500).send("Something broke!");
 };
 exports.errorHandler = errorHandler;

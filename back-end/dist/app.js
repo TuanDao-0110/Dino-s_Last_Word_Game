@@ -1,13 +1,4 @@
 "use strict";
-var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
-    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-};
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
@@ -20,32 +11,16 @@ const welcome_1 = require("./routes/welcome");
 const word_1 = require("./routes/word");
 const user_1 = require("./routes/user");
 const middleware_1 = require("./utils/middleware");
-const firebase_1 = __importDefault(require("./database/firebase"));
 const app = (0, express_1.default)();
 // 1.middleware
 app.use((0, cors_1.default)());
 app.use(body_parser_1.default.json());
 app.use((0, morgan_1.default)(":method :url :status :response-time ms "));
 app.use(express_1.default.static("build"));
-app.use((err, req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
-    var _a;
-    const authHeader = (_a = req.headers) === null || _a === void 0 ? void 0 : _a.authorization;
-    if (!authHeader) {
-        res.status(401).send("Authorization header missing");
-    }
-    const token = authHeader.split("Bearer ")[1];
-    try {
-        const decodedToken = yield firebase_1.default.verifyIdToken(token);
-        req.currentUser = decodedToken; // add currentUser property to request object
-        next();
-    }
-    catch (error) {
-        res.status(401).send("Invalid token");
-    }
-}));
 app.use(welcome_1.welcomeRouter);
 app.use("/api/word", word_1.wordRouter);
 app.use("/api/user", middleware_1.checkToken, user_1.userRouter);
-// 3.
 app.use(middleware_1.unknowEndpoint);
+app.use(middleware_1.errorHandler);
+// 3.
 exports.default = app;

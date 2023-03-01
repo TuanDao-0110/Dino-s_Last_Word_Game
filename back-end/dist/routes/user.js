@@ -17,25 +17,39 @@ const express_1 = __importDefault(require("express"));
 const router = express_1.default.Router();
 exports.userRouter = router;
 const firebase_1 = __importDefault(require("../database/firebase"));
-const middleware_1 = require("../utils/middleware");
+// import { checkToken } from "../utils/middleware";
 const { scoreDB, admin } = firebase_1.default;
-router.use(middleware_1.checkToken);
+// router.use(checkToken);
 router
-    .post("/", (_req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    let data = _req.body;
+    .post("/", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    let data = req.body;
+    // console.log(req.currentUser);
     data.timestamp = admin.database.ServerValue.TIMESTAMP;
+    data.uid = req.currentUser.uid;
+    const userScoresRef = admin.database().ref(`scores/${data.uid}`);
     try {
-        yield scoreDB.push(data);
+        yield userScoresRef.push(data);
         return res.status(200).json({ msg: "add ok" });
     }
     catch (error) {
         return res.status(500).json({ msg: "Error storing data" });
     }
 }))
-    .get("/", (_req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    console.log("user router");
+    .get("/", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     yield scoreDB.once("value", (snapshot) => {
         let result = snapshot.val();
         return res.status(200).json({ result });
     });
+}))
+    .get("/:id", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const id = req.params.id;
+    try {
+        const scoreRef = admin.database().ref(`scores/${id}`);
+        yield scoreRef.once("value", (snapshot) => {
+            const scoreData = snapshot.val();
+            return res.status(200).json({ scoreData });
+            console.log(scoreData);
+        });
+    }
+    catch (error) { }
 }));
