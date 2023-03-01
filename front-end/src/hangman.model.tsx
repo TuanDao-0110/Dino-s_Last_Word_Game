@@ -1,7 +1,12 @@
 export interface Player {
+  id: number;
   name: string;
-  score: number;
   email: string;
+  score: number;
+}
+
+export interface PlayerState {
+  players: Player[];
 }
 
 export interface WordLetterProps {

@@ -1,7 +1,7 @@
 import React from "react";
 import Key from "../Key/Key";
 import { KeyboardProps } from "../../hangman.model";
-import classes from "./keyboard.module.css";
+import "./keyboard.module.css";
 
 const letters: string[] = [];
 for (let i = 0; i < 26; i++) letters.push(String.fromCharCode(65 + i));
@@ -18,7 +18,7 @@ const Keyboard = (props: KeyboardProps) => {
   };
 
   return (
-    <div className={classes.keyboard_container}>
+    <div className="keyboard_container">
       {letters.map((letter) => (
         <Key
           letterClickHandler={props.letterClickHandler}
