@@ -6,10 +6,8 @@ import dotenv from "dotenv";
 dotenv.config();
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),
-  // databaseURL: "https://hangman-e9ef0-default-rtdb.firebaseio.com",
   databaseURL: env.DATABASE_URL,
 });
-// const auth = getAuth()
 
 
 const db = admin.database();
