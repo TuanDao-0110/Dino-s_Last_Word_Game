@@ -1,4 +1,4 @@
-import { Response, Request, NextFunction } from "express";
+import { RequestHandler } from "express";
 import { createError } from "../utils/ErrorCreate";
 import firebase from "../database/firebase";
 import { isLevel } from "../helper/checkingType";
@@ -6,7 +6,7 @@ import { Message, Name } from "../types/errorType.model";
 import { SuccessMessage } from "../types/successMessage.model";
 const { wordDB, admin } = firebase;
 
-export const getALlWord = async (req: Request, res: Response, next: NextFunction) => {
+export const getALlWord: RequestHandler = async (req, res, next) => {
   try {
     let snapshot = await wordDB.once("value");
     let result = snapshot.val();
@@ -15,7 +15,7 @@ export const getALlWord = async (req: Request, res: Response, next: NextFunction
     return next(error);
   }
 };
-export const getWordBaseOnLevel = async (req: Request, res: Response, next: NextFunction) => {
+export const getWordBaseOnLevel: RequestHandler = async (req, res, next) => {
   const level = req.params.level;
   if (!isLevel(level)) {
     const error = createError(Name.BadRequestError400, Message.Invalid_Level_Select);
@@ -29,7 +29,7 @@ export const getWordBaseOnLevel = async (req: Request, res: Response, next: Next
     next(error);
   }
 };
-export const postNewWord = async (req: Request, res: Response, next: NextFunction) => {
+export const postNewWord: RequestHandler = async (req, res, next) => {
   const { newword, level } = req.body;
   // Check if the newword and level are of the expected type
   if (typeof newword !== "string" || typeof level !== "string") {

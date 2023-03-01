@@ -1,6 +1,5 @@
 import express from "express";
 const router = express.Router();
-
 import { getALlWord, getWordBaseOnLevel, postNewWord } from "../controller/wordController";
 
 router

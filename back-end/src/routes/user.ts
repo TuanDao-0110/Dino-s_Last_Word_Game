@@ -1,5 +1,5 @@
 import express from "express";
-import { getAllScore, getUserScore, postingNewScore } from "../controller/userController";
+import {getAllScore,getUserScore,postingNewScore} from '../controller/userController'
 const router = express.Router();
 
 router

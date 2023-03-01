@@ -1,9 +1,20 @@
-import React from 'react'
+import React from "react";
+import "./key.module.css";
 
-const Key = () => {
+import { KeyProps } from "../../hangman.model";
+
+const Key = (props: KeyProps) => {
   return (
-    <div>Key</div>
-  )
-}
+    <div className="key_container">
+      <button
+        className={props.status}
+        onClick={() => props.letterClickHandler(props.letter)}
+        disabled={props.status !== "blank"}
+      >
+        {props.letter}
+      </button>
+    </div>
+  );
+};
 
-export default Key
+export default Key;
