@@ -3,7 +3,7 @@ module.exports = {
     mode: 'development',
     entry: './src/server.ts',
     output: {
-        filename: 'server.bundle.js',
+        filename: 'server.js',
         path: path.resolve(__dirname, 'dist'),
     },
     devServer: {

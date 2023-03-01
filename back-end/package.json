@@ -10,7 +10,7 @@
     "buildUI": "rm -rf build && cd ../front-end && npm run build && cp -r build ../back-end",
     "test": "jest --verbose --runInBand --detectOpenHandles --forceExit",
     "testWatch": "jest --watch",
-    "bundleup":"webpack-cli"
+    "bundleup":"webpack-cli --stats-error-details"
   },
   "keywords": [],
   "author": "",

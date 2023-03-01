@@ -1,1 +1,0 @@
-{"version":3,"file":"welcome.js","sourceRoot":"","sources":["../../src/routes/welcome.ts"],"names":[],"mappings":";;;;;;AAAA,sDAAqD;AACrD,MAAM,MAAM,GAAG,iBAAO,CAAC,MAAM,EAAE,CAAC;AAMb,+BAAa;AAJhC,MAAM,CAAC,GAAG,CAAC,GAAG,EAAE,CAAC,IAAa,EAAE,GAAa,EAAE,EAAE;IAC/C,OAAO,GAAG,CAAC,MAAM,CAAC,GAAG,CAAC,CAAC,IAAI,CAAC,+BAA+B,CAAC,CAAC;AAC/D,CAAC,CAAC,CAAC"}
