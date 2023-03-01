@@ -7,7 +7,7 @@ const initialState: PlayerState = {
 
 export const PlayerSlice = createSlice({
   name: "player",
-  initialState: {},
+  initialState: initialState,
   reducers: {
     addPlayer: (state, action: PayloadAction<Player>) => {
       state.players.push(action.payload);
