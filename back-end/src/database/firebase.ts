@@ -1,15 +1,14 @@
 import * as admin from "firebase-admin";
 import { getFirestore } from "firebase-admin/firestore";
 import { env } from "process";
-const serviceAccount = require("../service/hangman-e9ef0-firebase-adminsdk-ejrss-244a0a8bc2.json");
+const serviceAccount = require("../../service/hangman-e9ef0-firebase-adminsdk-ejrss-244a0a8bc2.json");
 import dotenv from "dotenv";
+
 dotenv.config();
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),
   databaseURL: env.DATABASE_URL,
 });
-
-
 const db = admin.database();
 const fireStoreDB = getFirestore();
 
