@@ -7,7 +7,6 @@ import {
   setGameStatus,
   resetGame,
   addToLeaderboard,
-  setIncorrectLetters,
 } from "../../../features/WordSlice";
 import Word from "../../../components/word/Word";
 import Keyboard from "../../../components/keyboard/Keyboard";
@@ -81,8 +80,9 @@ const Main = () => {
         wordToGuess={wordToGuess}
         guessedLetters={guessedLetters}
         letterClickHandler={letterClickHandler}
+        gameStatus={gameStatus}
       />
-      <Message />
+      <Message gameStatus={gameStatus} />
       <Leaderboard />
     </div>
   );

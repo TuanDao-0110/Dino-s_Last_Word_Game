@@ -1,17 +1,19 @@
 import React from "react";
 import Key from "../Key/Key";
 import { KeyboardProps } from "../../hangman.model";
+import { useSelector, useDispatch } from "react-redux";
+import { RootState } from "../../../src/app/store";
 import classes from "./keyboard.module.css";
 
 const letters: string[] = [];
 for (let i = 0; i < 26; i++) letters.push(String.fromCharCode(65 + i));
 console.log(letters);
 
-const Keyboard: React.FC<KeyboardProps> = ({
-  wordToGuess,
-  guessedLetters,
-  letterClickHandler,
-}) => {
+const Keyboard: React.FC<KeyboardProps> = ({ letterClickHandler }) => {
+  const wordToGuess = useSelector((state: RootState) => state.game.wordToGuess);
+  const guessedLetters = useSelector(
+    (state: RootState) => state.game.guessedLetters
+  );
   const getLetterStatus = (
     letter: string
   ): "incorrect" | "correct" | "blank" => {

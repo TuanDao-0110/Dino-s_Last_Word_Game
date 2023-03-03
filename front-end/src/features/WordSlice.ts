@@ -3,6 +3,7 @@ import words from "../../src/wordList.json";
 
 interface GameState {
   wordToGuess: string;
+  letter: string;
   guessedLetters: string[];
   incorrectLetters: string[];
   gameStatus: "playing" | "won" | "lost";
@@ -11,6 +12,7 @@ interface GameState {
 
 const initialState: GameState = {
   wordToGuess: "",
+  letter: "",
   guessedLetters: [],
   incorrectLetters: [],
   gameStatus: "playing",
