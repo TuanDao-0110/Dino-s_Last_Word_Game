@@ -1,17 +1,17 @@
 import React from "react";
-import "./key.module.css";
+import classes from "./key.module.css";
 
 import { KeyProps } from "../../hangman.model";
 
-const Key = (props: KeyProps) => {
+const Key: React.FC<KeyProps> = ({ letter, status, letterClickHandler }) => {
   return (
-    <div className="key_container">
+    <div className={classes.key_container}>
       <button
-        className={props.status}
-        onClick={() => props.letterClickHandler(props.letter)}
-        disabled={props.status !== "blank"}
+        className={status}
+        onClick={() => letterClickHandler(letter)}
+        disabled={status !== "blank"}
       >
-        {props.letter}
+        {letter}
       </button>
     </div>
   );

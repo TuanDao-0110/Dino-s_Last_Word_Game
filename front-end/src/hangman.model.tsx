@@ -15,16 +15,17 @@ export interface WordLetterProps {
 }
 
 export interface WordProps {
-  word: string;
+  wordToGuess: string;
   guessedLetters: string[];
 }
 
 export interface ObjectProps {
+  wordToGuess: string;
   wrongGuesses: number;
 }
 
 export interface KeyboardProps {
-  word: string;
+  wordToGuess: string;
   guessedLetters: string[];
   letterClickHandler: (letter: string) => void;
 }
