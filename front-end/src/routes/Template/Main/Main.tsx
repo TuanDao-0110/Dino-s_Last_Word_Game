@@ -7,7 +7,7 @@ import {
   setGameStatus,
   resetGame,
   addToLeaderboard,
-} from "../../../features/WordSlice";
+} from "../../../features/GameSlice";
 import Word from "../../../components/word/Word";
 import Keyboard from "../../../components/keyboard/Keyboard";
 import Message from "../../../components/message/Message";

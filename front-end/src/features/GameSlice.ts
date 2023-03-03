@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import words from "../../src/wordList.json";
+import words from "../wordList.json";
 
 interface GameState {
   wordToGuess: string;
