@@ -20,7 +20,6 @@ export interface WordProps {
 }
 
 export interface ObjectProps {
-  wordToGuess: string;
   wrongGuesses: number;
 }
 
@@ -40,6 +39,7 @@ export interface KeyProps {
 export interface MessageProps {
   gameStatus: "playing" | "won" | "lost";
 }
+
 export interface ControlsProps {
   clickPlayHandler: () => void;
 }

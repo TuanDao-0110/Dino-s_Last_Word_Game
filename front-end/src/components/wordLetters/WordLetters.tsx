@@ -1,4 +1,5 @@
 import { WordLetterProps } from "../../hangman.model";
+
 import classes from "./wordLetters.module.css";
 
 const WordLetters: React.FC<WordLetterProps> = ({ letter, guessed }) => {

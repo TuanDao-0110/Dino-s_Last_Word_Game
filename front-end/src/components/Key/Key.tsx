@@ -1,7 +1,6 @@
-import React from "react";
-import classes from "./key.module.css";
-
 import { KeyProps } from "../../hangman.model";
+
+import classes from "./key.module.css";
 
 const Key: React.FC<KeyProps> = ({ letter, status, letterClickHandler }) => {
   return (

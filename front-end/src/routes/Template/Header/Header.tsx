@@ -1,7 +1,8 @@
-import React from "react";
-import {  Container, Nav, Navbar, Row } from "react-bootstrap";
+import { Container, Nav, Navbar, Row } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
-import style from "./Header.module.css";
+
+import classes from "./header.module.css";
+
 export const Header: React.FC = () => {
   return (
     <Row>

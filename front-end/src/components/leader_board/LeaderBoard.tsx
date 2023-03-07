@@ -1,9 +1,7 @@
-import React from 'react'
+import classes from "./leaderboard.module.css";
 
 const LeaderBoard = () => {
-  return (
-    <div>LeaderBoard</div>
-  )
-}
+  return <div className={classes.leaderboard_container}>LeaderBoard</div>;
+};
 
-export default LeaderBoard
+export default LeaderBoard;

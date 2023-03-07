@@ -1,11 +1,10 @@
-import React from "react";
 import { MessageProps } from "../../hangman.model";
+import { useAppSelector } from "../../hooks/hooks";
+
 import classes from "./message.module.css";
-import { useSelector, useDispatch } from "react-redux";
-import { RootState } from "../../../src/app/store";
 
 const Message: React.FC<MessageProps> = () => {
-  const gameStatus = useSelector((state: RootState) => state.game.gameStatus);
+  const gameStatus = useAppSelector((state) => state.game.gameStatus);
   return (
     <div className={classes.messageContainer}>
       <div className={classes.gameStatus}>{gameStatus}</div>

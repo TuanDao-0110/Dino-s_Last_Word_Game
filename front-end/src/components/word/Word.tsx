@@ -1,6 +1,7 @@
-import React from "react";
-import WordLetters from "../wordLetters/WordLetters";
 import { WordProps } from "../../hangman.model";
+
+import WordLetters from "../wordLetters/WordLetters";
+
 import classes from "./word.module.css";
 
 const Word: React.FC<WordProps> = ({ wordToGuess, guessedLetters }) => {
