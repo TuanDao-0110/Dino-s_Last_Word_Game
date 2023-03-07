@@ -10,8 +10,8 @@ function App() {
   return (
     <Routes>
       <Route path="/" element={<Template />}>
-        <Route index element={<Main />}/>
-        <Route path="board" element={<Board />}/>
+        <Route index element={<Main />} />
+        <Route path="board" element={<Board />} />
       </Route>
     </Routes>
   );

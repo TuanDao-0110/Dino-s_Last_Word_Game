@@ -1,0 +1,27 @@
+.key_container > button {
+  font-family: inherit;
+  width: 100%;
+  height: 2rem;
+  border: 1px solid;
+
+  border-radius: 0.3rem;
+  font-size: 1.2rem;
+  font-weight: bold;
+  cursor: pointer;
+  background-color: #d28f8f;
+}
+
+.key_container > button:hover:not(:disabled),
+.key_container > button:focus:not(:disabled) {
+  background-color: #8bc7d6;
+}
+
+.incorrect {
+  background-color: rgb(244, 28, 8);
+  color: #736161;
+}
+
+.correct {
+  background-color: lightgreen;
+  color: #635656;
+}

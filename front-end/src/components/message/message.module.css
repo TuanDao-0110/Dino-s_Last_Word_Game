@@ -1,1 +1,10 @@
-/* hi! Just a comment to check git functionality */
+.messageContainer {
+  max-width: 600px;
+  display: flex;
+  flex-direction: column;
+}
+
+.gameStatus {
+  font-size: 1.5rem;
+  text-align: center;
+}
