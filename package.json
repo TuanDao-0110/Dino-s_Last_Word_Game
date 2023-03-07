@@ -7,7 +7,7 @@
     "installAll": "npm install && cd back-end && npm install && cd ../front-end && npm install",
     "startfrontend": "cd front-end && npm start",
     "startbackend": "cd back-end && npm start",
-    "backendDev":"cd back-end && npm run dev",
+    "backendDev": "cd back-end && npm run dev",
     "startall": "concurrently \"npm run startfrontend\" \"npm run startbackend\"",
     "buildall": "concurrently \"cd back-end && npm run buildUI\" \"cd back-end && npm run tsc\""
   },
@@ -22,6 +22,7 @@
     "url": "https://github.com/TuanDao-0110/HangMan_Game/issues"
   },
   "dependencies": {
+    "concurrently": "^7.6.0"
   },
   "homepage": "https://github.com/TuanDao-0110/HangMan_Game#readme"
 }

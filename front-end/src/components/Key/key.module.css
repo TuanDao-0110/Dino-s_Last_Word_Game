@@ -3,12 +3,17 @@
   width: 100%;
   height: 2rem;
   border: 1px solid;
-  text-transform: uppercase;
+
   border-radius: 0.3rem;
   font-size: 1.2rem;
   font-weight: bold;
   cursor: pointer;
   background-color: #d28f8f;
+}
+
+.key_container > button:hover:not(:disabled),
+.key_container > button:focus:not(:disabled) {
+  background-color: #8bc7d6;
 }
 
 .incorrect {

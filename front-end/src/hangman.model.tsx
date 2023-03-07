@@ -15,18 +15,20 @@ export interface WordLetterProps {
 }
 
 export interface WordProps {
-  word: string;
+  wordToGuess: string;
   guessedLetters: string[];
 }
 
 export interface ObjectProps {
+  wordToGuess: string;
   wrongGuesses: number;
 }
 
 export interface KeyboardProps {
-  word: string;
+  wordToGuess: string;
   guessedLetters: string[];
   letterClickHandler: (letter: string) => void;
+  gameStatus: "playing" | "won" | "lost";
 }
 
 export interface KeyProps {
@@ -35,6 +37,9 @@ export interface KeyProps {
   letterClickHandler: (letter: string) => void;
 }
 
+export interface MessageProps {
+  gameStatus: "playing" | "won" | "lost";
+}
 export interface ControlsProps {
   clickPlayHandler: () => void;
 }
