@@ -1,7 +1,8 @@
-import React from "react";
 import { Container, Nav, Navbar, Row } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
-import style from "./Footer.module.css";
+
+import style from "./footer.module.css";
+
 export const Footer: React.FC = () => {
   return (
     <Row>

@@ -1,9 +1,5 @@
-import React from 'react'
-
 const BtnSuccess = () => {
-  return (
-    <div>BtnSuccess</div>
-  )
-}
+  return <div>BtnSuccess</div>;
+};
 
-export default BtnSuccess
+export default BtnSuccess;

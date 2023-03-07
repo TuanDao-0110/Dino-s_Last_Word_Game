@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
+
 import { useAppDispatch, useAppSelector } from "../../../hooks/hooks";
-import { RootState } from "../../../../src/app/store";
+
 import {
   setWordToGuess,
   setGuessedLetters,
@@ -8,11 +9,13 @@ import {
   resetGame,
   addToLeaderboard,
 } from "../../../features/GameSlice";
+
 import Word from "../../../components/word/Word";
 import Keyboard from "../../../components/keyboard/Keyboard";
 import Message from "../../../components/message/Message";
 import Object from "../../../components/Object/Object";
 import Leaderboard from "../../../components/leader_board/LeaderBoard";
+
 import classes from "./main.module.css";
 
 const Main = () => {
