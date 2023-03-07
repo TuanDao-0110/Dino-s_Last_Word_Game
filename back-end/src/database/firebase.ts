@@ -2,13 +2,16 @@ import * as admin from "firebase-admin";
 import { getFirestore } from "firebase-admin/firestore";
 import { env } from "process";
 const serviceAccount = require("../../service/hangman-e9ef0-firebase-adminsdk-ejrss-244a0a8bc2.json");
+const testServiceAccount = require("../../service/hangman_test.json");
 import dotenv from "dotenv";
 dotenv.config();
-admin.initializeApp({
-  credential: admin.credential.cert(serviceAccount),
-  databaseURL: env.DATABASE_URL,
-});
+const useServiceAccount = env.NODE_ENV === "test" ? testServiceAccount : serviceAccount;
+const DATABASE_URL = env.NODE_ENV === "test" ? env.TESTING_DATABASE_URL : env.DATABASE_URL;
 
+admin.initializeApp({
+  credential: admin.credential.cert(useServiceAccount),
+  databaseURL: DATABASE_URL,
+});
 
 const db = admin.database();
 const fireStoreDB = getFirestore();
