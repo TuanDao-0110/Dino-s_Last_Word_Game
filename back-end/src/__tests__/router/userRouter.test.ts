@@ -10,13 +10,14 @@ import { SuccessMessage } from "../../types/successMessage.model";
 
 const { admin } = firebase;
 const firebaseConfig = {
-  apiKey: "AIzaSyA5vvWG6a6k7ULGyunD7IshDOlO5tp-p6Y",
-  authDomain: "hangman-e9ef0.firebaseapp.com",
-  projectId: "hangman-e9ef0",
-  storageBucket: "hangman-e9ef0.appspot.com",
-  messagingSenderId: "498942236158",
-  appId: "1:498942236158:web:74fbcc73d58ee6326f1caf",
-  measurementId: "G-ZG5HRYN2M5",
+  apiKey: "AIzaSyBM4e4qOYgLuLqBPJoF4alU6a0EqawOJ0g",
+  authDomain: "hangman-test-af094.firebaseapp.com",
+  databaseURL: "https://hangman-test-af094-default-rtdb.europe-west1.firebasedatabase.app",
+  projectId: "hangman-test-af094",
+  storageBucket: "hangman-test-af094.appspot.com",
+  messagingSenderId: "83424929113",
+  appId: "1:83424929113:web:c3d9fef3d28dfdbd181848",
+  measurementId: "G-L1MTNTMW5K",
 };
 let auth: Auth;
 beforeAll(() => {
@@ -37,7 +38,7 @@ describe("testing login ", () => {
   beforeAll(async () => {
     admin.database().ref('scores').remove()
 
-    const email = "a@gmail.com";
+    const email = "test@gmail.com";
     const password = "123456";
     let userCredential = await signInWithEmailAndPassword(auth, email, password);
     const user = userCredential.user;
