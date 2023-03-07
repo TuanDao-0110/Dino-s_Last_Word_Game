@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useAppDispatch, useAppSelector } from "../../../hooks/hooks";
 import { RootState } from "../../../../src/app/store";
 import {
   setWordToGuess,
@@ -16,16 +16,11 @@ import Leaderboard from "../../../components/leader_board/LeaderBoard";
 import classes from "./main.module.css";
 
 const Main = () => {
-  const dispatch = useDispatch();
-  const wordToGuess = useSelector((state: RootState) => state.game.wordToGuess);
-  const guessedLetters = useSelector(
-    (state: RootState) => state.game.guessedLetters
-  );
-  const incorrectLetters = useSelector(
-    (state: RootState) => state.game.incorrectLetters
-  );
-  const gameStatus = useSelector((state: RootState) => state.game.gameStatus);
-  const leaderboard = useSelector((state: RootState) => state.game.leaderboard);
+  const dispatch = useAppDispatch();
+  const wordToGuess = useAppSelector((state) => state.game.wordToGuess);
+  const guessedLetters = useAppSelector((state) => state.game.guessedLetters);
+  const gameStatus = useAppSelector((state) => state.game.gameStatus);
+  const leaderboard = useAppSelector((state) => state.game.leaderboard);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
@@ -62,20 +57,23 @@ const Main = () => {
     }
   };
 
+  const countWrongGuesses = () =>
+    guessedLetters.filter((letter) => !wordToGuess.includes(letter)).length;
+
   console.log(wordToGuess);
   console.log(guessedLetters);
-  console.log(incorrectLetters);
   console.log(gameStatus);
 
   if (isLoading) return <h1>Loading...</h1>;
   return (
     <div className={classes.mainContainer}>
       <Object
-        wrongGuesses={incorrectLetters.length}
-        wordToGuess={wordToGuess}
+        wrongGuesses={
+          guessedLetters.filter((letter) => !wordToGuess.includes(letter))
+            .length
+        }
       />
       <Word wordToGuess={wordToGuess} guessedLetters={guessedLetters} />
-
       <Keyboard
         wordToGuess={wordToGuess}
         guessedLetters={guessedLetters}

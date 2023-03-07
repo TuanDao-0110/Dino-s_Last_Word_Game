@@ -20,7 +20,6 @@ export interface WordProps {
 }
 
 export interface ObjectProps {
-  wordToGuess: string;
   wrongGuesses: number;
 }
 
