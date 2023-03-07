@@ -5,7 +5,6 @@ interface GameState {
   wordToGuess: string;
   letter: string;
   guessedLetters: string[];
-  incorrectLetters: string[];
   gameStatus: "playing" | "won" | "lost";
   leaderboard: { name: string; score: number }[];
 }
@@ -14,7 +13,6 @@ const initialState: GameState = {
   wordToGuess: "",
   letter: "",
   guessedLetters: [],
-  incorrectLetters: [],
   gameStatus: "playing",
   leaderboard: [],
 };
@@ -30,12 +28,6 @@ const gameSlice = createSlice({
     setGuessedLetters: (state, action: PayloadAction<string>) => {
       state.guessedLetters.push(action.payload);
     },
-    setIncorrectLetters(state) {
-      state.incorrectLetters = state.guessedLetters.filter(
-        (letter) => !state.wordToGuess.includes(letter)
-      );
-    },
-
     setGameStatus: (
       state,
       action: PayloadAction<"playing" | "won" | "lost">
@@ -62,6 +54,5 @@ export const {
   setGameStatus,
   resetGame,
   addToLeaderboard,
-  setIncorrectLetters,
 } = gameSlice.actions;
 export default gameSlice.reducer;
