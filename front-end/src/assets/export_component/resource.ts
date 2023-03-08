@@ -1,11 +1,11 @@
-// Buttons
-import BtnDanger from "../../components/Button/danger/BtnDanger";
-import BtnError from "../../components/Button/error/BtnError";
-import BtnSuccess from "../../components/Button/success/BtnSuccess";
+// buttons
+import BtnDanger from "../../components/button/danger/BtnDanger";
+import BtnError from "../../components/button/error/BtnError";
+import BtnSuccess from "../../components/button/success/BtnSuccess";
 // Game
-import Form from "../../components/Form/Form";
+import Form from "../../components/form/Form";
 import Key from "../../components/Key/Key";
-import Keyboard from "../../components/Keyboard/Keyboard";
+import Keyboard from "../../components/keyboard/Keyboard";
 import LeaderBoard from "../../components/LeaderBoard/LeaderBoard";
 import Message from "../../components/Message/Message";
 import Score from "../../components/Score/Score";
