@@ -1,27 +1,33 @@
+.key_container {
+  width: 2.5rem;
+  height: 2.5rem;
+}
+
 .key_container > button {
   font-family: inherit;
-  width: 100%;
-  height: 2rem;
-  border: 1px solid;
-
-  border-radius: 0.3rem;
   font-size: 1.2rem;
-  font-weight: bold;
+  width: 100%;
+  height: 100%;
+  border: none;
+  border-radius: 0.5rem;
   cursor: pointer;
-  background-color: #d28f8f;
+  background-color: #ddd;
 }
 
-.key_container > button:hover:not(:disabled),
-.key_container > button:focus:not(:disabled) {
-  background-color: #8bc7d6;
+.key_container > button:hover:not(:disabled) {
+  background-color: #ccc;
 }
 
-.incorrect {
-  background-color: rgb(244, 28, 8);
-  color: #736161;
+.key_container > button:disabled {
+  cursor: auto;
 }
 
-.correct {
-  background-color: lightgreen;
-  color: #635656;
+.key_container > button.incorrect {
+  background-color: #aaaaaa;
+  color: #777;
+}
+
+.key_container > button.correct {
+  background-color: #66b391;
+  color: #777;
 }

@@ -1,6 +1,15 @@
 .keyboard_container {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(4rem, 1fr));
-  width: 27rem;
+  display: flex;
+  flex-direction: column;
   gap: 0.5rem;
+  align-items: center;
+}
+
+.keyboard_line_container {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.keyboard_line_container:nth-child(3) {
+  margin-right: 2.5rem;
 }
