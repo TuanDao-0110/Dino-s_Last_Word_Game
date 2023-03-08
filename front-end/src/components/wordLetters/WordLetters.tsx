@@ -4,8 +4,12 @@ import classes from "./wordLetters.module.css";
 
 const WordLetters: React.FC<WordLetterProps> = ({ letter, guessed }) => {
   return (
-    <div className={classes.letter_container}>
-      <p>{guessed ? letter : "_"}</p>
+    <div
+      className={`${guessed ? classes.guessed : ""} ${
+        classes.letter_container
+      }`}
+    >
+      {guessed ? letter : ""}
     </div>
   );
 };

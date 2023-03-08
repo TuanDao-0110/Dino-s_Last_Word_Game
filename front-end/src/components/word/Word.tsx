@@ -9,15 +9,13 @@ const Word: React.FC = () => {
 
   return (
     <div className={classes.word_container}>
-      <div>
-        {wordToGuess.split("").map((letter, index) => (
-          <WordLetters
-            key={index}
-            letter={letter}
-            guessed={guessedLetters.includes(letter)}
-          />
-        ))}
-      </div>
+      {wordToGuess.split("").map((letter, index) => (
+        <WordLetters
+          key={index}
+          letter={letter}
+          guessed={guessedLetters.includes(letter)}
+        />
+      ))}
     </div>
   );
 };
