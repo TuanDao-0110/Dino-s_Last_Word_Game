@@ -7,6 +7,7 @@ import classes from "./key.module.css";
 const Key: React.FC<KeyProps> = ({ letter, status }) => {
   const dispatch = useAppDispatch();
   const gameStatus = useAppSelector((state) => state.game.gameStatus);
+
   return (
     <div className={classes.key_container}>
       <button

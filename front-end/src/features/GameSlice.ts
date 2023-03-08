@@ -36,6 +36,7 @@ const gameSlice = createSlice({
       state.wordToGuess = "";
       state.guessedLetters = [];
       state.gameStatus = "playing";
+      console.log(state);
     },
     addToLeaderboard: (
       state,

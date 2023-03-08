@@ -1,8 +1,13 @@
 import { BtnSuccess } from "../../assets/export_component/resource";
 
+import { useAppDispatch } from "../../hooks/hooks";
+import { resetGame } from "../../features/GameSlice";
+
 const Controls = () => {
+  const dispatch = useAppDispatch();
   const playAgain = () => {
-    console.log("playing again");
+    console.log("play again");
+    dispatch(resetGame());
   };
 
   return (
