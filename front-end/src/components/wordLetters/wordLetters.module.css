@@ -1,4 +1,13 @@
-.letterContainer {
-  display: inline;
-  margin-left: 20px;
+.letter_container {
+  background-color: #ddd;
+  width: 3rem;
+  height: 3rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 0.5rem;
+}
+
+.guessed {
+  background-color: #66b391;
 }

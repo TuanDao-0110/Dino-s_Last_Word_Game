@@ -1,15 +1,14 @@
-import { KeyboardProps } from "../../hangman.model";
 import { useAppSelector } from "../../hooks/hooks";
 
-import Key from "../Key/Key";
+import { Key } from "../../assets/export_component/resource";
 
 import classes from "./keyboard.module.css";
 
-const letters: string[] = [];
-for (let i = 0; i < 26; i++) letters.push(String.fromCharCode(65 + i));
-console.log(letters);
+const line1: string[] = ["Q", "W", "E", "R", "T", "Y", "U", "I", "O", "P"];
+const line2: string[] = ["A", "S", "D", "F", "G", "H", "J", "K", "L"];
+const line3: string[] = ["Z", "X", "C", "V", "B", "N", "M"];
 
-const Keyboard: React.FC<KeyboardProps> = ({ letterClickHandler }) => {
+const Keyboard: React.FC = () => {
   const wordToGuess = useAppSelector((state) => state.game.wordToGuess);
   const guessedLetters = useAppSelector((state) => state.game.guessedLetters);
   const getLetterStatus = (
@@ -23,14 +22,21 @@ const Keyboard: React.FC<KeyboardProps> = ({ letterClickHandler }) => {
 
   return (
     <div className={classes.keyboard_container}>
-      {letters.map((letter) => (
-        <Key
-          letterClickHandler={letterClickHandler}
-          key={letter}
-          letter={letter}
-          status={getLetterStatus(letter)}
-        />
-      ))}
+      <div className={classes.keyboard_line_container}>
+        {line1.map((letter) => (
+          <Key key={letter} letter={letter} status={getLetterStatus(letter)} />
+        ))}
+      </div>
+      <div className={classes.keyboard_line_container}>
+        {line2.map((letter) => (
+          <Key key={letter} letter={letter} status={getLetterStatus(letter)} />
+        ))}
+      </div>
+      <div className={classes.keyboard_line_container}>
+        {line3.map((letter) => (
+          <Key key={letter} letter={letter} status={getLetterStatus(letter)} />
+        ))}
+      </div>
     </div>
   );
 };

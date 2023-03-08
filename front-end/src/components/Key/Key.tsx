@@ -1,14 +1,19 @@
 import { KeyProps } from "../../hangman.model";
+import { useAppDispatch, useAppSelector } from "../../hooks/hooks";
+import { addGuessedLetter } from "../../features/GameSlice";
 
 import classes from "./key.module.css";
 
-const Key: React.FC<KeyProps> = ({ letter, status, letterClickHandler }) => {
+const Key: React.FC<KeyProps> = ({ letter, status }) => {
+  const dispatch = useAppDispatch();
+  const gameStatus = useAppSelector((state) => state.game.gameStatus);
+
   return (
     <div className={classes.key_container}>
       <button
-        className={status}
-        onClick={() => letterClickHandler(letter)}
-        disabled={status !== "blank"}
+        className={classes[status]}
+        onClick={() => dispatch(addGuessedLetter(letter))}
+        disabled={gameStatus !== "playing" || status !== "blank"}
       >
         {letter}
       </button>

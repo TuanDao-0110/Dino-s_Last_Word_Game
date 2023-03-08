@@ -1,15 +1,17 @@
 import { ObjectProps } from "../../hangman.model";
 
-import Dino0 from "../dino/Dino0";
-import Dino1 from "../dino/Dino1";
-import Dino2 from "../dino/Dino2";
-import Dino3 from "../dino/Dino3";
-import Dino4 from "../dino/Dino4";
-import Dino5 from "../dino/Dino5";
-import Dino6 from "../dino/Dino6";
-import Dino7 from "../dino/Dino7";
-import Dino8 from "../dino/Dino8";
-import Dino9 from "../dino/Dino9";
+import {
+  Dino0,
+  Dino1,
+  Dino2,
+  Dino3,
+  Dino4,
+  Dino5,
+  Dino6,
+  Dino7,
+  Dino8,
+  Dino9,
+} from "../../assets/export_component/resource";
 
 import classes from "./object.module.css";
 
