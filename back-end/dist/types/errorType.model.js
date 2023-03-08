@@ -18,4 +18,5 @@ var Message;
     Message["Invalid_New_Word"] = "Invalid data type, data should be object with {newword:string,level:string}";
     Message["Invalid_Level_Select"] = "Invalid levels, level should be easy/medium/hard";
     Message["Invalid_Score"] = "Invalid new Score, new score should be object with {score:number}";
+    Message["Authorization_Error"] = "Authorization Error";
 })(Message = exports.Message || (exports.Message = {}));
