@@ -11,6 +11,7 @@ import {
   Object,
   LeaderBoard,
   Controls,
+  Form,
 } from "../../../assets/export_component/resource";
 
 import classes from "./main.module.css";
@@ -69,8 +70,9 @@ const Main = () => {
       <Word />
       <Keyboard />
       <Message />
-      <Controls />
+      {gameStatus !== "playing" && <Controls />}
       <LeaderBoard />
+      <Form />
     </div>
   );
 };
