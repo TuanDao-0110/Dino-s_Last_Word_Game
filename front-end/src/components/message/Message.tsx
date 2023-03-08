@@ -1,9 +1,12 @@
+<<<<<<< HEAD
 import { MessageProps } from "../../types/hangman.model";
+=======
+>>>>>>> development
 import { useAppSelector } from "../../hooks/hooks";
 
 import classes from "./message.module.css";
 
-const Message: React.FC<MessageProps> = () => {
+const Message: React.FC = () => {
   const gameStatus = useAppSelector((state) => state.game.gameStatus);
   return (
     <div className={classes.messageContainer}>
