@@ -33,7 +33,6 @@ const gameSlice = createSlice({
       state.gameStatus = action.payload;
     },
     resetGame: (state) => {
-      state.wordToGuess = "";
       state.guessedLetters = [];
       state.gameStatus = "playing";
     },
