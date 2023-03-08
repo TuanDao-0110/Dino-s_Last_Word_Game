@@ -46,11 +46,6 @@ const gameSlice = createSlice({
   },
 });
 
-<<<<<<< HEAD
-
-
-export const { setWordToGuess, setGuessedLetters, setGameStatus, resetGame, addToLeaderboard } = gameSlice.actions;
-=======
 export const {
   setWordToGuess,
   addGuessedLetter,
@@ -58,5 +53,4 @@ export const {
   resetGame,
   addToLeaderboard,
 } = gameSlice.actions;
->>>>>>> development
 export default gameSlice.reducer;

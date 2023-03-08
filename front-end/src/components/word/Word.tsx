@@ -1,11 +1,5 @@
-<<<<<<< HEAD
-import { WordProps } from "../../types/hangman.model";
-
-import WordLetters from "../wordLetters/WordLetters";
-=======
 import { WordLetters } from "../../assets/export_component/resource";
 import { useAppSelector } from "../../hooks/hooks";
->>>>>>> development
 
 import classes from "./word.module.css";
 

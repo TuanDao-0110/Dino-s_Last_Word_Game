@@ -1,10 +1,6 @@
-<<<<<<< HEAD
 import { KeyProps } from "../../types/hangman.model";
-=======
-import { KeyProps } from "../../hangman.model";
 import { useAppDispatch, useAppSelector } from "../../hooks/hooks";
 import { addGuessedLetter } from "../../features/GameSlice";
->>>>>>> development
 
 import classes from "./key.module.css";
 

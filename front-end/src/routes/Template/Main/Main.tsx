@@ -1,12 +1,8 @@
 import { useEffect, useState } from "react";
 
 import { useAppDispatch, useAppSelector } from "../../../hooks/hooks";
-<<<<<<< HEAD
-import { setWordToGuess, setGuessedLetters, setGameStatus, resetGame, addToLeaderboard } from "../../../features/GameSlice";
-=======
 
 import { setWordToGuess, setGameStatus } from "../../../features/GameSlice";
->>>>>>> development
 
 import {
   Word,
@@ -45,22 +41,10 @@ const Main = () => {
     }
   }, [dispatch, guessedLetters, wordToGuess]);
 
-<<<<<<< HEAD
-  const letterClickHandler = (letter: string) => {
-    dispatch(setGuessedLetters(letter));
-  };
-
-  const clickPlayHandler = () => {
-    dispatch(resetGame());
-  };
-
-  const nameSubmitHandler = (event: React.FormEvent<HTMLFormElement>, inputElement: HTMLInputElement | null) => {
-=======
   /* const nameSubmitHandler = (
     event: React.FormEvent<HTMLFormElement>,
     inputElement: HTMLInputElement | null
   ) => {
->>>>>>> development
     event.preventDefault();
     if (inputElement) {
       const name = inputElement.value;
@@ -69,25 +53,10 @@ const Main = () => {
     }
   }; */
 
-<<<<<<< HEAD
-  const countWrongGuesses = () => guessedLetters.filter((letter) => !wordToGuess.includes(letter)).length;
-
-  console.log(wordToGuess);
-  console.log(guessedLetters);
-=======
->>>>>>> development
   console.log(gameStatus);
 
   if (isLoading) return <h1>Loading...</h1>;
   return (
-<<<<<<< HEAD
-    <div className={classes.mainContainer}>
-      <Object wrongGuesses={guessedLetters.filter((letter) => !wordToGuess.includes(letter)).length} />
-      <Word wordToGuess={wordToGuess} guessedLetters={guessedLetters} />
-      <Keyboard wordToGuess={wordToGuess} guessedLetters={guessedLetters} letterClickHandler={letterClickHandler} gameStatus={gameStatus} />
-      <Message gameStatus={gameStatus} />
-      <Leaderboard />
-=======
     <div className={classes.main_container}>
       <Object
         wrongGuesses={
@@ -100,7 +69,6 @@ const Main = () => {
       <Message />
       <Controls />
       <LeaderBoard />
->>>>>>> development
     </div>
   );
 };
