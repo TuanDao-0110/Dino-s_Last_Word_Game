@@ -2,6 +2,7 @@
 import BtnDanger from "../../components/Button/danger/BtnDanger";
 import BtnError from "../../components/Button/error/BtnError";
 import BtnSuccess from "../../components/Button/success/BtnSuccess";
+import BtnPrimary from "../../components/Button/primary/BtnPrimary";
 // Game
 import Form from "../../components/Form/Form";
 import Key from "../../components/Key/Key";
@@ -29,6 +30,7 @@ export {
   BtnDanger,
   BtnError,
   BtnSuccess,
+  BtnPrimary,
   Form,
   Key,
   Keyboard,
