@@ -1,4 +1,4 @@
-import { KeyboardProps } from "../../hangman.model";
+import { KeyboardProps } from "../../types/hangman.model";
 import { useAppSelector } from "../../hooks/hooks";
 
 import Key from "../Key/Key";

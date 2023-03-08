@@ -1,4 +1,4 @@
-import { MessageProps } from "../../hangman.model";
+import { MessageProps } from "../../types/hangman.model";
 import { useAppSelector } from "../../hooks/hooks";
 
 import classes from "./message.module.css";

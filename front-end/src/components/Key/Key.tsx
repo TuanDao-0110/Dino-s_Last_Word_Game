@@ -1,4 +1,4 @@
-import { KeyProps } from "../../hangman.model";
+import { KeyProps } from "../../types/hangman.model";
 
 import classes from "./key.module.css";
 
