@@ -10,7 +10,6 @@ import Dino6 from "../dino/Dino6";
 import Dino7 from "../dino/Dino7";
 import Dino8 from "../dino/Dino8";
 import Dino9 from "../dino/Dino9";
-import Dino10 from "../dino/Dino10";
 
 import classes from "./object.module.css";
 
@@ -26,8 +25,7 @@ const Object: React.FC<ObjectProps> = ({ wrongGuesses }) => {
       {wrongGuesses === 6 && <Dino6 />}
       {wrongGuesses === 7 && <Dino7 />}
       {wrongGuesses === 8 && <Dino8 />}
-      {wrongGuesses === 9 && <Dino9 />}
-      {wrongGuesses > 9 && <Dino10 />}
+      {wrongGuesses > 8 && <Dino9 />}
     </div>
   );
 };
