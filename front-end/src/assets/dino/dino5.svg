@@ -14,10 +14,14 @@
         clip-path: url(#clippath);
       }
 
-      .cls-5, .cls-6 {
+      .cls-5 {
         fill: #fff;
       }
 
+      .cls-6 {
+        fill: #000;
+      }
+      
       .cls-7 {
         fill: #fffad2;
       }
