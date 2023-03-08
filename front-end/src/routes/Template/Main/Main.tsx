@@ -32,12 +32,18 @@ const Main = () => {
     setIsLoading(false);
   }, [dispatch]);
 
+  // Every time a new letter is guessed, check if the game is won or lost
   useEffect(() => {
     if (
       wordToGuess &&
       wordToGuess.split("").every((letter) => guessedLetters.includes(letter))
     ) {
       dispatch(setGameStatus("won"));
+    } else if (
+      guessedLetters.filter((letter) => !wordToGuess.includes(letter)).length >
+      8
+    ) {
+      dispatch(setGameStatus("lost"));
     }
   }, [dispatch, guessedLetters, wordToGuess]);
 
@@ -64,8 +70,6 @@ const Main = () => {
   const countWrongGuesses = () =>
     guessedLetters.filter((letter) => !wordToGuess.includes(letter)).length;
 
-  console.log(wordToGuess);
-  console.log(guessedLetters);
   console.log(gameStatus);
 
   if (isLoading) return <h1>Loading...</h1>;
