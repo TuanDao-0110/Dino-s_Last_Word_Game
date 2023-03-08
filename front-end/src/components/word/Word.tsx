@@ -1,6 +1,6 @@
 import { WordProps } from "../../hangman.model";
 
-import WordLetters from "../wordLetters/WordLetters";
+import { WordLetters } from "../../assets/export_component/resource";
 
 import classes from "./word.module.css";
 

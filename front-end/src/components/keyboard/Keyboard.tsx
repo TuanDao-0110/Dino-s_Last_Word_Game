@@ -1,13 +1,12 @@
 import { KeyboardProps } from "../../hangman.model";
 import { useAppSelector } from "../../hooks/hooks";
 
-import Key from "../Key/Key";
+import { Key } from "../../assets/export_component/resource";
 
 import classes from "./keyboard.module.css";
 
 const letters: string[] = [];
 for (let i = 0; i < 26; i++) letters.push(String.fromCharCode(65 + i));
-console.log(letters);
 
 const Keyboard: React.FC<KeyboardProps> = ({ letterClickHandler }) => {
   const wordToGuess = useAppSelector((state) => state.game.wordToGuess);

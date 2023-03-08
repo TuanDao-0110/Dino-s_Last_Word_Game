@@ -10,11 +10,13 @@ import {
   addToLeaderboard,
 } from "../../../features/GameSlice";
 
-import Word from "../../../components/Word/Word";
-import Keyboard from "../../../components/Keyboard/Keyboard";
-import Message from "../../../components/Message/Message";
-import Object from "../../../components/Object/Object";
-import Leaderboard from "../../../components/LeaderBoard/LeaderBoard";
+import {
+  Word,
+  Keyboard,
+  Message,
+  Object,
+  LeaderBoard,
+} from "../../../assets/export_component/resource";
 
 import classes from "./main.module.css";
 
@@ -89,7 +91,7 @@ const Main = () => {
         gameStatus={gameStatus}
       />
       <Message gameStatus={gameStatus} />
-      <Leaderboard />
+      <LeaderBoard />
     </div>
   );
 };
