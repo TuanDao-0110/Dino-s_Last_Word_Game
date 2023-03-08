@@ -26,6 +26,7 @@ const Main = () => {
   const leaderboard = useAppSelector((state) => state.game.leaderboard);
   const [isLoading, setIsLoading] = useState(true);
 
+  // After the page loads, set a word to be guessed
   useEffect(() => {
     dispatch(setWordToGuess());
     setIsLoading(false);
