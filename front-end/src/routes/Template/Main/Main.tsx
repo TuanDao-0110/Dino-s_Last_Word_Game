@@ -16,6 +16,7 @@ import {
   Message,
   Object,
   LeaderBoard,
+  Controls,
 } from "../../../assets/export_component/resource";
 
 import classes from "./main.module.css";

@@ -43,3 +43,8 @@ export interface MessageProps {
 export interface ControlsProps {
   clickPlayHandler: () => void;
 }
+
+export interface ButtonProps {
+  text: string;
+  clickHandler: () => void;
+}
