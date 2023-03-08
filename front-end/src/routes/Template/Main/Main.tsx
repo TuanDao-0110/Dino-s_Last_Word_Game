@@ -10,11 +10,11 @@ import {
   addToLeaderboard,
 } from "../../../features/GameSlice";
 
-import Word from "../../../components/word/Word";
-import Keyboard from "../../../components/keyboard/Keyboard";
-import Message from "../../../components/message/Message";
+import Word from "../../../components/Word/Word";
+import Keyboard from "../../../components/Keyboard/Keyboard";
+import Message from "../../../components/Message/Message";
 import Object from "../../../components/Object/Object";
-import Leaderboard from "../../../components/leader_board/LeaderBoard";
+import Leaderboard from "../../../components/LeaderBoard/LeaderBoard";
 
 import classes from "./main.module.css";
 
