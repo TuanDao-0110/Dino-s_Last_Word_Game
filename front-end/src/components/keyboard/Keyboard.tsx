@@ -1,4 +1,3 @@
-import { KeyboardProps } from "../../hangman.model";
 import { useAppSelector } from "../../hooks/hooks";
 
 import { Key } from "../../assets/export_component/resource";
@@ -8,9 +7,10 @@ import classes from "./keyboard.module.css";
 const letters: string[] = [];
 for (let i = 0; i < 26; i++) letters.push(String.fromCharCode(65 + i));
 
-const Keyboard: React.FC<KeyboardProps> = ({ letterClickHandler }) => {
+const Keyboard: React.FC = () => {
   const wordToGuess = useAppSelector((state) => state.game.wordToGuess);
   const guessedLetters = useAppSelector((state) => state.game.guessedLetters);
+
   const getLetterStatus = (
     letter: string
   ): "incorrect" | "correct" | "blank" => {
@@ -23,12 +23,7 @@ const Keyboard: React.FC<KeyboardProps> = ({ letterClickHandler }) => {
   return (
     <div className={classes.keyboard_container}>
       {letters.map((letter) => (
-        <Key
-          letterClickHandler={letterClickHandler}
-          key={letter}
-          letter={letter}
-          status={getLetterStatus(letter)}
-        />
+        <Key key={letter} letter={letter} status={getLetterStatus(letter)} />
       ))}
     </div>
   );

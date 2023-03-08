@@ -12,7 +12,7 @@ import Score from "../../components/Score/Score";
 import Word from "../../components/Word/Word";
 import Object from "../../components/Object/Object";
 import WordLetters from "../../components/WordLetters/WordLetters";
-
+import Controls from "../../components/Controls/Controls";
 // Dino
 import Dino0 from "../../components/Dino/Dino0";
 import Dino1 from "../../components/Dino/Dino1";
@@ -38,6 +38,7 @@ export {
   Word,
   Object,
   WordLetters,
+  Controls,
   Dino0,
   Dino1,
   Dino2,

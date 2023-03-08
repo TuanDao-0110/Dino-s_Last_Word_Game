@@ -23,7 +23,7 @@ const gameSlice = createSlice({
       const index = Math.floor(Math.random() * words.length);
       state.wordToGuess = words[index].toUpperCase();
     },
-    setGuessedLetters: (state, action: PayloadAction<string>) => {
+    addGuessedLetter: (state, action: PayloadAction<string>) => {
       state.guessedLetters.push(action.payload);
     },
     setGameStatus: (
@@ -48,7 +48,7 @@ const gameSlice = createSlice({
 
 export const {
   setWordToGuess,
-  setGuessedLetters,
+  addGuessedLetter,
   setGameStatus,
   resetGame,
   addToLeaderboard,

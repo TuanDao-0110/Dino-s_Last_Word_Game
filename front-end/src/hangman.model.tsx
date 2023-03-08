@@ -13,31 +13,13 @@ export interface WordLetterProps {
   letter: string;
   guessed: boolean;
 }
-
-export interface WordProps {
-  wordToGuess: string;
-  guessedLetters: string[];
-}
-
 export interface ObjectProps {
   wrongGuesses: number;
-}
-
-export interface KeyboardProps {
-  wordToGuess: string;
-  guessedLetters: string[];
-  letterClickHandler: (letter: string) => void;
-  gameStatus: "playing" | "won" | "lost";
 }
 
 export interface KeyProps {
   letter: string;
   status: "incorrect" | "correct" | "blank";
-  letterClickHandler: (letter: string) => void;
-}
-
-export interface MessageProps {
-  gameStatus: "playing" | "won" | "lost";
 }
 
 export interface ControlsProps {

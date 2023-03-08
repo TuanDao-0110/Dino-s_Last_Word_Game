@@ -1,4 +1,7 @@
-.letterContainer {
+.letter_container {
+  background-color: red;
   display: inline;
   margin-left: 20px;
+  width: 3rem;
+  height: 3rem;
 }

@@ -2,13 +2,7 @@ import { useEffect, useState } from "react";
 
 import { useAppDispatch, useAppSelector } from "../../../hooks/hooks";
 
-import {
-  setWordToGuess,
-  setGuessedLetters,
-  setGameStatus,
-  resetGame,
-  addToLeaderboard,
-} from "../../../features/GameSlice";
+import { setWordToGuess, setGameStatus } from "../../../features/GameSlice";
 
 import {
   Word,
@@ -26,7 +20,6 @@ const Main = () => {
   const wordToGuess = useAppSelector((state) => state.game.wordToGuess);
   const guessedLetters = useAppSelector((state) => state.game.guessedLetters);
   const gameStatus = useAppSelector((state) => state.game.gameStatus);
-  const leaderboard = useAppSelector((state) => state.game.leaderboard);
   const [isLoading, setIsLoading] = useState(true);
 
   // After the page loads, set a word to be guessed
@@ -50,15 +43,7 @@ const Main = () => {
     }
   }, [dispatch, guessedLetters, wordToGuess]);
 
-  const letterClickHandler = (letter: string) => {
-    dispatch(setGuessedLetters(letter));
-  };
-
-  const clickPlayHandler = () => {
-    dispatch(resetGame());
-  };
-
-  const nameSubmitHandler = (
+  /* const nameSubmitHandler = (
     event: React.FormEvent<HTMLFormElement>,
     inputElement: HTMLInputElement | null
   ) => {
@@ -68,30 +53,23 @@ const Main = () => {
       dispatch(addToLeaderboard({ name, score: guessedLetters.length }));
       inputElement.value = "";
     }
-  };
-
-  const countWrongGuesses = () =>
-    guessedLetters.filter((letter) => !wordToGuess.includes(letter)).length;
+  }; */
 
   console.log(gameStatus);
 
   if (isLoading) return <h1>Loading...</h1>;
   return (
-    <div className={classes.mainContainer}>
+    <div className={classes.main_container}>
       <Object
         wrongGuesses={
           guessedLetters.filter((letter) => !wordToGuess.includes(letter))
             .length
         }
       />
-      <Word wordToGuess={wordToGuess} guessedLetters={guessedLetters} />
-      <Keyboard
-        wordToGuess={wordToGuess}
-        guessedLetters={guessedLetters}
-        letterClickHandler={letterClickHandler}
-        gameStatus={gameStatus}
-      />
-      <Message gameStatus={gameStatus} />
+      <Word />
+      <Keyboard />
+      <Message />
+      <Controls />
       <LeaderBoard />
     </div>
   );
