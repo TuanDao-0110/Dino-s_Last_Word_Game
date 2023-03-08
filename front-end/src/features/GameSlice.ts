@@ -2,6 +2,7 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import words from "../wordList.json";
 
 interface GameState {
+  word: string[];
   wordToGuess: string;
   letter: string;
   guessedLetters: string[];
@@ -10,6 +11,7 @@ interface GameState {
 }
 
 const initialState: GameState = {
+  word: [],
   wordToGuess: "",
   letter: "",
   guessedLetters: [],
@@ -21,6 +23,9 @@ const gameSlice = createSlice({
   name: "game",
   initialState,
   reducers: {
+    getAllWord: (state, action: PayloadAction<string[]>) => {
+
+    },
     setWordToGuess: (state) => {
       const index = Math.floor(Math.random() * words.length);
       state.wordToGuess = words[index].toUpperCase();
@@ -28,10 +33,7 @@ const gameSlice = createSlice({
     setGuessedLetters: (state, action: PayloadAction<string>) => {
       state.guessedLetters.push(action.payload);
     },
-    setGameStatus: (
-      state,
-      action: PayloadAction<"playing" | "won" | "lost">
-    ) => {
+    setGameStatus: (state, action: PayloadAction<"playing" | "won" | "lost">) => {
       state.gameStatus = action.payload;
     },
     resetGame: (state) => {
@@ -39,20 +41,13 @@ const gameSlice = createSlice({
       state.guessedLetters = [];
       state.gameStatus = "playing";
     },
-    addToLeaderboard: (
-      state,
-      action: PayloadAction<{ name: string; score: number }>
-    ) => {
+    addToLeaderboard: (state, action: PayloadAction<{ name: string; score: number }>) => {
       state.leaderboard.push(action.payload);
     },
   },
 });
 
-export const {
-  setWordToGuess,
-  setGuessedLetters,
-  setGameStatus,
-  resetGame,
-  addToLeaderboard,
-} = gameSlice.actions;
+
+
+export const { setWordToGuess, setGuessedLetters, setGameStatus, resetGame, addToLeaderboard } = gameSlice.actions;
 export default gameSlice.reducer;

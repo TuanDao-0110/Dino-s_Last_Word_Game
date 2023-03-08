@@ -1,13 +1,7 @@
 import { useEffect, useState } from "react";
 
 import { useAppDispatch, useAppSelector } from "../../../hooks/hooks";
-import {
-  setWordToGuess,
-  setGuessedLetters,
-  setGameStatus,
-  resetGame,
-  addToLeaderboard,
-} from "../../../features/GameSlice";
+import { setWordToGuess, setGuessedLetters, setGameStatus, resetGame, addToLeaderboard } from "../../../features/GameSlice";
 
 import Word from "../../../components/word/Word";
 import Keyboard from "../../../components/keyboard/Keyboard";
@@ -16,6 +10,7 @@ import Object from "../../../components/Object/Object";
 import Leaderboard from "../../../components/leader_board/LeaderBoard";
 
 import classes from "./main.module.css";
+
 
 const Main = () => {
   const dispatch = useAppDispatch();
@@ -31,10 +26,7 @@ const Main = () => {
   }, [dispatch]);
 
   useEffect(() => {
-    if (
-      wordToGuess &&
-      wordToGuess.split("").every((letter) => guessedLetters.includes(letter))
-    ) {
+    if (wordToGuess && wordToGuess.split("").every((letter) => guessedLetters.includes(letter))) {
       dispatch(setGameStatus("won"));
     }
   }, [dispatch, guessedLetters, wordToGuess]);
@@ -47,10 +39,7 @@ const Main = () => {
     dispatch(resetGame());
   };
 
-  const nameSubmitHandler = (
-    event: React.FormEvent<HTMLFormElement>,
-    inputElement: HTMLInputElement | null
-  ) => {
+  const nameSubmitHandler = (event: React.FormEvent<HTMLFormElement>, inputElement: HTMLInputElement | null) => {
     event.preventDefault();
     if (inputElement) {
       const name = inputElement.value;
@@ -59,8 +48,7 @@ const Main = () => {
     }
   };
 
-  const countWrongGuesses = () =>
-    guessedLetters.filter((letter) => !wordToGuess.includes(letter)).length;
+  const countWrongGuesses = () => guessedLetters.filter((letter) => !wordToGuess.includes(letter)).length;
 
   console.log(wordToGuess);
   console.log(guessedLetters);
@@ -69,19 +57,9 @@ const Main = () => {
   if (isLoading) return <h1>Loading...</h1>;
   return (
     <div className={classes.mainContainer}>
-      <Object
-        wrongGuesses={
-          guessedLetters.filter((letter) => !wordToGuess.includes(letter))
-            .length
-        }
-      />
+      <Object wrongGuesses={guessedLetters.filter((letter) => !wordToGuess.includes(letter)).length} />
       <Word wordToGuess={wordToGuess} guessedLetters={guessedLetters} />
-      <Keyboard
-        wordToGuess={wordToGuess}
-        guessedLetters={guessedLetters}
-        letterClickHandler={letterClickHandler}
-        gameStatus={gameStatus}
-      />
+      <Keyboard wordToGuess={wordToGuess} guessedLetters={guessedLetters} letterClickHandler={letterClickHandler} gameStatus={gameStatus} />
       <Message gameStatus={gameStatus} />
       <Leaderboard />
     </div>

@@ -14,6 +14,12 @@ export const Header: React.FC = () => {
               <LinkContainer to="/">
                 <Nav.Link>Home</Nav.Link>
               </LinkContainer>
+              <LinkContainer to="/login">
+                <Nav.Link>login</Nav.Link>
+              </LinkContainer>
+              <LinkContainer to="/board">
+                <Nav.Link>board</Nav.Link>
+              </LinkContainer>
             </Nav>
           </Navbar.Collapse>
         </Container>
