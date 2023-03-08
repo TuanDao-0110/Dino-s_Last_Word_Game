@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
+import { Spinner } from "react-bootstrap";
 
 import { useAppDispatch, useAppSelector } from "../../../hooks/hooks";
-
 import { setWordToGuess, setGameStatus } from "../../../features/GameSlice";
 
 import {
@@ -57,7 +57,7 @@ const Main = () => {
 
   console.log(gameStatus);
 
-  if (isLoading) return <h1>Loading...</h1>;
+  if (isLoading) return <Spinner />;
   return (
     <div className={classes.main_container}>
       <Object

@@ -1,7 +1,7 @@
 import { Container, Nav, Navbar, Row } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
 
-import classes from "./header.module.css";
+/* import classes from "./header.module.css"; */
 
 export const Header: React.FC = () => {
   return (
