@@ -12,7 +12,7 @@ import { getFirebaseConfig } from "./firebase-config";
 import { getFirestore, collection, addDoc } from "firebase/firestore";
 
 const app = initializeApp(getFirebaseConfig());
-const auth = getAuth(app);
+export const auth = getAuth(app);
 const db = getFirestore(app);
 export const signInUser = async (email: string, password: string) => {
   if (!email && !password) return;
@@ -37,6 +37,7 @@ export const registerWithEmailAndPassword = async (name: string, email: string, 
       authProvider: "local",
       email,
     });
+    return user;
   } catch (err) {
     console.log(err);
     alert(err);

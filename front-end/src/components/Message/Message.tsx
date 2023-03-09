@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-import { MessageProps } from "../../types/hangman.model";
-=======
->>>>>>> development
 import { useAppSelector } from "../../hooks/hooks";
 
 import classes from "./message.module.css";

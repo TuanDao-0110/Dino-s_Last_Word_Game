@@ -1,45 +1,45 @@
-import React, { ChangeEvent, FormEvent, useEffect, useState } from "react";
+import React, { ChangeEvent, FormEvent, useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useAuthState } from "react-firebase-hooks/auth";
 import { signInUser } from "../../firebase/firebase";
- const defaultFormFields = {
-   email: "",
-   password: "",
- };
+import { AuthContext } from "../../context/auth-context";
+const defaultFormFields = {
+  email: "",
+  password: "",
+};
 const Login = () => {
+  const { setCurrentUser } = useContext(AuthContext);
 
-      const [formFields, setFormFields] = useState(defaultFormFields);
-      const { email, password } = formFields;
-      const navigate = useNavigate();
+  const [formFields, setFormFields] = useState(defaultFormFields);
+  const { email, password } = formFields;
+  const navigate = useNavigate();
 
-      const resetFormFields = () => {
-        return setFormFields(defaultFormFields);
-      };
+  const resetFormFields = () => {
+    return setFormFields(defaultFormFields);
+  };
 
-      const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
-        event.preventDefault();
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
 
-        try {
-          // Send the email and password to firebase
-          const userCredential = await signInUser(email, password);
+    try {
+      // Send the email and password to firebase
+      const userCredential = await signInUser(email, password);
+      if (userCredential) {
+        resetFormFields();
+        setCurrentUser(userCredential.user);
+        navigate("/board");
+      }
+    } catch (error: any) {
+      console.log("User Sign In Failed", error.message);
+    }
+  };
 
-          if (userCredential) {
-            resetFormFields();
-            navigate("/board");
-          }
-        } catch (error: any) {
-          console.log("User Sign In Failed", error.message);
-        }
-      };
-
-      const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
-        const { name, value } = event.target;
-        setFormFields({ ...formFields, [name]: value });
-      };
-
+  const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = event.target;
+    setFormFields({ ...formFields, [name]: value });
+  };
 
   return (
-    <div >
+    <div>
       <div>
         <form onSubmit={handleSubmit}>
           <div>
@@ -58,5 +58,3 @@ const Login = () => {
 };
 
 export default Login;
-
-

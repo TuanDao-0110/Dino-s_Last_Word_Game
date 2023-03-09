@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-import { KeyboardProps } from "../../types/hangman.model";
-=======
->>>>>>> development
 import { useAppSelector } from "../../hooks/hooks";
 
 import { Key } from "../../assets/export_component/resource";

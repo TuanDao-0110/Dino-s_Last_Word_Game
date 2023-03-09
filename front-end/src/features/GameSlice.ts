@@ -35,10 +35,8 @@ const gameSlice = createSlice({
       state.gameStatus = action.payload;
     },
     resetGame: (state) => {
-      state.wordToGuess = "";
       state.guessedLetters = [];
       state.gameStatus = "playing";
-      console.log(state);
     },
     addToLeaderboard: (state, action: PayloadAction<{ name: string; score: number }>) => {
       state.leaderboard.push(action.payload);

@@ -3,7 +3,8 @@ import { useContext } from "react";
 import { AuthContext } from "../context/auth-context";
 
 const ProtectedRoute = () => {
-  const { currentUser } = useContext(AuthContext);
+  const { currentUser,setCurrentUser, signOut } = useContext(AuthContext);
+  console.log(currentUser)
 
   // NOTE: console log for testing purposes
   console.log("User:", !!currentUser);
