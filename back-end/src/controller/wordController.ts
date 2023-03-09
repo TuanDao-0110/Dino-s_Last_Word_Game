@@ -1,7 +1,7 @@
 import { RequestHandler } from "express";
 import { createError } from "../utils/ErrorCreate";
 import firebase from "../database/firebase";
-import { isLevel } from "../helper/checkingType";
+import { isCategory } from "../helper/checkingType";
 import { Message, Name } from "../types/errorType.model";
 import { SuccessMessage } from "../types/successMessage.model";
 const { wordDB, admin } = firebase;
@@ -15,14 +15,14 @@ export const getALlWord: RequestHandler = async (req, res, next) => {
     return next(error);
   }
 };
-export const getWordBaseOnLevel: RequestHandler = async (req, res, next) => {
-  const level = req.params.level;
-  if (!isLevel(level)) {
-    const error = createError(Name.BadRequestError400, Message.Invalid_Level_Select);
+export const getWordBaseOnCategory: RequestHandler = async (req, res, next) => {
+  const category = req.params.category;
+  if (!isCategory(category)) {
+    const error = createError(Name.BadRequestError400, Message.Invalid_Category_Select);
     return next(error);
   }
   try {
-    const snapshot = await admin.database().ref(`words/${level}`).once("value");
+    const snapshot = await admin.database().ref(`words/${category}`).once("value");
     const result = snapshot.val();
     return res.status(200).json({ result });
   } catch (error) {
@@ -30,19 +30,19 @@ export const getWordBaseOnLevel: RequestHandler = async (req, res, next) => {
   }
 };
 export const postNewWord: RequestHandler = async (req, res, next) => {
-  const { newword, level } = req.body;
-  // Check if the newword and level are of the expected type
-  if (typeof newword !== "string" || typeof level !== "string") {
+  const { newword, category } = req.body;
+  // Check if the newword and category are of the expected type
+  if (typeof newword !== "string" || typeof category !== "string") {
     // If the data is of the wrong type, throw a custom error with a name and message
     const error = createError(Name.BadRequestError400, Message.Invalid_New_Word);
     return next(error);
   }
-  if (!isLevel(level)) {
-    const error = createError(Name.BadRequestError400, Message.Invalid_Level_Select);
+  if (!isCategory(category)) {
+    const error = createError(Name.BadRequestError400, Message.Invalid_Category_Select);
     //  throw error;
     return next(error);
   }
-  const newWordDB = admin.database().ref(`words/${level}`);
+  const newWordDB = admin.database().ref(`words/${category}`);
   try {
     let snapshot = await newWordDB.once("value");
     if (!snapshot.exists()) {
