@@ -1,5 +1,8 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import words from "../wordList.json";
+import { getWordsByLevel } from "../api/wordapi";
+import { WORD_LEVEL } from "../types/API.model";
+let words: string[] = ["test"];
+getWordsByLevel(WORD_LEVEL.MEDIUM).then((data) => (words = data));
 
 interface GameState {
   word: string[];
@@ -21,9 +24,7 @@ const gameSlice = createSlice({
   name: "game",
   initialState,
   reducers: {
-    getAllWord: (state, action: PayloadAction<string[]>) => {
-
-    },
+    getAllWords: (state, action: PayloadAction<string[]>) => {},
     setWordToGuess: (state) => {
       const index = Math.floor(Math.random() * words.length);
       state.wordToGuess = words[index].toUpperCase();
@@ -31,14 +32,20 @@ const gameSlice = createSlice({
     addGuessedLetter: (state, action: PayloadAction<string>) => {
       state.guessedLetters.push(action.payload);
     },
-    setGameStatus: (state, action: PayloadAction<"playing" | "won" | "lost">) => {
+    setGameStatus: (
+      state,
+      action: PayloadAction<"playing" | "won" | "lost">
+    ) => {
       state.gameStatus = action.payload;
     },
     resetGame: (state) => {
       state.guessedLetters = [];
       state.gameStatus = "playing";
     },
-    addToLeaderboard: (state, action: PayloadAction<{ name: string; score: number }>) => {
+    addToLeaderboard: (
+      state,
+      action: PayloadAction<{ name: string; score: number }>
+    ) => {
       state.leaderboard.push(action.payload);
     },
   },
