@@ -1,9 +1,8 @@
 import axios from "axios";
-import { AppDispatch } from "../app/store";
 import { METHOD, Category, URL } from "../types/API.model";
 import { NEW_WORD_TYPE } from "../types/word.model";
 
-export const getAllWord = async () => {
+export const getAllWords = async () => {
   try {
     const { data, status } = await axios({
       method: METHOD.GET,
@@ -13,11 +12,11 @@ export const getAllWord = async () => {
   } catch (error) {}
 };
 
-export const getByWordByLevel = async (level: Category) => {
+export const getByWordByCategory = async (category: Category) => {
   try {
     const { data, status } = await axios({
       method: METHOD.GET,
-      url: `${URL.WORD_URL}/${level}`,
+      url: `${URL.WORD_URL}/${category}`,
     });
     return data;
   } catch (error) {}
@@ -33,6 +32,3 @@ export const postNewWord = async (newData: NEW_WORD_TYPE) => {
     return data;
   } catch (error) {}
 };
-
-
-

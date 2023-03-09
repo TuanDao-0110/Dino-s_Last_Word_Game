@@ -1,5 +1,8 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import words from "../wordList.json";
+import { getByWordByCategory } from "../api/wordapi";
+import { Category } from "../types/API.model";
+let words: string[] = ["test"];
+getByWordByCategory(Category.SPORTS).then((data) => (words = data));
 
 interface GameState {
   word: string[];
@@ -21,9 +24,7 @@ const gameSlice = createSlice({
   name: "game",
   initialState,
   reducers: {
-    getAllWord: (state, action: PayloadAction<string[]>) => {
-
-    },
+    getAllWords: (state, action: PayloadAction<string[]>) => {},
     setWordToGuess: (state) => {
       const index = Math.floor(Math.random() * words.length);
       state.wordToGuess = words[index].toUpperCase();
@@ -44,11 +45,5 @@ const gameSlice = createSlice({
   },
 });
 
-export const {
-  setWordToGuess,
-  addGuessedLetter,
-  setGameStatus,
-  resetGame,
-  addToLeaderboard,
-} = gameSlice.actions;
+export const { setWordToGuess, addGuessedLetter, setGameStatus, resetGame, addToLeaderboard } = gameSlice.actions;
 export default gameSlice.reducer;
