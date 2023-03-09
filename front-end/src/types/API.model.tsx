@@ -1,7 +1,9 @@
-export enum WORD_LEVEL {
-  HARD = "hard",
-  EASY = "easy",
-  MEDIUM = "medium",
+export enum Category {
+  ANIMALS = "animals",
+  FRUITS = "fruits",
+  COUNTRIES = "countries",
+  PROFESSION = "professions",
+  SPORTS = "sports",
 }
 
 export enum METHOD {

@@ -1,10 +1,23 @@
-import { User } from "firebase/auth";
+import { User, UserCredential } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 import { SignOutUser, userStateListener } from "../firebase/firebase";
 import { createContext, useState, useEffect, ReactNode } from "react";
 
 interface Props {
   children?: ReactNode;
+}
+
+
+declare interface OAuthCredentialParams {
+    idToken?: string | null;
+    accessToken?: string | null;
+    oauthToken?: string;
+    secret?: string;
+    oauthTokenSecret?: string;
+    nonce?: string;
+    pendingToken?: string;
+    providerId: string;
+    signInMethod: string;
 }
 
 export const AuthContext = createContext({
@@ -17,7 +30,7 @@ export const AuthContext = createContext({
 export const AuthProvider = ({ children }: Props) => {
   const [currentUser, setCurrentUser] = useState<User | null>(null);
   const navigate = useNavigate();
-
+// 
   useEffect(() => {
     const unsubscribe = userStateListener((user) => {
       if (user) {
