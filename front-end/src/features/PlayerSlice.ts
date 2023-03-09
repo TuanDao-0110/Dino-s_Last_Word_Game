@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { Player, PlayerState } from "../hangman.model";
+import { Player, PlayerState } from "../types/hangman.model";
 
 const initialState: PlayerState = {
   players: [],

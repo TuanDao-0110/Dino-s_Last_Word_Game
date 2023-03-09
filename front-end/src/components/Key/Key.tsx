@@ -1,4 +1,4 @@
-import { KeyProps } from "../../hangman.model";
+import { KeyProps } from "../../types/hangman.model";
 import { useAppDispatch, useAppSelector } from "../../hooks/hooks";
 import { addGuessedLetter } from "../../features/GameSlice";
 

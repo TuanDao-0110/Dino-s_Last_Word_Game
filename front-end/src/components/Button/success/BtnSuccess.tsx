@@ -1,5 +1,4 @@
-import { ButtonProps } from "../../../hangman.model";
-
+import { ButtonProps } from "../../../types/hangman.model";
 import { Button } from "react-bootstrap";
 
 const BtnSuccess: React.FC<ButtonProps> = ({ text, clickHandler }) => {

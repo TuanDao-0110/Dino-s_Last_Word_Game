@@ -1,4 +1,4 @@
-import { WordLetterProps } from "../../hangman.model";
+import { WordLetterProps } from "../../types/hangman.model";
 
 import classes from "./wordLetters.module.css";
 

@@ -1,4 +1,4 @@
-import { ObjectProps } from "../../hangman.model";
+import { ObjectProps } from "../../types/hangman.model";
 
 import {
   Dino0,

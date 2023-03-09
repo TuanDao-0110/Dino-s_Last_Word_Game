@@ -15,6 +15,7 @@ import Object from "../../components/Object/Object";
 import WordLetters from "../../components/WordLetters/WordLetters";
 import Controls from "../../components/Controls/Controls";
 // Dino
+
 import Dino0 from "../../components/Dino/Dino0";
 import Dino1 from "../../components/Dino/Dino1";
 import Dino2 from "../../components/Dino/Dino2";

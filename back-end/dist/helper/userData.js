@@ -14,12 +14,24 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.userInfor = void 0;
 const firebase_1 = __importDefault(require("../database/firebase"));
+const data_model_1 = require("../types/data.model");
 const { fireStoreDB } = firebase_1.default;
-const userInfor = (uid, next) => __awaiter(void 0, void 0, void 0, function* () {
+const userInfor = (uid, next, dataAmount) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const getAll = yield fireStoreDB.collection("users").where("uid", "==", uid).get();
-        const userDocs = getAll.docs[0];
-        return userDocs;
+        const userDocs = getAll.docs.length > 0 ? getAll.docs[0] : null;
+        if (userDocs !== null) {
+            if (dataAmount === data_model_1.TakeUser.All) {
+                return userDocs;
+            }
+            else {
+                const shortUserInfo = {
+                    email: userDocs._fieldsProto.email.stringValue,
+                    name: userDocs._fieldsProto.name.stringValue,
+                };
+                return shortUserInfo;
+            }
+        }
     }
     catch (error) {
         return next(error);

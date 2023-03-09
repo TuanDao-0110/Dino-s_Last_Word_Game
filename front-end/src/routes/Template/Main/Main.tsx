@@ -16,6 +16,7 @@ import {
 
 import classes from "./main.module.css";
 
+
 const Main = () => {
   const dispatch = useAppDispatch();
   const wordToGuess = useAppSelector((state) => state.game.wordToGuess);
@@ -31,10 +32,7 @@ const Main = () => {
 
   // Every time a new letter is guessed, check if the game is won or lost
   useEffect(() => {
-    if (
-      wordToGuess &&
-      wordToGuess.split("").every((letter) => guessedLetters.includes(letter))
-    ) {
+    if (wordToGuess && wordToGuess.split("").every((letter) => guessedLetters.includes(letter))) {
       dispatch(setGameStatus("won"));
     } else if (
       guessedLetters.filter((letter) => !wordToGuess.includes(letter)).length >

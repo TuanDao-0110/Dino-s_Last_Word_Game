@@ -15,10 +15,11 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.getUserScore = exports.getAllScore = exports.postingNewScore = void 0;
 const firebase_1 = __importDefault(require("../database/firebase"));
 const successMessage_model_1 = require("../types/successMessage.model");
-const userData_1 = require("../helper/userData");
 const checkingType_1 = require("../helper/checkingType");
 const ErrorCreate_1 = require("../utils/ErrorCreate");
 const errorType_model_1 = require("../types/errorType.model");
+const userData_1 = require("../helper/userData");
+const data_model_1 = require("../types/data.model");
 const { admin, scoreDB } = firebase_1.default;
 const postingNewScore = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     let newScore = req.body;
@@ -26,11 +27,12 @@ const postingNewScore = (req, res, next) => __awaiter(void 0, void 0, void 0, fu
         return next((0, ErrorCreate_1.createError)(errorType_model_1.Name.BadRequestError400, errorType_model_1.Message.Invalid_Score));
     }
     newScore.timestamp = admin.database.ServerValue.TIMESTAMP;
+    const userInfo = yield (0, userData_1.userInfor)(req.currentUser.uid, next, data_model_1.TakeUser.Short);
     const userScoresRef = admin.database().ref(`scores/${req.currentUser.uid}`);
     try {
         const snapshot = yield userScoresRef.once("value");
         if (!snapshot.exists()) {
-            yield userScoresRef.set([newScore]);
+            yield userScoresRef.set([userInfo, newScore]);
         }
         else {
             let score = snapshot.val();
@@ -58,8 +60,12 @@ const getAllScore = (req, res, next) => __awaiter(void 0, void 0, void 0, functi
 exports.getAllScore = getAllScore;
 const getUserScore = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     const uid = req.params.uid;
+    if (uid !== req.currentUser.uid) {
+        const error = (0, ErrorCreate_1.createError)(errorType_model_1.Name.Authorization, errorType_model_1.Message.Authorization_Error);
+        return next(error);
+    }
     try {
-        let userInfo = yield (0, userData_1.userInfor)(uid, next);
+        let userInfo = yield (0, userData_1.userInfor)(uid, next, data_model_1.TakeUser.All);
         const scoreRef = admin.database().ref(`scores/${uid}`);
         yield scoreRef.once("value", (snapshot) => {
             const scoreData = snapshot.val();
