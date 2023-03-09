@@ -26,7 +26,7 @@ function LoginForm() {
     try {
       // Send the email and password to firebase
       const userCredential = await signInUser(email, password);
-      console.log(userCredential);
+      console.log(userCredential?.user);
       if (userCredential) {
         resetFormFields();
         setCurrentUser(userCredential.user);

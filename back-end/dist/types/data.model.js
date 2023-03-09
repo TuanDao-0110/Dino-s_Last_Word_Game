@@ -1,12 +1,14 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.TakeUser = exports.Level = void 0;
-var Level;
-(function (Level) {
-    Level["Easy"] = "easy";
-    Level["Medium"] = "medium";
-    Level["Hard"] = "hard";
-})(Level = exports.Level || (exports.Level = {}));
+exports.TakeUser = exports.Category = void 0;
+var Category;
+(function (Category) {
+    Category["ANIMALS"] = "animals";
+    Category["FRUITS"] = "fruits";
+    Category["COUNTRIES"] = "countries";
+    Category["PROFESSION"] = "professions";
+    Category["SPORTS"] = "sports";
+})(Category = exports.Category || (exports.Category = {}));
 var TakeUser;
 (function (TakeUser) {
     TakeUser["All"] = "all";

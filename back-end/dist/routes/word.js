@@ -10,5 +10,5 @@ exports.wordRouter = router;
 const wordController_1 = require("../controller/wordController");
 router
     .get("/", wordController_1.getALlWord)
-    .get("/:level", wordController_1.getWordBaseOnLevel)
+    .get("/:category", wordController_1.getWordBaseOnCategory)
     .post("/", wordController_1.postNewWord);

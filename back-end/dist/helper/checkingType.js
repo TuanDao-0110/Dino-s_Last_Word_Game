@@ -1,11 +1,11 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.isScore = exports.isLevel = void 0;
+exports.isScore = exports.isCategory = void 0;
 const data_model_1 = require("../types/data.model");
-const isLevel = (value) => {
-    return Object.values(data_model_1.Level).includes(value);
+const isCategory = (value) => {
+    return Object.values(data_model_1.Category).includes(value);
 };
-exports.isLevel = isLevel;
+exports.isCategory = isCategory;
 const isScore = (obj) => {
     return obj && typeof obj.score === "number";
 };
