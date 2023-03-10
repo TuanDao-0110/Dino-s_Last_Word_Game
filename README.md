@@ -2,6 +2,11 @@
 
 This is a Hangman game built with React and Redux Toolkit. The game allows the user to guess a randomly generated word by entering letters one at a time. The user has a limited number of incorrect guesses, and each incorrect guess adds a part to a hangman figure. The game is won by guessing the word before the hangman is fully drawn, or lost by making too many incorrect guesses.
 
+## Reference: 
+
+1. we using concept introducted by "freecodecamp.org". 
+https://www.freecodecamp.org/news/how-to-create-a-react-app-with-a-node-backend-the-complete-guide/
+
 ## Technologies
 
 |  | Technology |
