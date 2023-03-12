@@ -50,7 +50,9 @@ This project is contributed by:
 
 
 ## Back End router: 
+# Testing document API: 
 
+https://documenter.getpostman.com/view/19888757/2s93JtR3uK#5877637a-3b0c-4673-87d8-962edb4f5a19 
 ```
 graph LR;
   A[Express.js] --> B[CORS];
@@ -239,3 +241,18 @@ graph LR;
 
 License
 This project is licensed under the MIT License. See LICENSE for more information.
+
+
+
+
+# game play : 
+
+1. player can register or login, 
+2. game can play until user lose, require login/register, to store the score. 
+3. game rule: 
+  3.1 player win then move to next round, next round's word not duplicate/same to previous rounds. (use localstore)
+  3.2 player can choose specific category to play, each time win play got 1 point
+  3.3 player can choose play all kind of category, each time win play got 2 point, in case player stuck, they can get hint by show what kind of category right now, by that each time win play got 1 point
+4. leaderboard is
+  4.1 a place where user can see their score position
+  4.2 leader board is display during the game, no matter user already login/register or not. 

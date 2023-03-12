@@ -23,6 +23,7 @@ export const getWordBaseOnCategory: RequestHandler = async (req, res, next) => {
   }
   try {
     const snapshot = await admin.database().ref(`words/${category}`).once("value");
+    console.log(snapshot)
     const result = snapshot.val();
     return res.status(200).json({ result });
   } catch (error) {
@@ -30,9 +31,9 @@ export const getWordBaseOnCategory: RequestHandler = async (req, res, next) => {
   }
 };
 export const postNewWord: RequestHandler = async (req, res, next) => {
-  const { newword, category } = req.body;
+  const { newWord, category } = req.body;
   // Check if the newword and category are of the expected type
-  if (typeof newword !== "string" || typeof category !== "string") {
+  if (typeof newWord !== "string" || typeof category !== "string") {
     // If the data is of the wrong type, throw a custom error with a name and message
     const error = createError(Name.BadRequestError400, Message.Invalid_New_Word);
     return next(error);
@@ -46,11 +47,11 @@ export const postNewWord: RequestHandler = async (req, res, next) => {
   try {
     let snapshot = await newWordDB.once("value");
     if (!snapshot.exists()) {
-      await newWordDB.set([newword]);
+      await newWordDB.set([newWord]);
     } else {
       const word = snapshot.val();
       let updateWord = [...word];
-      updateWord.push(newword);
+      updateWord.push(newWord);
       await newWordDB.set([...updateWord]);
     }
     return res.status(201).json({ msg: SuccessMessage.AddSuccess });

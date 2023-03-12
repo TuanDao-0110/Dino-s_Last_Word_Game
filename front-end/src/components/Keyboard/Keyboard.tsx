@@ -9,8 +9,7 @@ const line2: string[] = ["A", "S", "D", "F", "G", "H", "J", "K", "L"];
 const line3: string[] = ["Z", "X", "C", "V", "B", "N", "M"];
 
 const Keyboard: React.FC = () => {
-  const wordToGuess = useAppSelector((state) => state.game.wordToGuess);
-  const guessedLetters = useAppSelector((state) => state.game.guessedLetters);
+  const {wordToGuess,guessedLetters} = useAppSelector((state) => state.game);
   const getLetterStatus = (
     letter: string
   ): "incorrect" | "correct" | "blank" => {

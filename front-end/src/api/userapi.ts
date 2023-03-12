@@ -13,7 +13,6 @@ export const postNewScore = async (currentUser: User, newScore: NEW_SCORE) => {
       data: newScore,
       headers: setUpheader(token),
     });
-    console.log(data);
     return data;
   } catch (error) {}
 };
@@ -28,7 +27,6 @@ export const getAllScore = async (currentUser: User) => {
       headers: setUpheader(token),
     });
     console.log(data);
-
     return data;
   } catch (error) {}
 };
@@ -42,7 +40,6 @@ export const getUserInfor = async (currentUser: User) => {
       headers: setUpheader(token),
     });
     console.log(data);
-
     // data now can dispatch to redux
     return data;
   } catch (error) {
