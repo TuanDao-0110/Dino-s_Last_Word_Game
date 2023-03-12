@@ -8,6 +8,7 @@ import Register from "./routes/register/Register";
 import Login from "./routes/Login/Login";
 
 function App() {
+  
   return (
     <Routes>
       <Route path="/" element={<Template />}>
