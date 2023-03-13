@@ -53,7 +53,8 @@ This project is contributed by:
 # Testing document API: 
 
 https://documenter.getpostman.com/view/19888757/2s93JtR3uK#5877637a-3b0c-4673-87d8-962edb4f5a19 
-```
+
+```mermaid
 graph LR;
   A[Express.js] --> B[CORS];
   A[Express.js] --> C[Body Parser];
