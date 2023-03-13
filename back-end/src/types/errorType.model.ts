@@ -11,8 +11,8 @@ export enum Message {
   ServerBroken = "sever broken",
   HeaderMissing = "Authorization header missing",
   Resource_Not_Found = "Resource not found",
-  Invalid_New_Word = "Invalid data type, data should be object with {newword:string,level:string}",
-  Invalid_Level_Select = "Invalid levels, level should be easy/medium/hard",
+  Invalid_New_Word = "Invalid data type, data should be object with {newword:string,category:string}",
+  Invalid_Category_Select = "Invalid categorys",
   Invalid_Score = "Invalid new Score, new score should be object with {score:number}",
   Authorization_Error = "Authorization Error",
 }

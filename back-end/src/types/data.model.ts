@@ -1,7 +1,9 @@
-export enum Level {
-  Easy = "easy",
-  Medium = "medium",
-  Hard = "hard",
+export enum Category {
+  ANIMALS = "animals",
+  FRUITS = "fruits",
+  COUNTRIES = "countries",
+  PROFESSION = "professions",
+  SPORTS = "sports",
 }
 export enum TakeUser {
   All = "all",
@@ -19,7 +21,7 @@ export interface UserInfoType {
 }
 
 export interface ListScores {
-  [uid: string]: Score | UserInfoType [];
+  [uid: string]: Score | UserInfoType[];
 }
 
 export interface userInfoType {

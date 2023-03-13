@@ -1,10 +1,10 @@
 import express from "express";
 const router = express.Router();
-import { getALlWord, getWordBaseOnLevel, postNewWord } from "../controller/wordController";
+import { getALlWord, getWordBaseOnCategory, postNewWord } from "../controller/wordController";
 
 router
 .get("/", getALlWord)
-.get("/:level", getWordBaseOnLevel)
+.get("/:category", getWordBaseOnCategory)
 .post("/", postNewWord);
 
 export { router as wordRouter };
