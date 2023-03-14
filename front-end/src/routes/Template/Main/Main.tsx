@@ -83,6 +83,7 @@ const Main = () => {
 
   useEffect(() => console.log("score: ", score), [score]);
   useEffect(() => console.log("category changed: ", category), [category]);
+  useEffect(() => console.log("game status: ", gameStatus), [gameStatus]);
 
   if (isLoading) return <Spinner />;
   return (
