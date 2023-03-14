@@ -1,15 +1,12 @@
-import { BtnDanger, BtnPrimary } from "../../assets/export_component/resource";
+import { BtnDanger, BtnPrimary, BtnSuccess } from "../../assets/export_component/resource";
 import { useAppDispatch, useAppSelector } from "../../hooks/hooks";
-import { nextGame, resetGame, setCategory, setGameStatus, setWordToGuess } from "../../features/GameSlice";
+import { nextGame, resetGame, setCategory, setGameStatus, setModal, setWordToGuess } from "../../features/GameSlice";
 import { Categories } from "../../types/API.model";
-import { useEffect } from "react";
 
 const Controls = () => {
   const dispatch = useAppDispatch();
   const { score, gameStatus } = useAppSelector((state) => state.game);
-  useEffect(() => {
-    console.log(gameStatus);
-  }, []);
+
   const getRandomCategory = (): Categories => {
     const categories = Object.values(Categories).filter((category) => category !== Categories.ALL);
     const randomIndex = Math.floor(Math.random() * categories.length);
@@ -23,23 +20,21 @@ const Controls = () => {
 
   const stopPlaying = () => {
     dispatch(setGameStatus("lost"));
+    dispatch(setModal(true));
   };
   const playNext = () => {
     dispatch(nextGame());
   };
-  const renderButton = (status: string) => {
-    console.log(status);
-    if (status === "won" && score > 1) {
+  const renderButton = (status: string, score: number) => {
+    if (status === "won" && score !== 0) {
       return <BtnPrimary text="Play next" clickHandler={playNext} />;
-    }
-    if (status === "lost") {
-      return <BtnDanger text="Play again" clickHandler={playAgain} />;
-    }
-    if (status === "playing") {
+    } else if (status === "lost") {
+      return <BtnSuccess text="Play again" clickHandler={playAgain} />;
+    } else if (status === "playing") {
       return <BtnDanger text="Stop game" clickHandler={stopPlaying} />;
     }
   };
-  return <div>{renderButton(gameStatus)}</div>;
+  return <div>{renderButton(gameStatus, score)}</div>;
 };
 
 export default Controls;
