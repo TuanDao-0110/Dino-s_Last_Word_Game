@@ -60,8 +60,8 @@ const gameSlice = createSlice({
       state.randomCategory = action.payload;
     },
     setWordToGuess: (state) => {
+      console.log("test");
       if (!state.word) {
-        console.log('test')
         const index = Math.floor(Math.random() * words.length);
         state.wordToGuess = words[index].toUpperCase();
       } else {
@@ -96,6 +96,7 @@ export const getWordDispatch = (category: Categories) => {
     return async (dispatch: AppDispatch) => {
       const data = (await getAllWords()) as Word_Type;
       dispatch(setAllWord(data));
+      dispatch(setWordToGuess());
     };
   }
   return async (dispatch: AppDispatch) => {

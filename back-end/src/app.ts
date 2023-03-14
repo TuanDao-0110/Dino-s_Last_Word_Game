@@ -5,7 +5,7 @@ import bodyParser from "body-parser";
 import { welcomeRouter } from "./routes/welcome";
 import { wordRouter } from "./routes/word";
 import { userRouter } from "./routes/user";
-import { checkToken, errorHandler, unknowEndpoint } from "./utils/middleware";
+import { errorHandler, unknowEndpoint } from "./utils/middleware";
 import path from "path";
 
 const app = express();
@@ -18,7 +18,7 @@ app.use(express.static(path.resolve(__dirname, "../build")));
 
 app.use(welcomeRouter);
 app.use("/api/word", wordRouter);
-app.use("/api/user", checkToken, userRouter);
+app.use("/api/user", userRouter);
 app.use("*", (req, res) => {
   res.sendFile(path.resolve(__dirname, "../build", "index.html"));
 });
