@@ -16,7 +16,11 @@ const WordLetters: React.FC<WordLetterProps> = ({ letter, guessed }) => {
   };
 
   return (
-    <button disabled={guessed ? true : false} className={`${guessed ? classes.guessed : ""} ${classes.letter_container}`} onClick={showHint}>
+    <button
+      disabled={guessed ? true : false}
+      className={`${guessed ? classes.guessed : ""} ${classes.letter}`}
+      onClick={showHint}
+    >
       {guessed ? letter : ""}
     </button>
   );

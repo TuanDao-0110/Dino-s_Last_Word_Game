@@ -1,13 +1,15 @@
-.letter_container {
-  background-color: #ddd;
+.letter {
+  background-color: white;
   width: 3rem;
   height: 3rem;
   display: flex;
   justify-content: center;
   align-items: center;
   border-radius: 0.5rem;
+  border: none;
 }
 
 .guessed {
   background-color: #66b391;
+  color: black;
 }
