@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="dino9" xmlns="http://www.w3.org/2000/svg" width="515.58" height="503.64" viewBox="0 0 515.58 503.64">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #ff8585;
+      }
+
+      .cls-2 {
+        fill: #433eff;
+      }
+
+      .cls-3 {
+        fill: #fff;
+      }
+
+      .cls-3, .cls-4, .cls-5 {
+        stroke-linecap: round;
+        stroke-miterlimit: 10;
+        stroke-width: 2px;
+      }
+
+      .cls-3, .cls-5 {
+        stroke: #000;
+      }
+
+      .cls-4 {
+        stroke: #ff8585;
+      }
+
+      .cls-4, .cls-5 {
+        fill: none;
+      }
+    </style>
+  </defs>
+  <g id="Leaf2_copy_9" data-name="Leaf2 copy 9">
+    <g>
+      <path class="cls-4" d="M115.15,472.13s-5.39,2.27-9.16,3.04c-4.2,.85-7.39,.82-7.39,.82"/>
+      <path class="cls-1" d="M130.26,474.76s-4.41,2.97-8.08,2.43-7.92-4.77-7.92-4.77c0,0,5.75-2.64,8.5-2.24,2.75,.4,7.5,4.58,7.5,4.58Z"/>
+      <path class="cls-1" d="M123.47,459.53s.59,5.28-1.59,8.29c-2.17,3-7.89,4.81-7.89,4.81,0,0,.32-6.32,1.95-8.57s7.53-4.53,7.53-4.53Z"/>
+    </g>
+  </g>
+  <g id="Nose_copy_9" data-name="Nose copy 9">
+    <path class="cls-2" d="M163.05,275.46h-29.5c-4.62,0-8.37-3.75-8.37-8.37v-9.12c0-2.85,1.94-5.34,4.71-6.03l32.45-10.01,.71,33.53Z"/>
+  </g>
+  <g id="Eyes_dead_copy_9" data-name="Eyes_dead copy 9">
+    <g>
+      <line class="cls-5" x1="164.03" y1="246.09" x2="172.34" y2="237.77"/>
+      <line class="cls-5" x1="164.03" y1="237.77" x2="172.34" y2="246.09"/>
+      <line class="cls-5" x1="147.76" y1="246.09" x2="156.08" y2="237.77"/>
+      <line class="cls-5" x1="147.76" y1="237.77" x2="156.08" y2="246.09"/>
+    </g>
+  </g>
+  <g id="Mouth_copy_9" data-name="Mouth copy 9">
+    <line class="cls-3" x1="125.18" y1="260.21" x2="165.82" y2="260.21"/>
+  </g>
+  <g id="Nostrils_copy_9" data-name="Nostrils copy 9">
+    <circle class="cls-3" cx="129.73" cy="254.85" r=".4"/>
+    <circle class="cls-3" cx="140.27" cy="254.85" r=".4"/>
+  </g>
+</svg>

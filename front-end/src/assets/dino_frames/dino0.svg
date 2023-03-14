@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="dino0" xmlns="http://www.w3.org/2000/svg" width="515.58" height="503.64" viewBox="0 0 515.58 503.64">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #433eff;
+      }
+
+      .cls-2 {
+        fill: #35a070;
+      }
+
+      .cls-3 {
+        fill: #fff;
+      }
+
+      .cls-3, .cls-4 {
+        stroke: #000;
+      }
+
+      .cls-3, .cls-4, .cls-5 {
+        stroke-linecap: round;
+        stroke-miterlimit: 10;
+        stroke-width: 2px;
+      }
+
+      .cls-4, .cls-5 {
+        fill: none;
+      }
+
+      .cls-5 {
+        stroke: #35a070;
+      }
+    </style>
+  </defs>
+  <g id="Leaf">
+    <g>
+      <path class="cls-5" d="M111.69,268.87s4.71-3.47,8.2-5.09c3.89-1.81,6.99-2.52,6.99-2.52"/>
+      <path class="cls-2" d="M96.39,269.83s3.6-3.91,7.29-4.25,8.81,2.79,8.81,2.79c0,0-4.98,3.91-7.74,4.16-2.76,.25-8.36-2.7-8.36-2.7Z"/>
+      <path class="cls-2" d="M106.54,283.06s-1.8-5-.39-8.43c1.41-3.43,6.55-6.52,6.55-6.52,0,0,1.16,6.22,.1,8.79s-6.27,6.16-6.27,6.16Z"/>
+    </g>
+  </g>
+  <g id="Nose">
+    <path class="cls-1" d="M163.05,275.46h-29.5c-4.62,0-8.37-3.75-8.37-8.37v-9.12c0-2.85,1.94-5.34,4.71-6.03l32.45-10.01,.71,33.53Z"/>
+  </g>
+  <g id="Eyes_closed">
+    <path class="cls-4" d="M172.16,242.93s-1.85-1.64-4.32-1.64-4.34,1.64-4.34,1.64"/>
+    <path class="cls-4" d="M147.43,242.93s1.86-1.64,4.34-1.64,4.32,1.64,4.32,1.64"/>
+  </g>
+  <g id="Mouth2">
+    <path class="cls-4" d="M126.22,260.97s4.4,1.93,8.1,1.93,8.58-2.43,8.58-2.43"/>
+  </g>
+  <g id="Nostrils">
+    <circle class="cls-3" cx="129.73" cy="254.85" r=".4"/>
+    <circle class="cls-3" cx="140.27" cy="254.85" r=".4"/>
+  </g>
+</svg>

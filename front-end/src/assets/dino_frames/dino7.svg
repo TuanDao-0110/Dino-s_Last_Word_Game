@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="dino7" xmlns="http://www.w3.org/2000/svg" width="515.58" height="503.64" viewBox="0 0 515.58 503.64">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #fda4ff;
+      }
+
+      .cls-2 {
+        fill: #433eff;
+      }
+
+      .cls-3 {
+        fill: #35a070;
+      }
+
+      .cls-4 {
+        fill: #fff;
+      }
+
+      .cls-4, .cls-5 {
+        stroke: #000;
+      }
+
+      .cls-4, .cls-5, .cls-6 {
+        stroke-linecap: round;
+        stroke-miterlimit: 10;
+        stroke-width: 2px;
+      }
+
+      .cls-5, .cls-6 {
+        fill: none;
+      }
+
+      .cls-6 {
+        stroke: #35a070;
+      }
+    </style>
+  </defs>
+  <g id="Leaf_copy" data-name="Leaf copy">
+    <g>
+      <path class="cls-6" d="M111.69,268.87s4.71-3.47,8.2-5.09c3.89-1.81,6.99-2.52,6.99-2.52"/>
+      <path class="cls-3" d="M96.39,269.83s3.6-3.91,7.29-4.25,8.81,2.79,8.81,2.79c0,0-4.98,3.91-7.74,4.16-2.76,.25-8.36-2.7-8.36-2.7Z"/>
+      <path class="cls-3" d="M106.54,283.06s-1.8-5-.39-8.43c1.41-3.43,6.55-6.52,6.55-6.52,0,0,1.16,6.22,.1,8.79s-6.27,6.16-6.27,6.16Z"/>
+    </g>
+  </g>
+  <g id="Nose_copy" data-name="Nose copy">
+    <path class="cls-2" d="M163.05,275.46h-29.5c-4.62,0-8.37-3.75-8.37-8.37v-9.12c0-2.85,1.94-5.34,4.71-6.03l32.45-10.01,.71,33.53Z"/>
+  </g>
+  <g id="Layer_47_copy" data-name="Layer 47 copy">
+    <polyline class="cls-5" points="171.7 246.89 163.5 243.02 171.7 240.22"/>
+    <polyline class="cls-5" points="146.4 246.89 154.59 243.02 146.4 240.22"/>
+  </g>
+  <g id="Mouth_copy" data-name="Mouth copy">
+    <line class="cls-4" x1="125.18" y1="260.21" x2="165.82" y2="260.21"/>
+  </g>
+  <g id="Nostrils_copy" data-name="Nostrils copy">
+    <circle class="cls-4" cx="129.73" cy="254.85" r=".4"/>
+    <circle class="cls-4" cx="140.27" cy="254.85" r=".4"/>
+  </g>
+  <g id="Sweat_copy" data-name="Sweat copy">
+    <path class="cls-1" d="M179.09,238.88s-2.31,5.68-2.69,7.06c-.35,1.3,.57,3.62,2.69,3.62s3.16-2.42,2.76-3.62c-.69-2.05-2.76-7.06-2.76-7.06Z"/>
+  </g>
+</svg>
