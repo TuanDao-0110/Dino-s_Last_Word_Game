@@ -58,10 +58,10 @@ const LeaderBoard = () => {
 
   const renderScoreTable = (allScore: AllScore_Type) => {
     return (
-      <table>
+      <table className={classes.leaderboard}>
         <thead>
           <tr className={classes.table_header}>
-            <th>Position</th>
+            <th></th>
             <th>Name</th>
             <th>Score</th>
           </tr>
@@ -70,9 +70,10 @@ const LeaderBoard = () => {
           {restructureLeaderBoard(allScore).map((data, index) => {
             const { name, score, timestamp } = data;
             return (
-              <tr className={classes.table_position}>
+              <tr className={classes.table_row}>
+                <td>{index}</td>
                 <td>{name}</td>
-                <td>{renderDate(timestamp)} :</td>
+                {/* <td>{renderDate(timestamp)} :</td> */}
                 <td>{score}</td>
               </tr>
             );
@@ -84,7 +85,7 @@ const LeaderBoard = () => {
 
   return (
     <div className={classes.leaderboard_container}>
-      <h2>Board</h2>
+      <h2>Leaderboard</h2>
       {allScore && renderScoreTable(allScore)}
     </div>
   );

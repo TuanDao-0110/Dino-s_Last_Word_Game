@@ -1,10 +1,23 @@
 .category_container {
-  background-color: #ffffff60;
-
-  width: 326px;
+  background-color: white;
+  width: 22rem;
   min-height: 500px;
-  padding: 10px;
-  left: 128px;
-  top: 132px;
+  padding: 3rem;
   border-radius: 20px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.category_container h2 {
+  margin-bottom: 1rem;
+}
+
+.score {
+  font-size: 2rem;
+}
+
+.score span {
+  color: rgb(81, 51, 255);
 }
