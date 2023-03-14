@@ -23,7 +23,6 @@ export const getWordBaseOnCategory: RequestHandler = async (req, res, next) => {
   }
   try {
     const snapshot = await admin.database().ref(`words/${category}`).once("value");
-    console.log(snapshot)
     const result = snapshot.val();
     return res.status(200).json({ result });
   } catch (error) {

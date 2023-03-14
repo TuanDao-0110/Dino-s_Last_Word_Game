@@ -6,6 +6,7 @@ import { Template } from "./routes/Template/Template";
 import { ProtectedRoute } from "./firebase/ProtectRouter";
 import Register from "./routes/register/Register";
 import Login from "./routes/Login/Login";
+import { useEffect } from "react";
 
 function App() {
   

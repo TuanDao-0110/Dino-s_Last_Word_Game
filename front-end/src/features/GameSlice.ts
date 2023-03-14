@@ -3,9 +3,6 @@ import { getAllWords, getWordByCategory } from "../api/wordapi";
 import { AppDispatch } from "../app/store";
 import { Categories, Word_Type } from "../types/API.model";
 let words: string[] = ["test"];
-// getWordByCategory(Category.SPORTS).then((data) => {
-//   words = data;
-// });
 
 interface GameState {
   randomCategory: Categories;
@@ -64,21 +61,15 @@ const gameSlice = createSlice({
     },
     setWordToGuess: (state) => {
       if (!state.word) {
-        console.log("set test");
+        console.log('test')
         const index = Math.floor(Math.random() * words.length);
         state.wordToGuess = words[index].toUpperCase();
       } else {
         const { word, randomCategory } = state;
         if (state.category !== Categories.ALL && Array.isArray(word)) {
-          console.log("set category");
           const index = Math.floor(Math.random() * word.length);
           state.wordToGuess = word[index].toUpperCase();
-        } else if (
-          state.category === Categories.ALL &&
-          typeof word === "object" &&
-          Categories.ANIMALS in word
-        ) {
-          console.log("get all");
+        } else if (state.category === Categories.ALL && typeof word === "object" && Categories.ANIMALS in word) {
           const index = Math.floor(Math.random() * word[randomCategory].length);
           state.wordToGuess = word[randomCategory][index].toUpperCase();
         }
@@ -87,20 +78,14 @@ const gameSlice = createSlice({
     addGuessedLetter: (state, action: PayloadAction<string>) => {
       state.guessedLetters.push(action.payload);
     },
-    setGameStatus: (
-      state,
-      action: PayloadAction<"playing" | "won" | "lost">
-    ) => {
+    setGameStatus: (state, action: PayloadAction<"playing" | "won" | "lost">) => {
       state.gameStatus = action.payload;
     },
     resetGame: (state) => {
       state.guessedLetters = [];
       state.gameStatus = "playing";
     },
-    addToLeaderboard: (
-      state,
-      action: PayloadAction<{ name: string; score: number }>
-    ) => {
+    addToLeaderboard: (state, action: PayloadAction<{ name: string; score: number }>) => {
       state.leaderboard.push(action.payload);
     },
   },
@@ -110,7 +95,6 @@ export const getWordDispatch = (category: Categories) => {
   if (category === Categories.ALL) {
     return async (dispatch: AppDispatch) => {
       const data = (await getAllWords()) as Word_Type;
-      console.log(data);
       dispatch(setAllWord(data));
     };
   }

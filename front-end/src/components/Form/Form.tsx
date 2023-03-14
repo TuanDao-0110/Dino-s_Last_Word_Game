@@ -22,19 +22,14 @@ function LoginForm() {
 
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-
     try {
       // Send the email and password to firebase
       const userCredential = await signInUser(email, password);
-      console.log(userCredential?.user);
       if (userCredential) {
         resetFormFields();
         setCurrentUser(userCredential.user);
-
-        // navigate("/board");
       }
     } catch (error: any) {
-      console.log("User Sign In Failed", error.message);
     }
   };
 
