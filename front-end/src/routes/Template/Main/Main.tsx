@@ -71,7 +71,7 @@ const Main = () => {
     <div className={classes.main_container}>
       <div className={classes.mainLeaderboard_container}>
         <LeaderBoard />
-        <Form />
+        {/* <Form /> */}
       </div>
       <div className={classes.mainObject_container}>
         <Object
@@ -83,7 +83,7 @@ const Main = () => {
         <Word />
         <Keyboard />
       </div>
-      <div>
+      <div className={classes.mainCategory_container}>
         {gameStatus === "lost" && <Message />}
         <Category /> {gameStatus !== "playing" && <Controls />}
       </div>
