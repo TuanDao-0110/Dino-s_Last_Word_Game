@@ -11,11 +11,11 @@
   border: none;
   border-radius: 0.5rem;
   cursor: pointer;
-  background-color: #ddd;
+  background-color: white;
 }
 
 .key_container > button:hover:not(:disabled) {
-  background-color: #ccc;
+  background-color: #e2e2e2;
 }
 
 .key_container > button:disabled {
@@ -23,11 +23,11 @@
 }
 
 .key_container > button.incorrect {
-  background-color: #aaaaaa;
-  color: #777;
+  background-color: #e4e4e4;
+  color: #999999;
 }
 
 .key_container > button.correct {
   background-color: #66b391;
-  color: #777;
+  color: #000000;
 }
