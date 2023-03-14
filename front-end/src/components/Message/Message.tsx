@@ -23,7 +23,7 @@ const Message: React.FC = () => {
     if (currentUser) {
       await postNewScore(currentUser, { score });
       await dispatch(getAllScoreDispatch());
-      handleClose()
+      handleClose();
     }
   };
   return (
@@ -36,13 +36,25 @@ const Message: React.FC = () => {
         animation={false}
       >
         <Modal.Header closeButton>
-          <Modal.Title>You did great job! </Modal.Title>
+          <Modal.Title>
+            Great job
+            {currentUser
+              ? ", " + players?.userInfo._fieldsProto?.name.stringValue
+              : ""}
+            !
+          </Modal.Title>
         </Modal.Header>
         {!currentUser ? (
           <>
-            <Modal.Body>Enter your nickname to join the leaderboard:</Modal.Body>
+            <Modal.Body>
+              Enter your nickname to join the leaderboard:
+            </Modal.Body>
             <Modal.Footer>
-              <Tabs defaultActiveKey="profile" id="uncontrolled-tab-example" className="mb-3">
+              <Tabs
+                defaultActiveKey="profile"
+                id="uncontrolled-tab-example"
+                className="mb-3"
+              >
                 <Tab eventKey="home" title="Login">
                   <LoginForm />
                 </Tab>
@@ -56,11 +68,13 @@ const Message: React.FC = () => {
         ) : (
           <>
             <Modal.Body>
-              Hello <h3>{players?.userInfo._fieldsProto?.name.stringValue}</h3>
-              Do you want to store you score to system
+              Would you like to save your score to the system?
             </Modal.Body>
             <Modal.Footer>
-              <BtnSuccess clickHandler={handleSubmitScore} text="Confirm to Store score" />
+              <BtnSuccess
+                clickHandler={handleSubmitScore}
+                text="Yes, save it!"
+              />
             </Modal.Footer>
           </>
         )}

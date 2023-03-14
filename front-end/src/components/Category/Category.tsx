@@ -36,20 +36,22 @@ const Category: React.FC = () => {
       <p className={classes.score}>
         Score: <span>{score}</span>
       </p>
-      <p className={classes.category_display}>Word category: {category}</p>{" "}
-      <Form.Select
-        aria-label="select category"
-        onChange={setUpCategory}
-        className={classes.category_select}
-      >
-        {renderOption()}
-      </Form.Select>
-      <p className={classes.round}>
-        Round: <span>{round}</span>
-      </p>
-      <p className={classes.game_status}>
-        <span>{gameStatus}</span>
-      </p>
+      <div>
+        <p className={classes.category_display}>Word category: {category}</p>
+        <p>Points to be earned: {category === "all" ? 2 : 1}</p>
+        <Form.Select
+          aria-label="select category"
+          onChange={setUpCategory}
+          className={classes.category_select}
+        >
+          {renderOption()}
+        </Form.Select>
+      </div>
+
+      {gameStatus === "won" && <p className={classes.game_status}>You won!</p>}
+      {gameStatus === "lost" && (
+        <p className={classes.game_status}>Ouch. You lost!</p>
+      )}
     </div>
   );
 };
