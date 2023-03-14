@@ -36,12 +36,14 @@ const Main = () => {
     showModal,
   } = useAppSelector((state) => state.game);
   const [isLoading, setIsLoading] = useState(true);
+
   // After the page loads, set a word to be guessed
   useEffect(() => {
     console.log("use effect running");
     dispatch(setWordToGuess());
     setIsLoading(false);
   }, [dispatch]);
+
   // Every time a new letter is guessed, check if the game is won or lost
   useEffect(() => {
     if (

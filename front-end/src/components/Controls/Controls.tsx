@@ -4,6 +4,7 @@ import { useAppDispatch } from "../../hooks/hooks";
 import {
   resetGame,
   setCategory,
+  /* setRandomCategory, */
   setWordToGuess,
 } from "../../features/GameSlice";
 import { Categories } from "../../types/API.model";

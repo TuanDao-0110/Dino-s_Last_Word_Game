@@ -54,6 +54,9 @@ const gameSlice = createSlice({
     setCategory: (state, action: PayloadAction<Categories>) => {
       state.category = action.payload;
     },
+    /* setRandomCategory: (state, action: PayloadAction<Categories>) => {
+      state.randomCategory = action.payload;
+    }, */
     setWordToGuess: (state) => {
       console.log("setWordToGuess called", state.word);
       if (!state.word) {
@@ -129,5 +132,6 @@ export const {
   setScore,
   setHint,
   setModal,
+  /* setRandomCategory, */
 } = gameSlice.actions;
 export default gameSlice.reducer;
