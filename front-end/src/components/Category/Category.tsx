@@ -1,6 +1,7 @@
 import React, { ReactEventHandler, useEffect } from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
+import ProgressBar from "react-bootstrap/ProgressBar";
 
 import { useAppSelector, useAppDispatch } from "../../hooks/hooks";
 import { Categories } from "../../types/API.model";
@@ -31,9 +32,17 @@ const Category: React.FC = () => {
     dispatch(setWordToGuess());
   };
 
+  const getMeteorProgress = () => {
+    const wrongGuesses = guessedLetters.filter(
+      (letter) => !wordToGuess.includes(letter)
+    ).length;
+    return (wrongGuesses / 9) * 100;
+  };
+
   return (
     <div className={classes.category_container}>
       <h2>Your game</h2>
+      <ProgressBar now={getMeteorProgress()} />
       <p className={classes.score}>
         Score: <span>{score}</span>
       </p>
