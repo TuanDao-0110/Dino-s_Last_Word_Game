@@ -65,40 +65,25 @@ const LeaderBoard = () => {
             <th>Name</th>
             <th>Score</th>
           </tr>
+        </thead>
+        <tbody>
           {restructureLeaderBoard(allScore).map((data, index) => {
-            const { email, name, score, timestamp } = data;
+            const { name, score, timestamp } = data;
             return (
               <tr className={classes.table_position}>
-                <td>
-                  {" "}
-                  <ol>
-                    <li>
-                      {name}
-                      {renderEmail(email)}
-                    </li>
-                  </ol>{" "}
-                </td>
-                <td>
-                  <tr>
-                    {" "}
-                    <strong>{renderDate(timestamp)} </strong>:
-                  </tr>{" "}
-                </td>{" "}
-                <td>
-                  <tr>
-                    {" "}
-                    <strong>{score} </strong>
-                  </tr>
-                </td>
+                <td>{name}</td>
+                <td>{renderDate(timestamp)} :</td>
+                <td>{score}</td>
               </tr>
             );
           })}
-        </thead>
+        </tbody>
       </table>
     );
   };
+
   return (
-    <div>
+    <div className={classes.leaderboard_container}>
       <h2>Board</h2>
       {currentUser && <BtnSuccess clickHandler={signOut} text="log out" />}
       {allScore && renderScoreTable(allScore)}
