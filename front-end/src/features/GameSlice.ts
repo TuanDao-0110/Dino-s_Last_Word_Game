@@ -1,4 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { stat } from "fs";
 import { getAllWords, getWordByCategory } from "../api/wordapi";
 import { AppDispatch } from "../app/store";
 import { Categories, Word_Type } from "../types/API.model";
@@ -45,12 +46,13 @@ const gameSlice = createSlice({
     setScore: (state, action) => {
       state.score += action.payload;
     },
-   
+
     setModal: (state, action) => {
       state.showModal = action.payload;
     },
     setHint: (state, action: PayloadAction<string>) => {
       state.hints.push(action.payload);
+      state.score--;
     },
     setCategory: (state, action: PayloadAction<Categories>) => {
       state.category = action.payload;
