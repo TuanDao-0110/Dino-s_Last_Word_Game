@@ -29,7 +29,7 @@ const Login = () => {
         navigate("/board");
       }
     } catch (error: any) {
-      console.log("User Sign In Failed", error.message);
+      // console.log("User Sign In Failed", error.message);
     }
   };
 

@@ -39,7 +39,6 @@ export const registerWithEmailAndPassword = async (name: string, email: string, 
     });
     return user;
   } catch (err) {
-    console.log(err);
     alert(err);
   }
 };
