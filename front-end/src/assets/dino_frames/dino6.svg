@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="dino6" xmlns="http://www.w3.org/2000/svg" width="515.58" height="503.64" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 515.58 503.64">
+  <defs>
+    <style>
+      .cls-1, .cls-2 {
+        fill: none;
+      }
+
+      .cls-3 {
+        clip-path: url(#clippath);
+      }
+
+      .cls-4, .cls-5 {
+        fill: #fff;
+      }
+
+      .cls-6 {
+        fill: #fda4ff;
+      }
+
+      .cls-7 {
+        fill: #433eff;
+      }
+
+      .cls-8 {
+        fill: #35a070;
+      }
+
+      .cls-5 {
+        stroke: #000;
+      }
+
+      .cls-5, .cls-2 {
+        stroke-linecap: round;
+        stroke-miterlimit: 10;
+        stroke-width: 2px;
+      }
+
+      .cls-9 {
+        clip-path: url(#clippath-1);
+      }
+
+      .cls-2 {
+        stroke: #35a070;
+      }
+    </style>
+    <clipPath id="clippath">
+      <path class="cls-1" d="M152.76,235.24h0c2.78,0,5.04,2.26,5.04,5.04v4.13c0,.5-.41,.91-.91,.91h-9.18v-5.04c0-2.78,2.26-5.04,5.04-5.04Z"/>
+    </clipPath>
+    <clipPath id="clippath-1">
+      <path class="cls-1" d="M168.11,235.24h0c2.78,0,5.04,2.26,5.04,5.04v5.04h-10.09v-5.04c0-2.78,2.26-5.04,5.04-5.04Z"/>
+    </clipPath>
+  </defs>
+  <g id="Leaf_copy_7" data-name="Leaf copy 7">
+    <g>
+      <path class="cls-2" d="M111.69,268.87s4.71-3.47,8.2-5.09c3.89-1.81,6.99-2.52,6.99-2.52"/>
+      <path class="cls-8" d="M96.39,269.83s3.6-3.91,7.29-4.25,8.81,2.79,8.81,2.79c0,0-4.98,3.91-7.74,4.16-2.76,.25-8.36-2.7-8.36-2.7Z"/>
+      <path class="cls-8" d="M106.54,283.06s-1.8-5-.39-8.43c1.41-3.43,6.55-6.52,6.55-6.52,0,0,1.16,6.22,.1,8.79s-6.27,6.16-6.27,6.16Z"/>
+    </g>
+  </g>
+  <g id="Eyes_right_copy_7" data-name="Eyes_right copy 7">
+    <g>
+      <path class="cls-4" d="M152.76,235.24h0c2.78,0,5.04,2.26,5.04,5.04v4.13c0,.5-.41,.91-.91,.91h-8.03c-.64,0-1.15-.52-1.15-1.15v-3.89c0-2.78,2.26-5.04,5.04-5.04Z"/>
+      <g class="cls-3">
+        <ellipse cx="157" cy="240.99" rx="4.24" ry="5.38"/>
+      </g>
+    </g>
+    <g>
+      <path class="cls-4" d="M168.11,235.24h0c2.78,0,5.04,2.26,5.04,5.04v5.04h-10.09v-5.04c0-2.78,2.26-5.04,5.04-5.04Z"/>
+      <g class="cls-9">
+        <ellipse cx="172.36" cy="240.99" rx="4.24" ry="5.38"/>
+      </g>
+    </g>
+  </g>
+  <g id="Nose_copy_7" data-name="Nose copy 7">
+    <path class="cls-7" d="M163.05,275.46h-29.5c-4.62,0-8.37-3.75-8.37-8.37v-9.12c0-2.85,1.94-5.34,4.71-6.03l32.45-10.01,.71,33.53Z"/>
+  </g>
+  <g id="Mouth_copy_7" data-name="Mouth copy 7">
+    <g id="Teeth_copy_7" data-name="Teeth copy 7">
+      <polyline class="cls-4" points="152.27 260.21 154.52 266.11 156.76 260.21 152.27 260.21"/>
+      <polyline class="cls-4" points="157.81 260.21 160.05 266.11 162.3 260.21 157.81 260.21"/>
+    </g>
+    <line class="cls-5" x1="125.18" y1="260.21" x2="165.82" y2="260.21"/>
+  </g>
+  <g id="Nostrils_copy_7" data-name="Nostrils copy 7">
+    <circle class="cls-5" cx="129.73" cy="254.85" r=".4"/>
+    <circle class="cls-5" cx="140.27" cy="254.85" r=".4"/>
+  </g>
+  <g id="Sweat_copy_7" data-name="Sweat copy 7">
+    <path class="cls-6" d="M179.09,238.88s-2.31,5.68-2.69,7.06c-.35,1.3,.57,3.62,2.69,3.62s3.16-2.42,2.76-3.62c-.69-2.05-2.76-7.06-2.76-7.06Z"/>
+  </g>
+</svg>

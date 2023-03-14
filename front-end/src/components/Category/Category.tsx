@@ -13,9 +13,8 @@ import {
 import classes from "./category.module.css";
 
 const Category: React.FC = () => {
-  const { category, score, round, gameStatus } = useAppSelector(
-    (state) => state.game
-  );
+  const { category, score, round, gameStatus, guessedLetters, wordToGuess } =
+    useAppSelector((state) => state.game);
   const dispatch = useAppDispatch();
 
   const renderOption = () => {
