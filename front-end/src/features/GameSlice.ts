@@ -18,6 +18,7 @@ interface GameState {
   score: number;
   leaderboard: { name: string; score: number }[];
   hints: string[];
+  showModal: boolean;
 }
 
 const initialState: GameState = {
@@ -30,6 +31,7 @@ const initialState: GameState = {
   leaderboard: [],
   score: 0,
   hints: [],
+  showModal: false,
 };
 
 const gameSlice = createSlice({
@@ -45,6 +47,10 @@ const gameSlice = createSlice({
 
     setScore: (state, action) => {
       state.score += action.payload;
+    },
+
+    setModal: (state, action) => {
+      state.showModal = action.payload;
     },
 
     setHint: (state, action: PayloadAction<string>) => {
@@ -127,6 +133,7 @@ export const {
   setCategory,
   setScore,
   setHint,
+  setModal,
   setRandomCategory,
 } = gameSlice.actions;
 export default gameSlice.reducer;

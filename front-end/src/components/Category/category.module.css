@@ -1,0 +1,10 @@
+.category_container {
+  background-color: #ffffff60;
+
+  width: 326px;
+  min-height: 500px;
+  padding: 10px;
+  left: 128px;
+  top: 132px;
+  border-radius: 20px;
+}
