@@ -35,10 +35,12 @@ const Board = () => {
       <button
         onClick={() => {
           if (currentUser) {
-            getAllScore(currentUser);
+            getAllScore();
           }
         }}
-      >get all score</button>
+      >
+        get all score
+      </button>
     </div>
   );
 };

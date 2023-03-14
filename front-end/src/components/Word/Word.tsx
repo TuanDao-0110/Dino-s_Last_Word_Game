@@ -5,7 +5,6 @@ import classes from "./word.module.css";
 
 const Word: React.FC = () => {
   const { wordToGuess, guessedLetters } = useAppSelector((state) => state.game);
-  console.log(wordToGuess);
 
   return (
     <div className={classes.word_container}>

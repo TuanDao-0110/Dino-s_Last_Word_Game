@@ -16,9 +16,9 @@ const Category: React.FC = () => {
       </option>
     ));
   };
-  const setUpCategory: ReactEventHandler<HTMLSelectElement> = (e) => {
+  const setUpCategory: ReactEventHandler<HTMLSelectElement> = async (e) => {
     dispatch(setCategory(e.currentTarget.value as Categories));
-    dispatch(getWordDispatch(e.currentTarget.value as Categories));
+    await dispatch(getWordDispatch(e.currentTarget.value as Categories));
     dispatch(setWordToGuess());
   };
   return (

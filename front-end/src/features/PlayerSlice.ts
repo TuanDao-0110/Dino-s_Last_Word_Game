@@ -28,9 +28,9 @@ export const setPlayerDispatch = (currentUser: User) => {
     dispatch(setPlayer(data));
   };
 };
-export const getAllScoreDispatch = (currentUser: User) => {
+export const getAllScoreDispatch = () => {
   return async (dispatch: AppDispatch) => {
-    const data = (await getAllScore(currentUser)) as AllScore_Type;
+    const data = (await getAllScore()) as AllScore_Type;
     dispatch(setAllScore(data));
   };
 };
