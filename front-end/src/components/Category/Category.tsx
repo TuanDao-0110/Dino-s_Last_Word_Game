@@ -4,7 +4,11 @@ import Form from "react-bootstrap/Form";
 import classes from "./category.module.css";
 import Button from "react-bootstrap/Button";
 import { Categories } from "../../types/API.model";
-import { getWordDispatch, setCategory, setWordToGuess } from "../../features/GameSlice";
+import {
+  getWordDispatch,
+  setCategory,
+  setWordToGuess,
+} from "../../features/GameSlice";
 const Category: React.FC = () => {
   const { category } = useAppSelector((state) => state.game);
   const dispatch = useAppDispatch();
@@ -16,9 +20,9 @@ const Category: React.FC = () => {
       </option>
     ));
   };
-  const setUpCategory: ReactEventHandler<HTMLSelectElement> = (e) => {
+  const setUpCategory: ReactEventHandler<HTMLSelectElement> = async (e) => {
     dispatch(setCategory(e.currentTarget.value as Categories));
-    dispatch(getWordDispatch(e.currentTarget.value as Categories));
+    await dispatch(getWordDispatch(e.currentTarget.value as Categories));
     dispatch(setWordToGuess());
   };
   return (
