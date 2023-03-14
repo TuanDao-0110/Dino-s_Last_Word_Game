@@ -11,6 +11,7 @@ import {
 } from "../../features/GameSlice";
 
 import classes from "./category.module.css";
+import { Message, Controls } from "../../assets/export_component/resource";
 
 const Category: React.FC = () => {
   const { category, score, round, gameStatus, guessedLetters, wordToGuess } =
@@ -52,6 +53,8 @@ const Category: React.FC = () => {
       {gameStatus === "lost" && (
         <p className={classes.game_status}>Ouch. You lost!</p>
       )}
+      <Controls />
+      {gameStatus === "lost" && <Message />}
     </div>
   );
 };

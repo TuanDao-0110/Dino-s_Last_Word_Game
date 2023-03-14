@@ -45,7 +45,6 @@ const Main = () => {
     setIsLoading(false);
   }, [dispatch]);
 
-
   // Every time a new letter is guessed, check if the game is won or lost
   useEffect(() => {
     if (
@@ -103,10 +102,8 @@ const Main = () => {
         <Keyboard />
       </div>
       <div className={classes.mainCategory_container}>
-        {gameStatus === "lost" && <Message />}
-        <Category /> 
+        <Category />
         {/* {gameStatus !== "playing" && <Controls />} */}
-        <Controls/>
       </div>
     </div>
   );
