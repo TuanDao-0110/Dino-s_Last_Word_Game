@@ -70,7 +70,7 @@ const LeaderBoard = () => {
           {restructureLeaderBoard(allScore).map((data, index) => {
             const { name, score, timestamp } = data;
             return (
-              <tr className={classes.table_row}>
+              <tr key={index} className={classes.table_row}>
                 <td>{index}</td>
                 <td>{name}</td>
                 {/* <td>{renderDate(timestamp)} :</td> */}
