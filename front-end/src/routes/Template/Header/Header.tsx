@@ -2,8 +2,6 @@ import { Container, Nav, Navbar, Row } from "react-bootstrap";
 import { Button } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
 import { useContext } from "react";
-import { getAllScore, getUserInfor, postNewScore } from "../../../api/userapi";
-import { BtnSuccess } from "../../../assets/export_component/resource";
 import { AuthContext } from "../../../context/auth-context";
 
 /* import classes from "./header.module.css"; */
@@ -30,7 +28,7 @@ export const Header: React.FC = () => {
               </LinkContainer>
             </Nav>
           </Navbar.Collapse>
-          <Button onClick={() => signOut()}>Logout</Button>
+          {currentUser && <Button onClick={() => signOut()}>Logout</Button>}
         </Container>
       </Navbar>
     </Row>

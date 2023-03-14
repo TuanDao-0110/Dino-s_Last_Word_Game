@@ -49,9 +49,6 @@ const Category: React.FC = () => {
         <h2>
           gameStatus <span>{gameStatus}</span>
         </h2>
-        <h2>
-          gameStatus <span>{gameStatus}</span>
-        </h2>
       </div>
     </div>
   );

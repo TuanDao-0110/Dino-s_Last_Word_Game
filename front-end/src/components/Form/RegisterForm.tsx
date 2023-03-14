@@ -47,8 +47,8 @@ function RegisterForm() {
   const handleClose = () => dispatch(setModal(false));
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
-    const { type, value } = event.target;
-    setFormFields({ ...formFields, [type]: value });
+    const { name, value } = event.target;
+    setFormFields({ ...formFields, [name]: value });
   };
   return !currentUser ? (
     <Form onSubmit={handleSubmit}>
@@ -56,7 +56,7 @@ function RegisterForm() {
         <FloatingLabel controlId="floatingInput" label="Name" className="mb-3">
           <Form.Control
             type="text"
-            value={email}
+            name="name"
             onChange={handleChange}
             required
           />
@@ -68,6 +68,7 @@ function RegisterForm() {
         >
           <Form.Control
             type="email"
+            name="email"
             value={email}
             onChange={handleChange}
             required
@@ -76,6 +77,7 @@ function RegisterForm() {
         <FloatingLabel controlId="floatingPassword" label="Password">
           <Form.Control
             type="password"
+            name="password"
             value={password}
             onChange={handleChange}
             required
@@ -83,10 +85,6 @@ function RegisterForm() {
         </FloatingLabel>
 
         <Button type="submit">Submit</Button>
-
-        <Button variant="secondary" onClick={handleClose}>
-          Close
-        </Button>
       </Form>
     </Form>
   ) : (

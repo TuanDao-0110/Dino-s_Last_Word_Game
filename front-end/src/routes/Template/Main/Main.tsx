@@ -45,7 +45,6 @@ const Main = () => {
     setIsLoading(false);
   }, [dispatch]);
 
-  useEffect(() => {}, [category]);
 
   // Every time a new letter is guessed, check if the game is won or lost
   useEffect(() => {
