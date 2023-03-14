@@ -1,10 +1,17 @@
 import React, { ReactEventHandler, useEffect } from "react";
-import { useAppSelector, useAppDispatch } from "../../hooks/hooks";
-import Form from "react-bootstrap/Form";
-import classes from "./category.module.css";
 import Button from "react-bootstrap/Button";
+import Form from "react-bootstrap/Form";
+
+import { useAppSelector, useAppDispatch } from "../../hooks/hooks";
 import { Categories } from "../../types/API.model";
-import { getWordDispatch, setCategory, setWordToGuess } from "../../features/GameSlice";
+import {
+  getWordDispatch,
+  setCategory,
+  setWordToGuess,
+} from "../../features/GameSlice";
+
+import classes from "./category.module.css";
+
 const Category: React.FC = () => {
   const { category, score, round, gameStatus } = useAppSelector((state) => state.game);
   const dispatch = useAppDispatch();
@@ -25,7 +32,11 @@ const Category: React.FC = () => {
   return (
     <div className={classes.category_container}>
       <h2>Word category: {category}</h2>{" "}
-      <Form.Select aria-label="" onChange={setUpCategory} size="lg">
+      <Form.Select
+        aria-label="select category"
+        onChange={setUpCategory}
+        size="lg"
+      >
         {renderOption()}
       </Form.Select>
       <div>
