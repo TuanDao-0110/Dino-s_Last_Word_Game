@@ -2,9 +2,11 @@ import { useContext, useEffect } from "react";
 import { Button } from "react-bootstrap";
 import { AuthContext } from "../../context/auth-context";
 import { getAllScoreDispatch } from "../../features/PlayerSlice";
+import { signInUser } from "../../firebase/firebase";
 import { useAppDispatch, useAppSelector } from "../../hooks/hooks";
 import Board from "../../routes/Board/Board";
 import { AllScore_Type, Player_ScoreBoard_Type, ScoreBoard_Type } from "../../types/hangman.model";
+import BtnDanger from "../Button/danger/BtnDanger";
 import BtnSuccess from "../Button/success/BtnSuccess";
 import classes from "./leaderboard.module.css";
 
