@@ -4,18 +4,17 @@ import Board from "./routes/Board/Board";
 import Main from "./routes/Template/Main/Main";
 import { Template } from "./routes/Template/Template";
 import { ProtectedRoute } from "./firebase/ProtectRouter";
-import Register from "./routes/register/Register";
-import Login from "./routes/Login/Login";
+import RegisterForm from "./components/Form/RegisterForm";
+import LoginForm from "./components/Form/LoginForm";
 import { useEffect } from "react";
 
 function App() {
-  
   return (
     <Routes>
       <Route path="/" element={<Template />}>
         <Route index element={<Main />} />
-        <Route path="/register" element={<Register />} />
-        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<RegisterForm />} />
+        <Route path="/login" element={<LoginForm />} />
         <Route element={<ProtectedRoute />}>
           <Route path="/board" element={<Board />} />
         </Route>
