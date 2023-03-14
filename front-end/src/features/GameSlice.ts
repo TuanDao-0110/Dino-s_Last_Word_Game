@@ -54,9 +54,6 @@ const gameSlice = createSlice({
     setCategory: (state, action: PayloadAction<Categories>) => {
       state.category = action.payload;
     },
-    setRandomCategory: (state, action: PayloadAction<Categories>) => {
-      state.randomCategory = action.payload;
-    },
     setWordToGuess: (state) => {
       console.log("setWordToGuess called", state.word);
       if (!state.word) {
@@ -109,7 +106,6 @@ export const getWordDispatch = (category: Categories) => {
   if (category === Categories.ALL) {
     return async (dispatch: AppDispatch) => {
       const data = (await getAllWords()) as Word_Type;
-
       dispatch(setAllWord(data));
     };
   }
@@ -117,7 +113,6 @@ export const getWordDispatch = (category: Categories) => {
     try {
       const data = (await getWordByCategory(category)) as Word_Type;
       dispatch(setAllWord(data));
-      console.log("data in getWordDispatch", data);
     } catch (error) {}
   };
 };
@@ -134,6 +129,5 @@ export const {
   setScore,
   setHint,
   setModal,
-  setRandomCategory,
 } = gameSlice.actions;
 export default gameSlice.reducer;
