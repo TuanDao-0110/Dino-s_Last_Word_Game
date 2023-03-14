@@ -29,8 +29,7 @@ function LoginForm() {
         resetFormFields();
         setCurrentUser(userCredential.user);
       }
-    } catch (error: any) {
-    }
+    } catch (error: any) {}
   };
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
@@ -39,11 +38,25 @@ function LoginForm() {
   };
   return !currentUser ? (
     <Form onSubmit={handleSubmit}>
-      <FloatingLabel controlId="floatingInput" label="Email address" className="mb-3">
-        <Form.Control type="email" placeholder="name@example.com" value={email} onChange={handleChange} required />
+      <FloatingLabel
+        controlId="floatingInput"
+        label="Email address"
+        className="mb-3"
+      >
+        <Form.Control
+          type="email"
+          value={email}
+          onChange={handleChange}
+          required
+        />
       </FloatingLabel>
       <FloatingLabel controlId="floatingPassword" label="Password">
-        <Form.Control type="password" placeholder="Password" value={password} onChange={handleChange} required />
+        <Form.Control
+          type="password"
+          value={password}
+          onChange={handleChange}
+          required
+        />
       </FloatingLabel>
       <Button variant="primary" type="submit">
         Login
