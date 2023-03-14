@@ -10,8 +10,6 @@ const Board = () => {
 
   return (
     <div>
-      Board
-      <BtnSuccess clickHandler={signOut} text="log out" />
       <h2>Testing </h2>
       {/* <BtnSuccess clickHandler={postNewScore(currentUser?.getIdToken().then((res) => res),)} /> */}
       <button
@@ -38,7 +36,9 @@ const Board = () => {
             getAllScore(currentUser);
           }
         }}
-      >get all score</button>
+      >
+        get all score
+      </button>
     </div>
   );
 };

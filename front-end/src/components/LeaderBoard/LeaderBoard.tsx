@@ -4,7 +4,11 @@ import { getAllScore, getUserInfor, postNewScore } from "../../api/userapi";
 import { AuthContext } from "../../context/auth-context";
 import { getAllScoreDispatch } from "../../features/PlayerSlice";
 import { useAppDispatch, useAppSelector } from "../../hooks/hooks";
-import { AllScore_Type, Player_ScoreBoard_Type, ScoreBoard_Type } from "../../types/hangman.model";
+import {
+  AllScore_Type,
+  Player_ScoreBoard_Type,
+  ScoreBoard_Type,
+} from "../../types/hangman.model";
 import BtnSuccess from "../Button/success/BtnSuccess";
 import classes from "./leaderboard.module.css";
 
@@ -24,12 +28,23 @@ const LeaderBoard = () => {
   };
   const renderEmail = (email: string) => {
     const [name, domain] = email.split("@");
-    const obfuscatedName = `${name.charAt(0)}${"*".repeat(name.length - 2)}${name.charAt(name.length - 1)}`;
-    const obfuscatedDomain = `${domain.charAt(0)}${"*".repeat(domain.length - 2)}${domain.charAt(domain.length - 1)}`;
+    const obfuscatedName = `${name.charAt(0)}${"*".repeat(
+      name.length - 2
+    )}${name.charAt(name.length - 1)}`;
+    const obfuscatedDomain = `${domain.charAt(0)}${"*".repeat(
+      domain.length - 2
+    )}${domain.charAt(domain.length - 1)}`;
     return `${obfuscatedName}@${obfuscatedDomain}`;
   };
-  const restructureLeaderBoard = (allScore: AllScore_Type): { email: string; name: string; score: number; timestamp: number }[] => {
-    const newArray: { email: string; name: string; score: number; timestamp: number }[] = [];
+  const restructureLeaderBoard = (
+    allScore: AllScore_Type
+  ): { email: string; name: string; score: number; timestamp: number }[] => {
+    const newArray: {
+      email: string;
+      name: string;
+      score: number;
+      timestamp: number;
+    }[] = [];
 
     Object.values(allScore).forEach(([player, ...scores]) => {
       const { email, name } = player as Player_ScoreBoard_Type;
