@@ -44,6 +44,8 @@ const Main = () => {
     setIsLoading(false);
   }, [dispatch]);
 
+  useEffect(() => {}, [category]);
+
   // Every time a new letter is guessed, check if the game is won or lost
   useEffect(() => {
     if (
@@ -78,6 +80,9 @@ const Main = () => {
     () => console.log("word to Guess rerender: ", wordToGuess),
     [wordToGuess]
   );
+
+  useEffect(() => console.log("score: ", score), [score]);
+  useEffect(() => console.log("category changed: ", category), [category]);
 
   if (isLoading) return <Spinner />;
   return (

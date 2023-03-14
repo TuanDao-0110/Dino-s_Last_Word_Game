@@ -4,6 +4,7 @@ import { useAppDispatch } from "../../hooks/hooks";
 import {
   resetGame,
   setCategory,
+  setGameStatus,
   /* setRandomCategory, */
   setWordToGuess,
 } from "../../features/GameSlice";
@@ -26,9 +27,14 @@ const Controls = () => {
     dispatch(setCategory(getRandomCategory()));
   };
 
+  const stopPlaying = () => {
+    dispatch(setGameStatus("lost"));
+  };
+
   return (
     <div>
       <BtnPrimary text="Play again" clickHandler={playAgain} />
+      <BtnPrimary text="Stop playing" clickHandler={stopPlaying} />
     </div>
   );
 };

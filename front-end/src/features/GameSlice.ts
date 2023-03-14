@@ -65,6 +65,8 @@ const gameSlice = createSlice({
         state.wordToGuess = words[index].toUpperCase();
       } else {
         const { word, randomCategory } = state;
+        // if current category is not ALL and word array exists,
+        // set a random word from the word array
         if (state.category !== Categories.ALL && Array.isArray(word)) {
           const index = Math.floor(Math.random() * word.length);
           state.wordToGuess = word[index].toUpperCase();
@@ -74,6 +76,10 @@ const gameSlice = createSlice({
           typeof word === "object" &&
           Categories.ANIMALS in word
         ) {
+          // if category is ALL, word array is object and
+          console.log("word", word);
+          console.log("Categories.ANIMALS", Categories.ANIMALS);
+          console.log("in word", Categories.ANIMALS in word);
           const index = Math.floor(Math.random() * word[randomCategory].length);
           state.wordToGuess = word[randomCategory][index].toUpperCase();
           console.log(
