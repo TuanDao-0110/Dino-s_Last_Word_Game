@@ -5,6 +5,8 @@ import Button from "react-bootstrap/Button";
 import { signInUser } from "../../firebase/firebase";
 import Board from "../../routes/Board/Board";
 import { AuthContext } from "../../context/auth-context";
+import { useAppDispatch } from "../../hooks/hooks";
+import { setPlayerDispatch } from "../../features/PlayerSlice";
 
 const defaultFormFields = {
   email: "",
@@ -15,7 +17,7 @@ function LoginForm() {
   const [formFields, setFormFields] = useState(defaultFormFields);
   const { email, password } = formFields;
   const { currentUser, setCurrentUser } = useContext(AuthContext);
-
+  const dispatch = useAppDispatch();
   const resetFormFields = () => {
     return setFormFields(defaultFormFields);
   };
@@ -28,6 +30,7 @@ function LoginForm() {
       if (userCredential) {
         resetFormFields();
         setCurrentUser(userCredential.user);
+        dispatch(setPlayerDispatch(userCredential.user));
       }
     } catch (error: any) {}
   };
@@ -38,25 +41,11 @@ function LoginForm() {
   };
   return !currentUser ? (
     <Form onSubmit={handleSubmit}>
-      <FloatingLabel
-        controlId="floatingInput"
-        label="Email address"
-        className="mb-3"
-      >
-        <Form.Control
-          type="email"
-          value={email}
-          onChange={handleChange}
-          required
-        />
+      <FloatingLabel controlId="floatingInput" label="Email address" className="mb-3">
+        <Form.Control type="email" value={email} onChange={handleChange} required />
       </FloatingLabel>
       <FloatingLabel controlId="floatingPassword" label="Password">
-        <Form.Control
-          type="password"
-          value={password}
-          onChange={handleChange}
-          required
-        />
+        <Form.Control type="password" value={password} onChange={handleChange} required />
       </FloatingLabel>
       <Button variant="primary" type="submit">
         Login
