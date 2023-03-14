@@ -1,0 +1,29 @@
+.leaderboard_container {
+  background-color: #ffffff60;
+  position: absolute;
+  width: 326px;
+  min-height: 500px;
+  padding: 10px;
+  left: 128px;
+  top: 132px;
+  border-radius: 20px;
+}
+
+table {
+  width: 100%;
+  border: solid 1px;
+}
+
+table td,
+th {
+  padding: 3px;
+  border: solid 1px;
+}
+
+.table_header {
+  font-size: 19px;
+  background-color: #a59aa2;
+}
+tbody tr:nth-child(odd) {
+  background-color: #d8bece;
+}

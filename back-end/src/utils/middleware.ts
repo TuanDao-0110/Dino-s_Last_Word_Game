@@ -39,6 +39,5 @@ export const errorHandler = (err: Error, req: CustomRequest, res: Response, next
   if (err.name === Name.BadRequestError404) {
     return res.status(404).send(err.message);
   }
-
   return res.status(500).send(Message.ServerBroken);
 };
