@@ -17,6 +17,7 @@ interface GameState {
   gameStatus: "playing" | "won" | "lost";
   score: number;
   leaderboard: { name: string; score: number }[];
+  hints: string[];
 }
 
 const initialState: GameState = {
@@ -28,6 +29,7 @@ const initialState: GameState = {
   gameStatus: "playing",
   leaderboard: [],
   score: 0,
+  hints: [],
 };
 
 const gameSlice = createSlice({
@@ -37,8 +39,16 @@ const gameSlice = createSlice({
     setAllWord: (state, action: PayloadAction<Word_Type>) => {
       state.word = action.payload.result;
     },
-    setNextRount: (state) => {
+    setNextRound: (state) => {
       state.round++;
+    },
+
+    setScore: (state, action) => {
+      state.score += action.payload;
+    },
+
+    setHint: (state, action: PayloadAction<string>) => {
+      state.hints.push(action.payload);
     },
     setCategory: (state, action: PayloadAction<Categories>) => {
       state.category = action.payload;
@@ -57,7 +67,11 @@ const gameSlice = createSlice({
           console.log("set category");
           const index = Math.floor(Math.random() * word.length);
           state.wordToGuess = word[index].toUpperCase();
-        } else if (state.category === Categories.ALL && typeof word === "object" && Categories.ANIMALS in word) {
+        } else if (
+          state.category === Categories.ALL &&
+          typeof word === "object" &&
+          Categories.ANIMALS in word
+        ) {
           console.log("get all");
           const index = Math.floor(Math.random() * word[randomCategory].length);
           state.wordToGuess = word[randomCategory][index].toUpperCase();
@@ -67,14 +81,20 @@ const gameSlice = createSlice({
     addGuessedLetter: (state, action: PayloadAction<string>) => {
       state.guessedLetters.push(action.payload);
     },
-    setGameStatus: (state, action: PayloadAction<"playing" | "won" | "lost">) => {
+    setGameStatus: (
+      state,
+      action: PayloadAction<"playing" | "won" | "lost">
+    ) => {
       state.gameStatus = action.payload;
     },
     resetGame: (state) => {
       state.guessedLetters = [];
       state.gameStatus = "playing";
     },
-    addToLeaderboard: (state, action: PayloadAction<{ name: string; score: number }>) => {
+    addToLeaderboard: (
+      state,
+      action: PayloadAction<{ name: string; score: number }>
+    ) => {
       state.leaderboard.push(action.payload);
     },
   },
@@ -96,6 +116,17 @@ export const getWordDispatch = (category: Categories) => {
   };
 };
 
-export const { setWordToGuess, addGuessedLetter, setGameStatus, resetGame, addToLeaderboard, setAllWord, setCategory, setRandomCategory } =
-  gameSlice.actions;
+export const {
+  setWordToGuess,
+  addGuessedLetter,
+  setGameStatus,
+  resetGame,
+  addToLeaderboard,
+  setNextRound,
+  setAllWord,
+  setCategory,
+  setScore,
+  setHint,
+  setRandomCategory,
+} = gameSlice.actions;
 export default gameSlice.reducer;

@@ -4,12 +4,16 @@ import { useAppSelector } from "../../hooks/hooks";
 import classes from "./word.module.css";
 
 const Word: React.FC = () => {
-  const { wordToGuess, guessedLetters, word } = useAppSelector((state) => state.game);
-  console.log(wordToGuess);
+  const { wordToGuess, guessedLetters } = useAppSelector((state) => state.game);
+
   return (
     <div className={classes.word_container}>
       {wordToGuess.split("").map((letter, index) => (
-        <WordLetters key={index} letter={letter} guessed={guessedLetters.includes(letter)} />
+        <WordLetters
+          key={index}
+          letter={letter}
+          guessed={guessedLetters.includes(letter)}
+        />
       ))}
     </div>
   );

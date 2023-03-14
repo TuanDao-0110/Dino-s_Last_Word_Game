@@ -7,9 +7,9 @@ const LeaderBoard = () => {
   return (
     <div className={classes.leaderboard_container}>
       <h3>Leaderboard</h3>
-      {leaderboard.map((record) => (
+      {leaderboard.map((player) => (
         <p>
-          {record.name} {record.score}
+          {player.name} {player.score}
         </p>
       ))}
     </div>

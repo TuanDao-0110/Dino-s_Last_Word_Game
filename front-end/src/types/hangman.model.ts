@@ -10,9 +10,12 @@ export interface PlayerState {
 }
 
 export interface WordLetterProps {
+  key: number;
   letter: string;
   guessed: boolean;
+  showHint?: (letter: string, className: string) => void;
 }
+
 export interface ObjectProps {
   wrongGuesses: number;
 }
