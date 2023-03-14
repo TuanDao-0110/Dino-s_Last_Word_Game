@@ -1,12 +1,13 @@
 import { useAppDispatch, useAppSelector } from "../../hooks/hooks";
 import Button from "react-bootstrap/Button";
+import Modal from "react-bootstrap/Modal";
 import { useRef } from "react";
-import { addToLeaderboard } from "../../features/GameSlice";
+import { addToLeaderboard, setModal } from "../../features/GameSlice";
 import classes from "./message.module.css";
 
 const Message: React.FC = () => {
   const dispatch = useAppDispatch();
-  const { score } = useAppSelector((state) => state.game);
+  const { score, showModal } = useAppSelector((state) => state.game);
   const nameInput = useRef(null);
 
   const nameSubmitHandler = (
@@ -20,13 +21,28 @@ const Message: React.FC = () => {
       inputElement.value = "";
     }
   };
+
+  const handleClose = () => dispatch(setModal(false));
+
   return (
-    <div className={classes.message_container}>
-      <p>You did great job! Enter your nickname to join the leaderboard:</p>
-      <form onSubmit={(event) => nameSubmitHandler(event, nameInput.current)}>
-        <input type="text" ref={nameInput} />
-        <Button type="submit">Submit</Button>
-      </form>
+    <div className={classes.modal_container}>
+      <Modal show={showModal} onHide={handleClose} animation={false}>
+        <Modal.Header closeButton>
+          <Modal.Title>You did great job! </Modal.Title>
+        </Modal.Header>
+        <Modal.Body>Enter your nickname to join the leaderboard:</Modal.Body>
+        <Modal.Footer>
+          <form
+            onSubmit={(event) => nameSubmitHandler(event, nameInput.current)}
+          >
+            <input type="text" ref={nameInput} />
+            <Button type="submit">Submit</Button>
+          </form>
+          <Button variant="secondary" onClick={handleClose}>
+            Close
+          </Button>
+        </Modal.Footer>
+      </Modal>
     </div>
   );
 };

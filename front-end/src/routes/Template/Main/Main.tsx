@@ -7,6 +7,7 @@ import {
   setGameStatus,
   setNextRound,
   setScore,
+  setModal,
 } from "../../../features/GameSlice";
 
 import {
@@ -16,7 +17,6 @@ import {
   Object,
   LeaderBoard,
   Controls,
-  Form,
 } from "../../../assets/export_component/resource";
 
 import classes from "./main.module.css";
@@ -33,6 +33,7 @@ const Main = () => {
     score,
     hints,
     round,
+    showModal,
   } = useAppSelector((state) => state.game);
   const [isLoading, setIsLoading] = useState(true);
   // After the page loads, set a word to be guessed
@@ -66,6 +67,7 @@ const Main = () => {
       8
     ) {
       dispatch(setGameStatus("lost"));
+      dispatch(setModal(true));
     }
   }, [dispatch, guessedLetters, wordToGuess]);
 
@@ -73,6 +75,7 @@ const Main = () => {
   console.log(hints);
   console.log(score);
   console.log(round);
+  console.log(showModal);
 
   if (isLoading) return <Spinner />;
   return (
