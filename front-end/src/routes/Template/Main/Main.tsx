@@ -17,6 +17,7 @@ import {
   Object,
   LeaderBoard,
   Controls,
+  Form,
 } from "../../../assets/export_component/resource";
 
 import classes from "./main.module.css";

@@ -1,26 +1,17 @@
+import React from "react";
+import Tab from "react-bootstrap/Tab";
+import Tabs from "react-bootstrap/Tabs";
 import { useAppDispatch, useAppSelector } from "../../hooks/hooks";
-import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
-import { useRef } from "react";
-import { addToLeaderboard, setModal } from "../../features/GameSlice";
+import LoginForm from "../Form/LoginForm";
+import RegisterForm from "../Form/RegisterForm";
+
+import { setModal } from "../../features/GameSlice";
 import classes from "./message.module.css";
 
 const Message: React.FC = () => {
   const dispatch = useAppDispatch();
-  const { score, showModal } = useAppSelector((state) => state.game);
-  const nameInput = useRef(null);
-
-  const nameSubmitHandler = (
-    event: React.FormEvent<HTMLFormElement>,
-    inputElement: HTMLInputElement | null
-  ) => {
-    event.preventDefault();
-    if (inputElement) {
-      const name = inputElement.value;
-      dispatch(addToLeaderboard({ name, score: score }));
-      inputElement.value = "";
-    }
-  };
+  const { showModal } = useAppSelector((state) => state.game);
 
   const handleClose = () => dispatch(setModal(false));
 
@@ -32,15 +23,19 @@ const Message: React.FC = () => {
         </Modal.Header>
         <Modal.Body>Enter your nickname to join the leaderboard:</Modal.Body>
         <Modal.Footer>
-          <form
-            onSubmit={(event) => nameSubmitHandler(event, nameInput.current)}
+          <Tabs
+            defaultActiveKey="profile"
+            id="uncontrolled-tab-example"
+            className="mb-3"
           >
-            <input type="text" ref={nameInput} />
-            <Button type="submit">Submit</Button>
-          </form>
-          <Button variant="secondary" onClick={handleClose}>
-            Close
-          </Button>
+            <Tab eventKey="home" title="Login">
+              <LoginForm />
+            </Tab>
+            <Tab eventKey="profile" title="Register">
+              {" "}
+              <RegisterForm />
+            </Tab>
+          </Tabs>
         </Modal.Footer>
       </Modal>
     </div>
