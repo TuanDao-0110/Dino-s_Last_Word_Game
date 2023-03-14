@@ -1,23 +1,23 @@
-import { resourceUsage } from "process";
 import { useContext, useEffect } from "react";
-import { getAllScore, getUserInfor, postNewScore } from "../../api/userapi";
+import { Button } from "react-bootstrap";
 import { AuthContext } from "../../context/auth-context";
 import { getAllScoreDispatch } from "../../features/PlayerSlice";
+import { signInUser } from "../../firebase/firebase";
 import { useAppDispatch, useAppSelector } from "../../hooks/hooks";
+import Board from "../../routes/Board/Board";
 import { AllScore_Type, Player_ScoreBoard_Type, ScoreBoard_Type } from "../../types/hangman.model";
+import BtnDanger from "../Button/danger/BtnDanger";
 import BtnSuccess from "../Button/success/BtnSuccess";
 import classes from "./leaderboard.module.css";
 
 const LeaderBoard = () => {
-  const { leaderboard } = useAppSelector((state) => state.game);
-  const { currentUser, signOut } = useContext(AuthContext);
+  // const { leaderboard } = useAppSelector((state) => state.game);
+  const { signOut, currentUser } = useContext(AuthContext);
   const { allScore } = useAppSelector((state) => state.player);
   const dispatch = useAppDispatch();
   useEffect(() => {
-    if (currentUser) {
-      dispatch(getAllScoreDispatch(currentUser));
-    }
-  }, [currentUser, dispatch]);
+    dispatch(getAllScoreDispatch());
+  }, [dispatch]);
   const renderDate = (timestamp: number) => {
     const date = new Date(timestamp);
     return date.toLocaleString();
@@ -84,49 +84,11 @@ const LeaderBoard = () => {
       </table>
     );
   };
-  return currentUser ? (
+  return (
     <div>
       <h2>Board</h2>
-      <BtnSuccess clickHandler={signOut} text="log out" />
+      {currentUser && <BtnSuccess clickHandler={signOut} text="log out" />}
       {allScore && renderScoreTable(allScore)}
-    </div>
-  ) : (
-    <div className={classes.leaderboard_container}>
-      <h3>Leaderboard:</h3>
-      <table>
-        <thead>
-          <tr className={classes.table_header}>
-            <th>Position</th>
-            <th>Name</th>
-            <th>Score</th>
-          </tr>
-        </thead>
-        <tbody>
-          {" "}
-          {leaderboard.map((player) => (
-            <tr className={classes.table_position}>
-              <td>
-                {" "}
-                <ol>
-                  <li></li>
-                </ol>{" "}
-              </td>
-              <td>
-                <tr>
-                  {" "}
-                  <strong>{player.name} </strong>:
-                </tr>{" "}
-              </td>{" "}
-              <td>
-                <tr>
-                  {" "}
-                  <strong>{player.score} </strong>:
-                </tr>
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
     </div>
   );
 };

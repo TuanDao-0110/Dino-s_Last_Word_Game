@@ -13,7 +13,7 @@ import {
 import classes from "./category.module.css";
 
 const Category: React.FC = () => {
-  const { category } = useAppSelector((state) => state.game);
+  const { category, score, round, gameStatus } = useAppSelector((state) => state.game);
   const dispatch = useAppDispatch();
 
   const renderOption = () => {
@@ -23,7 +23,6 @@ const Category: React.FC = () => {
       </option>
     ));
   };
-
   const setUpCategory: ReactEventHandler<HTMLSelectElement> = async (e) => {
     dispatch(setCategory(e.currentTarget.value as Categories));
     await dispatch(getWordDispatch(e.currentTarget.value as Categories));
@@ -40,6 +39,20 @@ const Category: React.FC = () => {
       >
         {renderOption()}
       </Form.Select>
+      <div>
+        <h2>
+          score <span>{score}</span>
+        </h2>
+        <h2>
+          round <span>{round}</span>
+        </h2>
+        <h2>
+          gameStatus <span>{gameStatus}</span>
+        </h2>
+        <h2>
+          gameStatus <span>{gameStatus}</span>
+        </h2>
+      </div>
     </div>
   );
 };

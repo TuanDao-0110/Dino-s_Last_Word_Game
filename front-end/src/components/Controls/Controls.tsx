@@ -12,7 +12,6 @@ import { Categories } from "../../types/API.model";
 
 const Controls = () => {
   const dispatch = useAppDispatch();
-
   function getRandomCategory(): Categories {
     const categories = Object.values(Categories).filter(
       (category) => category !== Categories.ALL
@@ -30,7 +29,15 @@ const Controls = () => {
   const stopPlaying = () => {
     dispatch(setGameStatus("lost"));
   };
+  const renderButton = (status: string) => {
+    // if (status === "won" && score > 1) {
+    //   <BtnPrimary text="Play again" clickHandler={playAgain} />;
 
+    // }if (status === 'lost') { 
+    //   <BtnPrimary text="Play again" clickHandler={playAgain} />;
+
+    // }
+  };
   return (
     <div>
       <BtnPrimary text="Play again" clickHandler={playAgain} />

@@ -17,15 +17,13 @@ export const postNewScore = async (currentUser: User, newScore: NEW_SCORE) => {
   } catch (error) {}
 };
       
-export const getAllScore = async (currentUser: User) => {
-  
+export const getAllScore = async () => {
   try {
-    const token = await currentUser.getIdToken();
-
+    // const token = await currentUser.getIdToken();
     const { data, status } = await axios({
       url: URL.USER_URL,
       method: METHOD.GET,
-      headers: setUpheader(token),
+      // headers: setUpheader(token),
     });
     return data.result;
   } catch (error) {}
