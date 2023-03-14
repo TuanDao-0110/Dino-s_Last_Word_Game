@@ -21,7 +21,7 @@ const Message: React.FC = () => {
     }
   };
   return (
-    <div className={classes.Category_container}>
+    <div className={classes.message_container}>
       <p>You did great job! Enter your nickname to join the leaderboard:</p>
       <form onSubmit={(event) => nameSubmitHandler(event, nameInput.current)}>
         <input type="text" ref={nameInput} />

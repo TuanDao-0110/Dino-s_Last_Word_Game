@@ -13,14 +13,9 @@
   );
 }
 
+.mainLeaderboard_container,
+.mainCategory_container,
 .mainObject_container {
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
-  align-items: center;
-}
-
-.mainLeaderboard_container {
   display: flex;
   flex-direction: column;
   gap: 2rem;

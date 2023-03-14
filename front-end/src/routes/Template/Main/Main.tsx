@@ -48,6 +48,14 @@ const Main = () => {
     ) {
       if (category === Categories.ALL) {
         dispatch(setScore(+2));
+      } else if (
+        category === Categories.ANIMALS ||
+        category === Categories.FRUITS ||
+        category === Categories.COUNTRIES ||
+        category === Categories.PROFESSION ||
+        category === Categories.SPORTS
+      ) {
+        dispatch(setScore(+1));
       } else if (hints.length >= 1) {
         dispatch(setScore(score - hints.length));
       }
