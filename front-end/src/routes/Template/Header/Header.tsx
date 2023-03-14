@@ -30,7 +30,7 @@ export const Header: React.FC = () => {
               </LinkContainer>
             </Nav>
           </Navbar.Collapse>
-          <Button onClick={() => signOut()}>Logout</Button>
+          {currentUser && <Button onClick={() => signOut()}>Logout</Button>}
         </Container>
       </Navbar>
     </Row>

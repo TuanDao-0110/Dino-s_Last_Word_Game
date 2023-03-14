@@ -100,7 +100,6 @@ const LeaderBoard = () => {
   return (
     <div>
       <h2>Board</h2>
-      {currentUser && <BtnSuccess clickHandler={signOut} text="log out" />}
       {allScore && renderScoreTable(allScore)}
     </div>
   );
