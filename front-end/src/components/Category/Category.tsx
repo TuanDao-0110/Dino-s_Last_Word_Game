@@ -13,7 +13,9 @@ import {
 import classes from "./category.module.css";
 
 const Category: React.FC = () => {
-  const { category, score, round, gameStatus } = useAppSelector((state) => state.game);
+  const { category, score, round, gameStatus } = useAppSelector(
+    (state) => state.game
+  );
   const dispatch = useAppDispatch();
 
   const renderOption = () => {
@@ -31,25 +33,24 @@ const Category: React.FC = () => {
 
   return (
     <div className={classes.category_container}>
-      <h2>Word category: {category}</h2>{" "}
+      <h2>Your game</h2>
+      <p className={classes.score}>
+        Score: <span>{score}</span>
+      </p>
+      <p className={classes.category_display}>Word category: {category}</p>{" "}
       <Form.Select
         aria-label="select category"
         onChange={setUpCategory}
-        size="lg"
+        className={classes.category_select}
       >
         {renderOption()}
       </Form.Select>
-      <div>
-        <h2>
-          score <span>{score}</span>
-        </h2>
-        <h2>
-          round <span>{round}</span>
-        </h2>
-        <h2>
-          gameStatus <span>{gameStatus}</span>
-        </h2>
-      </div>
+      <p className={classes.round}>
+        Round: <span>{round}</span>
+      </p>
+      <p className={classes.game_status}>
+        <span>{gameStatus}</span>
+      </p>
     </div>
   );
 };
