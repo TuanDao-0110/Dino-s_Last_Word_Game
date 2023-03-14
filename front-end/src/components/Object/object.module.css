@@ -1,5 +1,5 @@
 .object_container {
-  width: 400px;
-  height: 400px;
+  max-width: 300px;
+  max-height: 300px;
   overflow: hidden;
 }

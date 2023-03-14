@@ -1,18 +1,34 @@
-export interface Player {
-  id: number;
-  name: string;
-  email: string;
+export interface ScoreBoard_Type {
   score: number;
+  timestamp: number;
+}
+export interface Player_ScoreBoard_Type {
+  email: string;
+  name: string;
+}
+export interface Player {
+  scoreData: [[Player_ScoreBoard_Type | ScoreBoard_Type]];
+  userInfo: Object;
 }
 
+export interface AllScore_Type {
+  [index: string]: [Player_ScoreBoard_Type | ScoreBoard_Type];
+}
+
+
+
 export interface PlayerState {
-  players: Player[];
+  players?: Player;
+  allScore?: AllScore_Type;
 }
 
 export interface WordLetterProps {
+  key: number;
   letter: string;
   guessed: boolean;
+  showHint?: (letter: string, className: string) => void;
 }
+
 export interface ObjectProps {
   wrongGuesses: number;
 }

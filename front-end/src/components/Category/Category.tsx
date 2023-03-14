@@ -1,7 +1,8 @@
 import React, { ReactEventHandler } from "react";
 import { useAppSelector, useAppDispatch } from "../../hooks/hooks";
 import Form from "react-bootstrap/Form";
-import style from "./category.module.css";
+import classes from "./category.module.css";
+import Button from "react-bootstrap/Button";
 import { Categories } from "../../types/API.model";
 import { getWordDispatch, setCategory } from "../../features/GameSlice";
 const Category: React.FC = () => {
@@ -18,18 +19,18 @@ const Category: React.FC = () => {
     dispatch(setCategory(e.currentTarget.value as Categories));
   };
   return (
-    <div>
-      <button
+    <div className={classes.category_container}>
+      <h2>Word category: {category}</h2>{" "}
+      <Form.Select aria-label="" onChange={setUpCategory} size="lg">
+        {renderOption()}
+      </Form.Select>{" "}
+      <Button
         onClick={() => {
           dispatch(getWordDispatch(category));
         }}
       >
         get word
-      </button>
-      <h2>category {category}</h2>
-      <Form.Select aria-label="" onChange={setUpCategory} size="lg">
-        {renderOption()}
-      </Form.Select>
+      </Button>
     </div>
   );
 };

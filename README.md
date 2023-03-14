@@ -53,12 +53,10 @@ This project is contributed by:
 # Testing document API: 
 
 https://documenter.getpostman.com/view/19888757/2s93JtR3uK#5877637a-3b0c-4673-87d8-962edb4f5a19 
-```
+
+```mermaid
 graph LR;
-  A[Express.js] --> B[CORS];
-  A[Express.js] --> C[Body Parser];
-  A[Express.js] --> D[Morgan];
-  A[Express.js] --> E[Static Files];
+  A[Express.js] --> B[CORS] --> C[Body Parser] --> D[Morgan] --> E[Static Files];
   A[Express.js] --> F[Welcome Router];
   A[Express.js] --> G[Word Router];
   A[Express.js] --> H[User Router];

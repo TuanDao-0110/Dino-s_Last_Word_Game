@@ -1,4 +1,21 @@
 .main_container {
+  height: 100vh;
+  display: grid;
+  grid-template-columns: 2fr 2fr 2fr;
+  align-items: center;
+  background: linear-gradient(
+    180deg,
+    #a0bbff 3.23%,
+    #ffc7de 41.54%,
+    #ffce95 100%,
+    #ffd4a0 100%,
+    #ffd5a4 100%
+  );
+}
+
+.mainLeaderboard_container,
+.mainCategory_container,
+.mainObject_container {
   display: flex;
   flex-direction: column;
   gap: 2rem;

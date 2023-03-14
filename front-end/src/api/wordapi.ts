@@ -4,11 +4,11 @@ import { NEW_WORD_TYPE } from "../types/word.model";
 
 export const getAllWords = async (): Promise<Word_Type[] | any> => {
   try {
-    const { data, status } = await axios({
+    const { data, status } = await axios ({
       method: METHOD.GET,
       url: URL.WORD_URL,
     });
-    return data as Word_Type;
+    return data;
   } catch (error) {}
 };
 

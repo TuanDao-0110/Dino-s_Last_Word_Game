@@ -4,7 +4,7 @@ import { BtnSuccess } from "../../assets/export_component/resource";
 import { AuthContext } from "../../context/auth-context";
 
 const Board = () => {
-  const { currentUser, setCurrentUser, signOut } = useContext(AuthContext);
+  const { currentUser, signOut } = useContext(AuthContext);
 
   currentUser?.getIdToken();
 
