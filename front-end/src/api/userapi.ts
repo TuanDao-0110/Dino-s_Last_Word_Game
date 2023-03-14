@@ -37,8 +37,9 @@ export const getUserInfor = async (currentUser: User) => {
       url: `${URL.USER_URL}/${uid}`,
       headers: setUpheader(token),
     });
+    console.log(data)
     // data now can dispatch to redux
-    return data.result;
+    return data;
   } catch (error) {
   }
 };

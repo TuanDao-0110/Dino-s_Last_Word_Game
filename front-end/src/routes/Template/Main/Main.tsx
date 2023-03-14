@@ -104,7 +104,9 @@ const Main = () => {
       </div>
       <div className={classes.mainCategory_container}>
         {gameStatus === "lost" && <Message />}
-        <Category /> {gameStatus !== "playing" && <Controls />}
+        <Category /> 
+        {/* {gameStatus !== "playing" && <Controls />} */}
+        <Controls/>
       </div>
     </div>
   );
