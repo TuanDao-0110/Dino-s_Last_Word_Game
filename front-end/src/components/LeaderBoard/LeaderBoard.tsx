@@ -9,12 +9,9 @@ import {
   Player_ScoreBoard_Type,
   ScoreBoard_Type,
 } from "../../types/hangman.model";
-import BtnSuccess from "../Button/success/BtnSuccess";
 import classes from "./leaderboard.module.css";
 
 const LeaderBoard = () => {
-  // const { leaderboard } = useAppSelector((state) => state.game);
-  const { signOut, currentUser } = useContext(AuthContext);
   const { allScore } = useAppSelector((state) => state.player);
   const dispatch = useAppDispatch();
   useEffect(() => {
@@ -68,12 +65,11 @@ const LeaderBoard = () => {
         </thead>
         <tbody>
           {restructureLeaderBoard(allScore).map((data, index) => {
-            const { name, score, timestamp } = data;
+            const { name, score, } = data;
             return (
               <tr key={index} className={classes.table_row}>
                 <td>{index}</td>
                 <td>{name}</td>
-                {/* <td>{renderDate(timestamp)} :</td> */}
                 <td>{score}</td>
               </tr>
             );

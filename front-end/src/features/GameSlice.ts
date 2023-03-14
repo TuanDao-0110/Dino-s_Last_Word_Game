@@ -94,7 +94,7 @@ const gameSlice = createSlice({
     resetGame: (state) => {
       // state.guessedLetters = [];
       // state.gameStatus = "playing";
-      return { ...state, guessedLetters: [], gameStatus: "playing", round: 0 };
+      return { ...state, guessedLetters: [], gameStatus: "playing", round: 0 ,score:0};
     },
     nextGame: (state) => {
       state.guessedLetters = [];

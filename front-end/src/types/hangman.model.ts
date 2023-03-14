@@ -8,14 +8,17 @@ export interface Player_ScoreBoard_Type {
 }
 export interface Player {
   scoreData: [[Player_ScoreBoard_Type | ScoreBoard_Type]];
-  userInfo: Object;
+  userInfo: {
+    _createTime?: { _second: number; _nanoseconds: number };
+    _fieldsProto?: {
+      [index: string]: { stringValue: string; valueType: string };
+    };
+  };
 }
 
 export interface AllScore_Type {
   [index: string]: [Player_ScoreBoard_Type | ScoreBoard_Type];
 }
-
-
 
 export interface PlayerState {
   players?: Player;

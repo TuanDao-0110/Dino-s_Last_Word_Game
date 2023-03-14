@@ -3,13 +3,14 @@ import { Button } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
 import { useContext } from "react";
 import { AuthContext } from "../../../context/auth-context";
+import { useAppSelector } from "../../../hooks/hooks";
 
 /* import classes from "./header.module.css"; */
 
 export const Header: React.FC = () => {
   const { currentUser, signOut } = useContext(AuthContext);
+  const { players } = useAppSelector((state) => state.player);
 
-  currentUser?.getIdToken();
   return (
     <Row>
       <Navbar bg="light" variant="light">
@@ -24,11 +25,17 @@ export const Header: React.FC = () => {
                 <Nav.Link>Login/Register</Nav.Link>
               </LinkContainer>
               <LinkContainer to="/board">
-                <Nav.Link>Board</Nav.Link>
+                <Nav.Link>Board 👾</Nav.Link>
               </LinkContainer>
             </Nav>
           </Navbar.Collapse>
-          {currentUser && <Button onClick={() => signOut()}>Logout</Button>}
+          {currentUser && (
+            <>
+              Hello
+              <h4>🤩😜🤨🥰🥰🖐🏻{players?.userInfo._fieldsProto?.name.stringValue} 🤩🥳😜🤨🥰🥰🖐🏻 </h4>
+              <Button onClick={() => signOut()}>Logout</Button>
+            </>
+          )}
         </Container>
       </Navbar>
     </Row>
