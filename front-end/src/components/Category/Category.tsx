@@ -53,14 +53,17 @@ const Category: React.FC = () => {
         <p className={classes.category_display}>
           Word category: <span>{category}</span>
         </p>
+        <p className={classes.points_earned}>
+          Points to be earned: {category === "all" ? 2 : 1}
+        </p>
         <Form.Select
+          disabled={guessedLetters.length > 0 || gameStatus !== "playing"}
           aria-label="select category"
           onChange={setUpCategory}
           className={classes.category_select}
         >
           {renderOption()}
         </Form.Select>{" "}
-        <p>Points to be earned: {category === "all" ? 2 : 1}</p>
       </div>
       {gameStatus === "won" && <p className={classes.game_status}>You won!</p>}
       {gameStatus === "lost" && (

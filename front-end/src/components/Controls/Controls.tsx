@@ -47,7 +47,7 @@ const Controls = () => {
     if (status === "won" && score !== 0) {
       return <BtnPrimary text="Play next" clickHandler={playNext} />;
     } else if (status === "lost") {
-      return <BtnSuccess text="Play again" clickHandler={playAgain} />;
+      return <BtnPrimary text="Play again" clickHandler={playAgain} />;
     } else if (status === "playing") {
       return <BtnDanger text="Stop game" clickHandler={stopPlaying} />;
     }
