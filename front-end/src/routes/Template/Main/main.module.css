@@ -2,7 +2,7 @@
   height: 100vh;
   display: grid;
   grid-template-columns: 2fr 2fr 2fr;
-  align-items: center;
+  align-content: baseline;
   background: linear-gradient(
     180deg,
     #a0bbff 3.23%,
@@ -13,13 +13,38 @@
   );
 }
 
+.w0 {
+  background: linear-gradient(
+    180deg,
+    #a0bbff 3.23%,
+    #ffc7de 41.54%,
+    #ffce95 100%,
+    #ffd4a0 100%,
+    #ffd5a4 100%
+  );
+}
+
+/* .w9 {
+  background: linear-gradient(180deg, #ffcc6e 0%, #cd5757 41.54%, #782a62 100%);
+} */
+
+.w9 {
+  background: linear-gradient(180deg, #263735 0%, #2a4138 100%);
+}
+
 .mainLeaderboard_container,
 .mainCategory_container,
 .mainObject_container {
   display: flex;
   flex-direction: column;
   gap: 2rem;
+  justify-content: flex-start;
   align-items: center;
+}
+
+.mainLeaderboard_container,
+.mainCategory_container {
+  margin-top: 5rem;
 }
 
 .mainObject_container {

@@ -45,7 +45,6 @@ const Main = () => {
     setIsLoading(false);
   }, [dispatch]);
 
-
   // Every time a new letter is guessed, check if the game is won or lost
   useEffect(() => {
     if (
@@ -87,7 +86,15 @@ const Main = () => {
 
   if (isLoading) return <Spinner />;
   return (
-    <div className={classes.main_container}>
+    <div
+      className={`${classes.main_container} ${
+        classes[
+          "w" +
+            guessedLetters.filter((letter) => !wordToGuess.includes(letter))
+              .length
+        ]
+      }`}
+    >
       <div className={classes.mainLeaderboard_container}>
         <LeaderBoard />
         {/* <Form /> */}
@@ -103,10 +110,8 @@ const Main = () => {
         <Keyboard />
       </div>
       <div className={classes.mainCategory_container}>
-        {gameStatus === "lost" && <Message />}
-        <Category /> 
+        <Category />
         {/* {gameStatus !== "playing" && <Controls />} */}
-        <Controls/>
       </div>
     </div>
   );

@@ -65,10 +65,10 @@ const LeaderBoard = () => {
         </thead>
         <tbody>
           {restructureLeaderBoard(allScore).map((data, index) => {
-            const { name, score, } = data;
+            const { name, score } = data;
             return (
               <tr key={index} className={classes.table_row}>
-                <td>{index}</td>
+                <td>{index + 1}</td>
                 <td>{name}</td>
                 <td>{score}</td>
               </tr>
