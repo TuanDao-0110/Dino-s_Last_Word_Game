@@ -12,11 +12,12 @@ https://www.freecodecamp.org/news/how-to-create-a-react-app-with-a-node-backend-
 |  | Technology |
 |------|----------------|
 | Front_End | React Typescript|
+| Back_End | Express/Node Typescript |
 | State Management | Redux Tool Kit |
 | UI | Figma, |
 | Tesing | Jest, Postman for backend |
-|Authentication | Firebase Authentication| 
-|DataBase | Firebase 
+|Authentication | Firebase Authentication vs Context provider| 
+|DataBase | Firebase |
 
 ## CLI: 
 
@@ -38,10 +39,15 @@ npm run buildall
 ```
 
 ## Features
-1. Randomly generated word for each game
-2. Keeps track of correct and incorrect guesses
-3. Displays hangman figure as incorrect guesses are made
-4. Shows a win or loss message at the end of the game
+1. Word is generated from many category
+2. Randomly generated word for each game,
+3. Player can select to play all category to get 2 point each time, or 1 point if user play in specific category
+4. Keeps track of correct and incorrect guesses
+5. Hint, Player can click to unknown letter to show it, each time hint use, 1 point reduced.
+6. Displays hangman figure as incorrect guesses are made
+7. Shows a win or loss message at the end of the game
+8. Player can see list of other player's record,
+9. User can store their score by login/register.
 ## Getting Started
 1. Clone the repository: git clone https://github.com/TuanDao-0110/Hang_Man_Game.git
 2. Install dependencies: npm install or yarn install
@@ -252,14 +258,3 @@ This project is licensed under the MIT License. See LICENSE for more information
 
 
 
-# game play : 
-
-1. player can register or login, 
-2. game can play until user lose, require login/register, to store the score. 
-3. game rule: 
-  3.1 player win then move to next round, next round's word not duplicate/same to previous rounds. (use localstore)
-  3.2 player can choose specific category to play, each time win play got 1 point
-  3.3 player can choose play all kind of category, each time win play got 2 point, in case player stuck, they can get hint by show what kind of category right now, by that each time win play got 1 point
-4. leaderboard is
-  4.1 a place where user can see their score position
-  4.2 leader board is display during the game, no matter user already login/register or not. 
