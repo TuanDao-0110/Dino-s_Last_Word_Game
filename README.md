@@ -14,19 +14,28 @@ https://www.freecodecamp.org/news/how-to-create-a-react-app-with-a-node-backend-
 | Front_End | React Typescript|
 | State Management | Redux Tool Kit |
 | UI | Figma, |
-| Tesing | Jest, |
+| Tesing | Jest, Postman for backend |
+|Authentication | Firebase Authentication| 
+|DataBase | Firebase 
 
 ## CLI: 
 
-1. run install main folder
+1. run install for all folder
 ```
-npm i
+npm run install:All
 ```
-2. run install all back-end front-end
+2. run backend development mode
 ```
-npm run installAll
+npm run backendDev
 ```
-3. 
+3. run all application
+```
+npm run startall
+```
+4. build the whole application
+```
+npm run buildall
+```
 
 ## Features
 1. Randomly generated word for each game
