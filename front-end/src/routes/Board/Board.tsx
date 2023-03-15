@@ -10,7 +10,7 @@ const Board = () => {
   const { currentUser, signOut } = useContext(AuthContext);
   const { players } = useAppSelector((state) => state.player);
   const dispatch = useAppDispatch();
-  console.log(players);
+  console.log(currentUser);
 
   return (
     <div>
