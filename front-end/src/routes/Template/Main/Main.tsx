@@ -8,6 +8,7 @@ import {
   setNextRound,
   setScore,
   setModal,
+  getWordDispatch,
 } from "../../../features/GameSlice";
 
 import {
@@ -40,9 +41,17 @@ const Main = () => {
 
   // After the page loads, set a word to be guessed
   useEffect(() => {
+    const fetchWords = async () => {
+      await getWordDispatch(Categories.ALL);
+    };
     console.log("use effect running");
-    dispatch(setWordToGuess());
-    setIsLoading(false);
+    fetchWords()
+      .then(() => {
+        dispatch(setWordToGuess());
+        console.log("wordToGuess", wordToGuess);
+        setIsLoading(false);
+      })
+      .catch((err) => alert(err));
   }, [dispatch]);
 
   // Every time a new letter is guessed, check if the game is won or lost

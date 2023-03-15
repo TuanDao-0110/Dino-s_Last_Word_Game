@@ -127,6 +127,7 @@ const gameSlice = createSlice({
 });
 // 2. word get base on category if user
 export const getWordDispatch = (category: Categories) => {
+  console.log("getWordDispatch category:", category);
   if (category === Categories.ALL) {
     return async (dispatch: AppDispatch) => {
       const data = (await getAllWords()) as Word_Type;
