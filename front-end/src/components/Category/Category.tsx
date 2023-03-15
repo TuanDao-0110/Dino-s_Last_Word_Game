@@ -41,27 +41,27 @@ const Category: React.FC = () => {
 
   return (
     <div className={classes.category_container}>
-      <h2>Your game</h2>
+      <p className={classes.score}>
+        Score: <span>{score}</span>
+      </p>
       <ProgressBar
         className={classes.progress_bar}
         variant="danger"
         now={getMeteorProgress()}
       />
-      <p className={classes.score}>
-        Score: <span>{score}</span>
-      </p>
-      <div>
-        <p className={classes.category_display}>Word category: {category}</p>
-        <p>Points to be earned: {category === "all" ? 2 : 1}</p>
+      <div className={classes.category_info}>
+        <p className={classes.category_display}>
+          Word category: <span>{category}</span>
+        </p>
         <Form.Select
           aria-label="select category"
           onChange={setUpCategory}
           className={classes.category_select}
         >
           {renderOption()}
-        </Form.Select>
+        </Form.Select>{" "}
+        <p>Points to be earned: {category === "all" ? 2 : 1}</p>
       </div>
-
       {gameStatus === "won" && <p className={classes.game_status}>You won!</p>}
       {gameStatus === "lost" && (
         <p className={classes.game_status}>Ouch. You lost!</p>
