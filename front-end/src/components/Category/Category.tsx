@@ -1,6 +1,7 @@
 import React, { ReactEventHandler, useEffect } from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
+import ProgressBar from "react-bootstrap/ProgressBar";
 
 import { useAppSelector, useAppDispatch } from "../../hooks/hooks";
 import { Categories } from "../../types/API.model";
@@ -11,11 +12,11 @@ import {
 } from "../../features/GameSlice";
 
 import classes from "./category.module.css";
+import { Message, Controls } from "../../assets/export_component/resource";
 
 const Category: React.FC = () => {
-  const { category, score, round, gameStatus } = useAppSelector(
-    (state) => state.game
-  );
+  const { category, score, round, gameStatus, guessedLetters, wordToGuess } =
+    useAppSelector((state) => state.game);
   const dispatch = useAppDispatch();
 
   const renderOption = () => {
@@ -31,26 +32,45 @@ const Category: React.FC = () => {
     dispatch(setWordToGuess());
   };
 
+  const getMeteorProgress = () => {
+    const wrongGuesses = guessedLetters.filter(
+      (letter) => !wordToGuess.includes(letter)
+    ).length;
+    return (wrongGuesses / 9) * 100;
+  };
+
   return (
     <div className={classes.category_container}>
-      <h2>Your game</h2>
       <p className={classes.score}>
         Score: <span>{score}</span>
       </p>
-      <p className={classes.category_display}>Word category: {category}</p>{" "}
-      <Form.Select
-        aria-label="select category"
-        onChange={setUpCategory}
-        className={classes.category_select}
-      >
-        {renderOption()}
-      </Form.Select>
-      <p className={classes.round}>
-        Round: <span>{round}</span>
-      </p>
-      <p className={classes.game_status}>
-        <span>{gameStatus}</span>
-      </p>
+      <ProgressBar
+        className={classes.progress_bar}
+        variant="danger"
+        now={getMeteorProgress()}
+      />
+      <div className={classes.category_info}>
+        <p className={classes.category_display}>
+          Word category: <span>{category}</span>
+        </p>
+        <p className={classes.points_earned}>
+          Points to be earned: {category === "all" ? 2 : 1}
+        </p>
+        <Form.Select
+          disabled={guessedLetters.length > 0 || gameStatus !== "playing"}
+          aria-label="select category"
+          onChange={setUpCategory}
+          className={classes.category_select}
+        >
+          {renderOption()}
+        </Form.Select>{" "}
+      </div>
+      {gameStatus === "won" && <p className={classes.game_status}>You won!</p>}
+      {gameStatus === "lost" && (
+        <p className={classes.game_status}>Ouch. You lost!</p>
+      )}
+      <Controls />
+      {gameStatus === "lost" && <Message />}
     </div>
   );
 };

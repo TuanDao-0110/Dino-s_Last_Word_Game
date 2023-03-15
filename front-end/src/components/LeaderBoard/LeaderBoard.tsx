@@ -64,16 +64,18 @@ const LeaderBoard = () => {
           </tr>
         </thead>
         <tbody>
-          {restructureLeaderBoard(allScore).map((data, index) => {
-            const { name, score, } = data;
-            return (
-              <tr key={index} className={classes.table_row}>
-                <td>{index}</td>
-                <td>{name}</td>
-                <td>{score}</td>
-              </tr>
-            );
-          })}
+          {restructureLeaderBoard(allScore)
+            .slice(0, 10)
+            .map((data, index) => {
+              const { name, score } = data;
+              return (
+                <tr key={index} className={classes.table_row}>
+                  <td>{index + 1}</td>
+                  <td>{name}</td>
+                  <td>{score}</td>
+                </tr>
+              );
+            })}
         </tbody>
       </table>
     );
