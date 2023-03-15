@@ -59,7 +59,6 @@ const Message: React.FC = () => {
                   <LoginForm />
                 </Tab>
                 <Tab eventKey="profile" title="Register">
-                  {" "}
                   <RegisterForm />
                 </Tab>
               </Tabs>
