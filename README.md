@@ -37,6 +37,12 @@ npm run startall
 ```
 npm run buildall
 ```
+5. testing 
+
+```
+cd back-end && npm run test
+
+```
 
 ## Features
 1. Word is generated from many category
