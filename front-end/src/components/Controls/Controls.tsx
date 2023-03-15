@@ -11,12 +11,13 @@ import {
   setGameStatus,
   setModal,
   setWordToGuess,
+  getWordDispatch,
 } from "../../features/GameSlice";
 import { Categories } from "../../types/API.model";
 
 const Controls = () => {
   const dispatch = useAppDispatch();
-  const { score, gameStatus } = useAppSelector((state) => state.game);
+  const { score, gameStatus, category } = useAppSelector((state) => state.game);
 
   const getRandomCategory = (): Categories => {
     const categories = Object.values(Categories).filter(
@@ -36,7 +37,8 @@ const Controls = () => {
     dispatch(setModal(true));
   };
 
-  const playNext = () => {
+  const playNext = async () => {
+    await dispatch(getWordDispatch(category));
     dispatch(setWordToGuess());
     dispatch(nextGame());
   };

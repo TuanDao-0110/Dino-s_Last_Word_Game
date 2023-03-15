@@ -8,8 +8,13 @@ import {
   setNextRound,
   setScore,
   setModal,
+  getWordDispatch,
+  setAllWord,
 } from "../../../features/GameSlice";
 
+import { getAllWords } from "../../../api/wordapi";
+
+import { AppDispatch } from "../../../app/store";
 import {
   Word,
   Keyboard,
@@ -22,7 +27,7 @@ import {
 
 import classes from "./main.module.css";
 import Category from "../../../components/Category/Category";
-import { Categories } from "../../../types/API.model";
+import { Categories, Word_Type } from "../../../types/API.model";
 
 const Main = () => {
   const dispatch = useAppDispatch();
@@ -40,9 +45,19 @@ const Main = () => {
 
   // After the page loads, set a word to be guessed
   useEffect(() => {
+    const fetchWords = async () => {
+      const data = (await getAllWords()) as Word_Type;
+      dispatch(setAllWord(data));
+      dispatch(setWordToGuess());
+    };
     console.log("use effect running");
-    dispatch(setWordToGuess());
-    setIsLoading(false);
+    fetchWords()
+      .then(() => {
+        dispatch(setWordToGuess());
+        console.log("wordToGuess", wordToGuess);
+        setIsLoading(false);
+      })
+      .catch((err) => alert(err));
   }, [dispatch]);
 
   // Every time a new letter is guessed, check if the game is won or lost
