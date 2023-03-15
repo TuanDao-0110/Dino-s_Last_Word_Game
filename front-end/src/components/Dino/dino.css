@@ -1,0 +1,34 @@
+/* .dino_container img {
+  width: 400px;
+  height: 400px;
+  object-fit: cover;
+}
+
+.dino_container {
+  width: 400px;
+  height: 400px;
+  object-fit: cover;
+  overflow: hidden;
+} */
+.frames_container {
+  position: relative;
+}
+
+.dino_const_container {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.dino_changes {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+/* 
+.dino_const {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+ */

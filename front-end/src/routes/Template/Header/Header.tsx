@@ -1,8 +1,16 @@
-import React from "react";
-import {  Container, Nav, Navbar, Row } from "react-bootstrap";
+import { Container, Nav, Navbar, Row } from "react-bootstrap";
+import { Button } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
-import style from "./Header.module.css";
+import { useContext } from "react";
+import { AuthContext } from "../../../context/auth-context";
+import { useAppSelector } from "../../../hooks/hooks";
+
+/* import classes from "./header.module.css"; */
+
 export const Header: React.FC = () => {
+  const { currentUser, signOut } = useContext(AuthContext);
+  const { players } = useAppSelector((state) => state.player);
+
   return (
     <Row>
       <Navbar bg="light" variant="light">
@@ -13,8 +21,21 @@ export const Header: React.FC = () => {
               <LinkContainer to="/">
                 <Nav.Link>Home</Nav.Link>
               </LinkContainer>
+              <LinkContainer to="/register">
+                <Nav.Link>Login/Register</Nav.Link>
+              </LinkContainer>
+              <LinkContainer to="/board">
+                <Nav.Link>Board 👾</Nav.Link>
+              </LinkContainer>
             </Nav>
           </Navbar.Collapse>
+          {currentUser && (
+            <>
+              Hello
+              <h4>🤩😜🤨🥰🥰🖐🏻{players?.userInfo._fieldsProto?.name.stringValue} 🤩🥳😜🤨🥰🥰🖐🏻 </h4>
+              <Button onClick={() => signOut()}>Logout</Button>
+            </>
+          )}
         </Container>
       </Navbar>
     </Row>

@@ -1,0 +1,31 @@
+.leaderboard_container {
+  background-color: #ffffff;
+  width: 22rem;
+  min-height: 500px;
+  padding: 3rem;
+  border-radius: 20px;
+}
+
+.leaderboard_container h2 {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.leaderboard {
+  width: 100%;
+  border: none;
+}
+
+.leaderboard td,
+.leaderboard th {
+  border: none;
+  padding: 0.7rem;
+}
+
+.table_header {
+  background-color: #ffffff;
+}
+
+.table_row:nth-child(odd) {
+  background-color: #ebebeb;
+}

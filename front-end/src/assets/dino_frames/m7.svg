@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Meteor7" xmlns="http://www.w3.org/2000/svg" width="515.58" height="503.64" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 515.58 503.64">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: none;
+      }
+
+      .cls-2 {
+        clip-path: url(#clippath);
+      }
+
+      .cls-3 {
+        fill: #fffad2;
+      }
+
+      .cls-4 {
+        fill: #ffed43;
+      }
+
+      .cls-5 {
+        fill: #ffbd39;
+      }
+
+      .cls-6 {
+        fill: #ff4545;
+      }
+    </style>
+    <clipPath id="clippath">
+      <rect class="cls-1" x="-8.83" y="7.87" width="541.23" height="541.23" transform="translate(-46.41 52.44) rotate(-10.51)"/>
+    </clipPath>
+  </defs>
+  <g class="cls-2">
+    <g>
+      <polyline class="cls-6" points="256.89 242.02 280.07 219.26 280.12 225.55 294.86 210.08 293.32 217.95 332.02 175.49 306.24 226.08 312.28 222.05 303.69 243.22 309.54 239.21 296.49 269.22 256.89 242.02"/>
+      <circle class="cls-6" cx="275.14" cy="257.87" r="24.18"/>
+      <polyline class="cls-5" points="262.19 245.66 281.07 230.72 281.6 236.87 295.6 227.26 291.68 244.13 297.64 240.74 291.69 264.15 262.19 245.66"/>
+      <circle class="cls-5" cx="275.14" cy="257.87" r="17.79"/>
+      <circle class="cls-4" cx="275.14" cy="257.87" r="11.48"/>
+      <circle class="cls-3" cx="275.14" cy="257.87" r="5.3"/>
+      <polygon class="cls-4" points="274 246.4 284.02 244.73 286.25 254.82 274 246.4"/>
+    </g>
+  </g>
+</svg>

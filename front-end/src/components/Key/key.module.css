@@ -1,0 +1,33 @@
+.key_container {
+  width: 2.5rem;
+  height: 2.5rem;
+}
+
+.key_container > button {
+  font-family: inherit;
+  font-size: 1.2rem;
+  width: 100%;
+  height: 100%;
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  background-color: white;
+}
+
+.key_container > button:hover:not(:disabled) {
+  background-color: #e2e2e2;
+}
+
+.key_container > button:disabled {
+  cursor: auto;
+}
+
+.key_container > button.incorrect {
+  background-color: #e4e4e4;
+  color: #999999;
+}
+
+.key_container > button.correct {
+  background-color: #66b391;
+  color: #000000;
+}
