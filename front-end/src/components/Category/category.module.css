@@ -21,3 +21,7 @@
 .score span {
   color: rgb(81, 51, 255);
 }
+
+.progress_bar {
+  color: aqua;
+}

@@ -86,7 +86,15 @@ const Main = () => {
 
   if (isLoading) return <Spinner />;
   return (
-    <div className={classes.main_container}>
+    <div
+      className={`${classes.main_container} ${
+        classes[
+          "w" +
+            guessedLetters.filter((letter) => !wordToGuess.includes(letter))
+              .length
+        ]
+      }`}
+    >
       <div className={classes.mainLeaderboard_container}>
         <LeaderBoard />
         {/* <Form /> */}

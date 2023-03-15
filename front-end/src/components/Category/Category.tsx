@@ -42,7 +42,11 @@ const Category: React.FC = () => {
   return (
     <div className={classes.category_container}>
       <h2>Your game</h2>
-      <ProgressBar now={getMeteorProgress()} />
+      <ProgressBar
+        className={classes.progress_bar}
+        variant="danger"
+        now={getMeteorProgress()}
+      />
       <p className={classes.score}>
         Score: <span>{score}</span>
       </p>
