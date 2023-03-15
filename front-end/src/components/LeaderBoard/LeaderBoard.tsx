@@ -1,8 +1,6 @@
-import { useContext, useEffect } from "react";
-import { Button } from "react-bootstrap";
-import { AuthContext } from "../../context/auth-context";
+import { useEffect } from "react";
+
 import { getAllScoreDispatch } from "../../features/PlayerSlice";
-import { signInUser } from "../../firebase/firebase";
 import { useAppDispatch, useAppSelector } from "../../hooks/hooks";
 import {
   AllScore_Type,

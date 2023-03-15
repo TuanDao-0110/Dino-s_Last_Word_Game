@@ -5,12 +5,11 @@ import { useAppDispatch, useAppSelector } from "../../hooks/hooks";
 import Modal from "react-bootstrap/Modal";
 import LoginForm from "../Form/LoginForm";
 import RegisterForm from "../Form/RegisterForm";
-
 import { setModal } from "../../features/GameSlice";
 import classes from "./message.module.css";
 import { AuthContext } from "../../context/auth-context";
 import BtnSuccess from "../Button/success/BtnSuccess";
-import { getUserInfor, postNewScore } from "../../api/userapi";
+import { postNewScore } from "../../api/userapi";
 import { getAllScoreDispatch } from "../../features/PlayerSlice";
 
 const Message: React.FC = () => {
