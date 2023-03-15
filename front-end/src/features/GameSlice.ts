@@ -74,33 +74,53 @@ const gameSlice = createSlice({
           const index = Math.floor(Math.random() * word.length);
           state.wordToGuess = word[index].toUpperCase();
           console.log("setting word to ", word[index].toUpperCase());
-        } else if (state.category === Categories.ALL && typeof word === "object" && Categories.ANIMALS in word) {
+        } else if (
+          state.category === Categories.ALL &&
+          typeof word === "object" &&
+          Categories.ANIMALS in word
+        ) {
           // if category is ALL, word array is object and
           console.log("word", word);
           console.log("Categories.ANIMALS", Categories.ANIMALS);
           console.log("in word", Categories.ANIMALS in word);
           const index = Math.floor(Math.random() * word[randomCategory].length);
           state.wordToGuess = word[randomCategory][index].toUpperCase();
-          console.log("setting word to ", word[randomCategory][index].toUpperCase());
+          console.log(
+            "setting word to ",
+            word[randomCategory][index].toUpperCase()
+          );
         }
       }
     },
     addGuessedLetter: (state, action: PayloadAction<string>) => {
       state.guessedLetters.push(action.payload);
     },
-    setGameStatus: (state, action: PayloadAction<"playing" | "won" | "lost">) => {
+    setGameStatus: (
+      state,
+      action: PayloadAction<"playing" | "won" | "lost">
+    ) => {
       state.gameStatus = action.payload;
     },
     resetGame: (state) => {
       // state.guessedLetters = [];
       // state.gameStatus = "playing";
-      return { ...state, guessedLetters: [], gameStatus: "playing", round: 0 ,score:0};
+      return {
+        ...state,
+        guessedLetters: [],
+        gameStatus: "playing",
+        round: 0,
+        score: 0,
+      };
     },
     nextGame: (state) => {
       state.guessedLetters = [];
       state.gameStatus = "playing";
+      /* setWordToGuess(); */
     },
-    addToLeaderboard: (state, action: PayloadAction<{ name: string; score: number }>) => {
+    addToLeaderboard: (
+      state,
+      action: PayloadAction<{ name: string; score: number }>
+    ) => {
       state.leaderboard.push(action.payload);
     },
   },
