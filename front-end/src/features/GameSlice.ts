@@ -37,6 +37,7 @@ const gameSlice = createSlice({
   initialState,
   reducers: {
     setAllWord: (state, action: PayloadAction<Word_Type>) => {
+      console.log("RESULT", action.payload.result);
       state.word = action.payload.result;
       console.log("state word", state.word);
     },
