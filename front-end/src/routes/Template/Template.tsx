@@ -12,7 +12,7 @@ export const Template: React.FC = () => {
       <Row>
         <Outlet />
       </Row>
-      {/* <Footer /> */}
+      <Footer />
     </Container>
   );
 };

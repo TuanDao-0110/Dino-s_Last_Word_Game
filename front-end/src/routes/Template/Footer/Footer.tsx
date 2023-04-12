@@ -1,23 +1,17 @@
-import { Container, Nav, Navbar, Row } from "react-bootstrap";
+import { Col, Container, Nav, Navbar, Row } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
 
 /* import classes from "./footer.module.css"; */
 
 export const Footer: React.FC = () => {
   return (
-    <Row>
-      <Container className="justify-content-end">
-        <Navbar bg="light" variant="light" fixed="bottom">
-          <Navbar.Toggle aria-controls="basic-navbar-nav" />
-          <Navbar.Collapse id="basic-navbar-nav">
-            <Nav>
-              <LinkContainer to="/">
-                <Nav.Link>bottom </Nav.Link>
-              </LinkContainer>
-            </Nav>
-          </Navbar.Collapse>
-        </Navbar>
-      </Container>
+    <Row className="footer" fixed="bottom">
+      <Col>
+        <a href="https://github.com/TuanDao-0110/HangMan_Game">Dino game</a> -
+        by <a href="https://github.com/TuanDao-0110/">Tuan Dao</a>,{" "}
+        <a href="https://github.com/CodeLaMat">Eyvaz Alishov</a> and{" "}
+        <a href="https://github.com/pixelsnow">Valeria Vagapova</a>
+      </Col>
     </Row>
   );
 };
