@@ -6,7 +6,7 @@ import Modal from "react-bootstrap/Modal";
 import LoginForm from "../Form/LoginForm";
 import RegisterForm from "../Form/RegisterForm";
 
-import { resetGame, setModal } from "../../features/GameSlice";
+import { resetGame, setModal, setWordToGuess } from "../../features/GameSlice";
 import classes from "./message.module.css";
 import { AuthContext } from "../../context/auth-context";
 import BtnSuccess from "../Button/success/BtnSuccess";
@@ -22,6 +22,7 @@ const Message: React.FC = () => {
   const handleClose = () => {
     dispatch(setModal(false));
     dispatch(resetGame());
+    dispatch(setWordToGuess());
   };
 
   const handleSubmitScore = async () => {
