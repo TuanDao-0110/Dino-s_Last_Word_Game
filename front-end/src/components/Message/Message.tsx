@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import Tab from "react-bootstrap/Tab";
 import Tabs from "react-bootstrap/Tabs";
 import { useAppDispatch, useAppSelector } from "../../hooks/hooks";
@@ -6,7 +6,7 @@ import Modal from "react-bootstrap/Modal";
 import LoginForm from "../Form/LoginForm";
 import RegisterForm from "../Form/RegisterForm";
 
-import { setModal } from "../../features/GameSlice";
+import { resetGame, setModal } from "../../features/GameSlice";
 import classes from "./message.module.css";
 import { AuthContext } from "../../context/auth-context";
 import BtnSuccess from "../Button/success/BtnSuccess";
@@ -19,7 +19,11 @@ const Message: React.FC = () => {
   const { showModal, score } = useAppSelector((state) => state.game);
   const player = useAppSelector((state) => state.player);
 
-  const handleClose = () => dispatch(setModal(false));
+  const handleClose = () => {
+    dispatch(setModal(false));
+    dispatch(resetGame());
+  };
+
   const handleSubmitScore = async () => {
     if (currentUser) {
       handleClose();
@@ -27,6 +31,9 @@ const Message: React.FC = () => {
       await dispatch(getAllScoreDispatch());
     }
   };
+
+  useEffect(() => console.log("showModal", showModal), [showModal]);
+
   return (
     <div className={classes.modal_container}>
       <Modal

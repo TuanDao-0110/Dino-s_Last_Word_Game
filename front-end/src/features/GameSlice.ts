@@ -48,6 +48,7 @@ const gameSlice = createSlice({
     },
 
     setModal: (state, action) => {
+      console.log("modal set to", action.payload);
       state.showModal = action.payload;
     },
     setHint: (state, action: PayloadAction<string>) => {
