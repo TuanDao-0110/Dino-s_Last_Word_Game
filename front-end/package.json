@@ -33,7 +33,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
-  "proxy": "http://localhost:4000",
+  "proxy": "https://dino-game.onrender.com",
   "eslintConfig": {
     "extends": [
       "react-app",
