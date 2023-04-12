@@ -105,6 +105,7 @@ const gameSlice = createSlice({
     resetGame: (state) => {
       // state.guessedLetters = [];
       // state.gameStatus = "playing";
+      setWordToGuess();
       return {
         ...state,
         guessedLetters: [],
@@ -116,7 +117,7 @@ const gameSlice = createSlice({
     nextGame: (state) => {
       state.guessedLetters = [];
       state.gameStatus = "playing";
-      /* setWordToGuess(); */
+      setWordToGuess();
     },
     addToLeaderboard: (
       state,

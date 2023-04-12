@@ -22,7 +22,6 @@ const Message: React.FC = () => {
   const handleClose = () => {
     dispatch(setModal(false));
     dispatch(resetGame());
-    dispatch(setWordToGuess());
   };
 
   const handleSubmitScore = async () => {
@@ -32,8 +31,6 @@ const Message: React.FC = () => {
       await dispatch(getAllScoreDispatch());
     }
   };
-
-  useEffect(() => console.log("showModal", showModal), [showModal]);
 
   return (
     <div className={classes.modal_container}>
