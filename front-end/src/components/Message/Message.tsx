@@ -10,7 +10,7 @@ import { setModal } from "../../features/GameSlice";
 import classes from "./message.module.css";
 import { AuthContext } from "../../context/auth-context";
 import BtnSuccess from "../Button/success/BtnSuccess";
-import { getUserInfor, postNewScore } from "../../api/userapi";
+import { getUserInfo, postNewScore } from "../../api/userapi";
 import { getAllScoreDispatch } from "../../features/PlayerSlice";
 
 const Message: React.FC = () => {
@@ -21,9 +21,9 @@ const Message: React.FC = () => {
   const handleClose = () => dispatch(setModal(false));
   const handleSubmitScore = async () => {
     if (currentUser) {
+      handleClose();
       await postNewScore(currentUser, { score });
       await dispatch(getAllScoreDispatch());
-      handleClose();
     }
   };
   return (
@@ -66,9 +66,7 @@ const Message: React.FC = () => {
           </>
         ) : (
           <>
-            <Modal.Body>
-              Would you like to save your score to the system?
-            </Modal.Body>
+            <Modal.Body>Would you like to save your score?</Modal.Body>
             <Modal.Footer>
               <BtnSuccess
                 clickHandler={handleSubmitScore}

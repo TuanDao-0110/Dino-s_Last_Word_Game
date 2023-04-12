@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { getAllScore, getUserInfor, postNewScore } from "../../api/userapi";
+import { getAllScore, getUserInfo, postNewScore } from "../../api/userapi";
 import { BtnPrimary } from "../../assets/export_component/resource";
 import { AuthContext } from "../../context/auth-context";
 import { setPlayerDispatch } from "../../features/PlayerSlice";
