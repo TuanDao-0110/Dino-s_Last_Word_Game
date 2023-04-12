@@ -14,7 +14,7 @@ const app = express();
 app.use(cors());
 app.use(bodyParser.json());
 app.use(morgan(":method :url :status :response-time ms "));
-app.use(express.static(path.resolve(__dirname, "../build")));
+// app.use(express.static(path.resolve(__dirname, "../build")));
 
 app.use(welcomeRouter);
 app.use("/api/word", wordRouter);

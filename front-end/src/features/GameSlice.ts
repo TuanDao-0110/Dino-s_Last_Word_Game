@@ -1,5 +1,4 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { stat } from "fs";
 import { getAllWords, getWordByCategory } from "../api/wordapi";
 import { AppDispatch } from "../app/store";
 import { Categories, Word_Type } from "../types/API.model";
