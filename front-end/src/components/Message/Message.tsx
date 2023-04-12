@@ -11,13 +11,14 @@ import classes from "./message.module.css";
 import { AuthContext } from "../../context/auth-context";
 import BtnSuccess from "../Button/success/BtnSuccess";
 import { getUserInfo, postNewScore } from "../../api/userapi";
-import { getAllScoreDispatch } from "../../features/PlayerSlice";
+import { getAllScoreDispatch, setAllScore } from "../../features/PlayerSlice";
 
 const Message: React.FC = () => {
   const dispatch = useAppDispatch();
   const { currentUser } = useContext(AuthContext);
   const { showModal, score } = useAppSelector((state) => state.game);
-  const { players } = useAppSelector((state) => state.player);
+  const player = useAppSelector((state) => state.player);
+
   const handleClose = () => dispatch(setModal(false));
   const handleSubmitScore = async () => {
     if (currentUser) {
@@ -39,7 +40,7 @@ const Message: React.FC = () => {
           <Modal.Title>
             Great job
             {currentUser
-              ? ", " + players?.userInfo._fieldsProto?.name.stringValue
+              ? ", " + player.players?.userInfo._fieldsProto?.name.stringValue
               : ""}
             !
           </Modal.Title>
