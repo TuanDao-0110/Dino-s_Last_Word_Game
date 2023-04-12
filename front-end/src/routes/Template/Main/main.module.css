@@ -1,5 +1,5 @@
 .main_container {
-  height: 100vh;
+  padding: 0 0 3rem;
   display: grid;
   grid-template-columns: 2fr 2fr 2fr;
   align-content: baseline;
