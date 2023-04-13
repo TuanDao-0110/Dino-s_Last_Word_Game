@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import Tab from "react-bootstrap/Tab";
 import Tabs from "react-bootstrap/Tabs";
 import { useAppDispatch, useAppSelector } from "../../hooks/hooks";
@@ -6,26 +6,32 @@ import Modal from "react-bootstrap/Modal";
 import LoginForm from "../Form/LoginForm";
 import RegisterForm from "../Form/RegisterForm";
 
-import { setModal } from "../../features/GameSlice";
+import { resetGame, setModal, setWordToGuess } from "../../features/GameSlice";
 import classes from "./message.module.css";
 import { AuthContext } from "../../context/auth-context";
 import BtnSuccess from "../Button/success/BtnSuccess";
-import { getUserInfor, postNewScore } from "../../api/userapi";
-import { getAllScoreDispatch } from "../../features/PlayerSlice";
+import { getUserInfo, postNewScore } from "../../api/userapi";
+import { getAllScoreDispatch, setAllScore } from "../../features/PlayerSlice";
 
 const Message: React.FC = () => {
   const dispatch = useAppDispatch();
   const { currentUser } = useContext(AuthContext);
   const { showModal, score } = useAppSelector((state) => state.game);
-  const { players } = useAppSelector((state) => state.player);
-  const handleClose = () => dispatch(setModal(false));
+  const player = useAppSelector((state) => state.player);
+
+  const handleClose = () => {
+    dispatch(setModal(false));
+    dispatch(resetGame());
+  };
+
   const handleSubmitScore = async () => {
     if (currentUser) {
+      handleClose();
       await postNewScore(currentUser, { score });
       await dispatch(getAllScoreDispatch());
-      handleClose();
     }
   };
+
   return (
     <div className={classes.modal_container}>
       <Modal
@@ -39,7 +45,7 @@ const Message: React.FC = () => {
           <Modal.Title>
             Great job
             {currentUser
-              ? ", " + players?.userInfo._fieldsProto?.name.stringValue
+              ? ", " + player.players?.userInfo._fieldsProto?.name.stringValue
               : ""}
             !
           </Modal.Title>
@@ -66,9 +72,7 @@ const Message: React.FC = () => {
           </>
         ) : (
           <>
-            <Modal.Body>
-              Would you like to save your score to the system?
-            </Modal.Body>
+            <Modal.Body>Would you like to save your score?</Modal.Body>
             <Modal.Footer>
               <BtnSuccess
                 clickHandler={handleSubmitScore}

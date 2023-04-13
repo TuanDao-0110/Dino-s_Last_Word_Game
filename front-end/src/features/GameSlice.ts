@@ -48,6 +48,7 @@ const gameSlice = createSlice({
     },
 
     setModal: (state, action) => {
+      console.log("modal set to", action.payload);
       state.showModal = action.payload;
     },
     setHint: (state, action: PayloadAction<string>) => {
@@ -104,6 +105,7 @@ const gameSlice = createSlice({
     resetGame: (state) => {
       // state.guessedLetters = [];
       // state.gameStatus = "playing";
+      setWordToGuess();
       return {
         ...state,
         guessedLetters: [],
@@ -115,7 +117,7 @@ const gameSlice = createSlice({
     nextGame: (state) => {
       state.guessedLetters = [];
       state.gameStatus = "playing";
-      /* setWordToGuess(); */
+      setWordToGuess();
     },
     addToLeaderboard: (
       state,

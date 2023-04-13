@@ -33,7 +33,7 @@ export const getAllScore = async () => {
   }
 };
 
-export const getUserInfor = async (currentUser: User) => {
+export const getUserInfo = async (currentUser: User) => {
   try {
     const token = await currentUser.getIdToken();
     const uid = currentUser.uid;
