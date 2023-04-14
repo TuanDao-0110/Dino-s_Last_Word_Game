@@ -3,3 +3,7 @@
   flex-direction: column;
   height: 100svh;
 }
+
+.main_row {
+  height: 100%;
+}

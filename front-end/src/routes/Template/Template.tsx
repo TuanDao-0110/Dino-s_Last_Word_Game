@@ -11,7 +11,7 @@ export const Template: React.FC = () => {
   return (
     <Container className={classes.template} fluid>
       <Header />
-      <Row>
+      <Row className={classes.main_row}>
         <Outlet />
       </Row>
       <Footer />
