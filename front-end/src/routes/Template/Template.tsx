@@ -5,9 +5,11 @@ import { Outlet } from "react-router-dom";
 import { Header } from "./Header/Header";
 import { Footer } from "./Footer/Footer";
 
+import classes from "./template.module.css";
+
 export const Template: React.FC = () => {
   return (
-    <Container fluid>
+    <Container className={classes.template} fluid>
       <Header />
       <Row>
         <Outlet />
