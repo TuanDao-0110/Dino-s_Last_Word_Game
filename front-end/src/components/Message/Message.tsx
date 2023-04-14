@@ -22,6 +22,7 @@ const Message: React.FC = () => {
   const handleClose = () => {
     dispatch(setModal(false));
     dispatch(resetGame());
+    dispatch(setWordToGuess());
   };
 
   const handleSubmitScore = async () => {

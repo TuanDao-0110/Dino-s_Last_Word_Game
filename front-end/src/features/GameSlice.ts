@@ -103,9 +103,10 @@ const gameSlice = createSlice({
       state.gameStatus = action.payload;
     },
     resetGame: (state) => {
+      console.log("resetting game");
       // state.guessedLetters = [];
       // state.gameStatus = "playing";
-      setWordToGuess();
+
       return {
         ...state,
         guessedLetters: [],
