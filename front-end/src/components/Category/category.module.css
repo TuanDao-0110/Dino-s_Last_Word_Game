@@ -24,6 +24,10 @@
   margin: 0;
 }
 
+.category_info p {
+  margin: 0;
+}
+
 .category_container h2 {
   margin-bottom: 1rem;
 }

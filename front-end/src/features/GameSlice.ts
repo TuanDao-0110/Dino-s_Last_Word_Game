@@ -58,9 +58,11 @@ const gameSlice = createSlice({
     setCategory: (state, action: PayloadAction<Categories>) => {
       state.category = action.payload;
     },
-    /* setRandomCategory: (state, action: PayloadAction<Categories>) => {
-      state.randomCategory = action.payload;
-    }, */
+    setRandomCategory: (state) => {
+      const categoriesArray = Object.values(Categories).filter((category) => category !== Categories.ALL);
+      const randomIndex = Math.floor(Math.random() * categoriesArray.length);
+      state.randomCategory = categoriesArray[randomIndex];
+    },
     setWordToGuess: (state) => {
       console.log("setWordToGuess called", state.word);
       if (!state.word) {
@@ -75,38 +77,28 @@ const gameSlice = createSlice({
           const index = Math.floor(Math.random() * word.length);
           state.wordToGuess = word[index].toUpperCase();
           console.log("setting word to ", word[index].toUpperCase());
-        } else if (
-          state.category === Categories.ALL &&
-          typeof word === "object" &&
-          Categories.ANIMALS in word
-        ) {
+        } else if (state.category === Categories.ALL && typeof word === "object" && Categories.ANIMALS in word) {
           // if category is ALL, word array is object and
           console.log("word", word);
           console.log("Categories.ANIMALS", Categories.ANIMALS);
           console.log("in word", Categories.ANIMALS in word);
+
           const index = Math.floor(Math.random() * word[randomCategory].length);
           state.wordToGuess = word[randomCategory][index].toUpperCase();
-          console.log(
-            "setting word to ",
-            word[randomCategory][index].toUpperCase()
-          );
+          console.log("setting word to ", word[randomCategory][index].toUpperCase());
         }
       }
     },
     addGuessedLetter: (state, action: PayloadAction<string>) => {
       state.guessedLetters.push(action.payload);
     },
-    setGameStatus: (
-      state,
-      action: PayloadAction<"playing" | "won" | "lost">
-    ) => {
+    setGameStatus: (state, action: PayloadAction<"playing" | "won" | "lost">) => {
       state.gameStatus = action.payload;
     },
     resetGame: (state) => {
       console.log("resetting game");
       // state.guessedLetters = [];
       // state.gameStatus = "playing";
-
       return {
         ...state,
         guessedLetters: [],
@@ -120,10 +112,7 @@ const gameSlice = createSlice({
       state.gameStatus = "playing";
       setWordToGuess();
     },
-    addToLeaderboard: (
-      state,
-      action: PayloadAction<{ name: string; score: number }>
-    ) => {
+    addToLeaderboard: (state, action: PayloadAction<{ name: string; score: number }>) => {
       state.leaderboard.push(action.payload);
     },
   },
@@ -159,6 +148,6 @@ export const {
   setHint,
   setModal,
   nextGame,
-  /* setRandomCategory, */
+  setRandomCategory, 
 } = gameSlice.actions;
 export default gameSlice.reducer;
