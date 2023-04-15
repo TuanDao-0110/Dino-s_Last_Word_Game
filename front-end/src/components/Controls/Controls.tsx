@@ -12,6 +12,7 @@ import {
   setModal,
   setWordToGuess,
   getWordDispatch,
+  setRandomCategory,
 } from "../../features/GameSlice";
 import { Categories } from "../../types/API.model";
 
@@ -28,6 +29,7 @@ const Controls = () => {
   };
   const playAgain = () => {
     dispatch(resetGame());
+    dispatch(setRandomCategory())
     dispatch(setWordToGuess());
     dispatch(setCategory(getRandomCategory()));
   };
@@ -40,6 +42,7 @@ const Controls = () => {
 
   const playNext = async () => {
     await dispatch(getWordDispatch(category));
+    dispatch(setRandomCategory());
     dispatch(setWordToGuess());
     dispatch(nextGame());
   };
