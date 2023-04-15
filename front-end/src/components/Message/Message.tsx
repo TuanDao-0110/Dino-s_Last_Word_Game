@@ -1,17 +1,16 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext } from "react";
 import Tab from "react-bootstrap/Tab";
 import Tabs from "react-bootstrap/Tabs";
 import { useAppDispatch, useAppSelector } from "../../hooks/hooks";
 import Modal from "react-bootstrap/Modal";
 import LoginForm from "../Form/LoginForm";
 import RegisterForm from "../Form/RegisterForm";
-
 import { resetGame, setModal, setWordToGuess } from "../../features/GameSlice";
 import classes from "./message.module.css";
 import { AuthContext } from "../../context/auth-context";
 import BtnSuccess from "../Button/success/BtnSuccess";
-import { getUserInfo, postNewScore } from "../../api/userapi";
-import { getAllScoreDispatch, setAllScore } from "../../features/PlayerSlice";
+import { postNewScore } from "../../api/userapi";
+import { getAllScoreDispatch } from "../../features/PlayerSlice";
 
 const Message: React.FC = () => {
   const dispatch = useAppDispatch();
@@ -54,9 +53,9 @@ const Message: React.FC = () => {
         {!currentUser ? (
           <>
             <Modal.Body>
-              Enter your nickname to join the leaderboard:
+              Enter your nickname to join the leaderboard:{" "}
             </Modal.Body>
-            <Modal.Footer>
+            <Modal.Body>
               <Tabs
                 defaultActiveKey="profile"
                 id="uncontrolled-tab-example"
@@ -69,7 +68,7 @@ const Message: React.FC = () => {
                   <RegisterForm />
                 </Tab>
               </Tabs>
-            </Modal.Footer>
+            </Modal.Body>
           </>
         ) : (
           <>

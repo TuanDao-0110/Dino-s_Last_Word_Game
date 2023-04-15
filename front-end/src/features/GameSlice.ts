@@ -2,6 +2,7 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { getAllWords, getWordByCategory } from "../api/wordapi";
 import { AppDispatch } from "../app/store";
 import { Categories, Word_Type } from "../types/API.model";
+
 let words: string[] = ["test"];
 
 interface GameState {
@@ -16,6 +17,7 @@ interface GameState {
   leaderboard: { name: string; score: number }[];
   hints: string[];
   showModal: boolean;
+  showLogin: boolean;
 }
 
 const initialState: GameState = {
@@ -29,6 +31,7 @@ const initialState: GameState = {
   score: 0,
   hints: [],
   showModal: false,
+  showLogin: false,
 };
 
 const gameSlice = createSlice({
@@ -51,6 +54,11 @@ const gameSlice = createSlice({
       console.log("modal set to", action.payload);
       state.showModal = action.payload;
     },
+
+    setLogin: (state, action) => {
+      state.showLogin = action.payload;
+    },
+
     setHint: (state, action: PayloadAction<string>) => {
       state.hints.push(action.payload);
       state.score--;
@@ -59,7 +67,9 @@ const gameSlice = createSlice({
       state.category = action.payload;
     },
     setRandomCategory: (state) => {
-      const categoriesArray = Object.values(Categories).filter((category) => category !== Categories.ALL);
+      const categoriesArray = Object.values(Categories).filter(
+        (category) => category !== Categories.ALL
+      );
       const randomIndex = Math.floor(Math.random() * categoriesArray.length);
       state.randomCategory = categoriesArray[randomIndex];
     },
@@ -77,7 +87,11 @@ const gameSlice = createSlice({
           const index = Math.floor(Math.random() * word.length);
           state.wordToGuess = word[index].toUpperCase();
           console.log("setting word to ", word[index].toUpperCase());
-        } else if (state.category === Categories.ALL && typeof word === "object" && Categories.ANIMALS in word) {
+        } else if (
+          state.category === Categories.ALL &&
+          typeof word === "object" &&
+          Categories.ANIMALS in word
+        ) {
           // if category is ALL, word array is object and
           console.log("word", word);
           console.log("Categories.ANIMALS", Categories.ANIMALS);
@@ -85,14 +99,20 @@ const gameSlice = createSlice({
 
           const index = Math.floor(Math.random() * word[randomCategory].length);
           state.wordToGuess = word[randomCategory][index].toUpperCase();
-          console.log("setting word to ", word[randomCategory][index].toUpperCase());
+          console.log(
+            "setting word to ",
+            word[randomCategory][index].toUpperCase()
+          );
         }
       }
     },
     addGuessedLetter: (state, action: PayloadAction<string>) => {
       state.guessedLetters.push(action.payload);
     },
-    setGameStatus: (state, action: PayloadAction<"playing" | "won" | "lost">) => {
+    setGameStatus: (
+      state,
+      action: PayloadAction<"playing" | "won" | "lost">
+    ) => {
       state.gameStatus = action.payload;
     },
     resetGame: (state) => {
@@ -112,7 +132,10 @@ const gameSlice = createSlice({
       state.gameStatus = "playing";
       setWordToGuess();
     },
-    addToLeaderboard: (state, action: PayloadAction<{ name: string; score: number }>) => {
+    addToLeaderboard: (
+      state,
+      action: PayloadAction<{ name: string; score: number }>
+    ) => {
       state.leaderboard.push(action.payload);
     },
   },
@@ -147,7 +170,8 @@ export const {
   setScore,
   setHint,
   setModal,
+  setLogin,
   nextGame,
-  setRandomCategory, 
+  setRandomCategory,
 } = gameSlice.actions;
 export default gameSlice.reducer;
