@@ -16,7 +16,7 @@ export const postNewScore = async (currentUser: User, newScore: NEW_SCORE) => {
     return data;
   } catch (error) {}
 };
-      
+
 export const getAllScore = async () => {
   try {
     // const token = await currentUser.getIdToken();
@@ -25,11 +25,15 @@ export const getAllScore = async () => {
       method: METHOD.GET,
       // headers: setUpheader(token),
     });
+    console.log("DATA GETALLSCORE", data);
+    console.log("RESULT GETALLSCORE", data.result);
     return data.result;
-  } catch (error) {}
+  } catch (error) {
+    console.log("getAllScore error", error);
+  }
 };
 
-export const getUserInfor = async (currentUser: User) => {
+export const getUserInfo = async (currentUser: User) => {
   try {
     const token = await currentUser.getIdToken();
     const uid = currentUser.uid;
@@ -37,9 +41,8 @@ export const getUserInfor = async (currentUser: User) => {
       url: `${URL.USER_URL}/${uid}`,
       headers: setUpheader(token),
     });
-    console.log(data)
+    console.log(data);
     // data now can dispatch to redux
     return data;
-  } catch (error) {
-  }
+  } catch (error) {}
 };

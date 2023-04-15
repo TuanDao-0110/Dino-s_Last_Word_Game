@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { User } from "firebase/auth";
-import { getAllScore, getUserInfor } from "../api/userapi";
+import { getAllScore, getUserInfo } from "../api/userapi";
 import { AppDispatch } from "../app/store";
 import { AllScore_Type, Player, PlayerState } from "../types/hangman.model";
 
@@ -24,7 +24,7 @@ export const PlayerSlice = createSlice({
 
 export const setPlayerDispatch = (currentUser: User) => {
   return async (dispatch: AppDispatch) => {
-    const data = (await getUserInfor(currentUser)) as Player;
+    const data = (await getUserInfo(currentUser)) as Player;
     dispatch(setPlayer(data));
   };
 };
@@ -36,4 +36,5 @@ export const getAllScoreDispatch = () => {
 };
 export default PlayerSlice.reducer;
 export const { setPlayer, setAllScore } = PlayerSlice.actions;
-export const selectPlayers = (state: { player: PlayerState }) => state.player.players;
+export const selectPlayers = (state: { player: PlayerState }) =>
+  state.player.players;

@@ -9,7 +9,7 @@ import Key from "../../components/Key/Key";
 import Keyboard from "../../components/Keyboard/Keyboard";
 import LeaderBoard from "../../components/LeaderBoard/LeaderBoard";
 import Message from "../../components/Message/Message";
-import Score from "../../components/Score/Score";
+
 import Word from "../../components/Word/Word";
 import Object from "../../components/Object/Object";
 import WordLetters from "../../components/WordLetters/WordLetters";
@@ -28,7 +28,6 @@ export {
   Keyboard,
   LeaderBoard,
   Message,
-  Score,
   Word,
   Object,
   WordLetters,

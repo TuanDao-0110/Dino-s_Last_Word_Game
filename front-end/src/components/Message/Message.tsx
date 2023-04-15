@@ -5,7 +5,7 @@ import { useAppDispatch, useAppSelector } from "../../hooks/hooks";
 import Modal from "react-bootstrap/Modal";
 import LoginForm from "../Form/LoginForm";
 import RegisterForm from "../Form/RegisterForm";
-import { setModal } from "../../features/GameSlice";
+import { resetGame, setModal, setWordToGuess } from "../../features/GameSlice";
 import classes from "./message.module.css";
 import { AuthContext } from "../../context/auth-context";
 import BtnSuccess from "../Button/success/BtnSuccess";
@@ -16,15 +16,22 @@ const Message: React.FC = () => {
   const dispatch = useAppDispatch();
   const { currentUser } = useContext(AuthContext);
   const { showModal, score } = useAppSelector((state) => state.game);
-  const { players } = useAppSelector((state) => state.player);
-  const handleClose = () => dispatch(setModal(false));
+  const player = useAppSelector((state) => state.player);
+
+  const handleClose = () => {
+    dispatch(setModal(false));
+    dispatch(resetGame());
+    dispatch(setWordToGuess());
+  };
+
   const handleSubmitScore = async () => {
     if (currentUser) {
+      handleClose();
       await postNewScore(currentUser, { score });
       await dispatch(getAllScoreDispatch());
-      handleClose();
     }
   };
+
   return (
     <div className={classes.modal_container}>
       <Modal
@@ -38,7 +45,7 @@ const Message: React.FC = () => {
           <Modal.Title>
             Great job
             {currentUser
-              ? ", " + players?.userInfo._fieldsProto?.name.stringValue
+              ? ", " + player.players?.userInfo._fieldsProto?.name.stringValue
               : ""}
             !
           </Modal.Title>
@@ -46,9 +53,9 @@ const Message: React.FC = () => {
         {!currentUser ? (
           <>
             <Modal.Body>
-              Enter your nickname to join the leaderboard:
+              Enter your nickname to join the leaderboard:{" "}
             </Modal.Body>
-            <Modal.Footer>
+            <Modal.Body>
               <Tabs
                 defaultActiveKey="profile"
                 id="uncontrolled-tab-example"
@@ -61,13 +68,11 @@ const Message: React.FC = () => {
                   <RegisterForm />
                 </Tab>
               </Tabs>
-            </Modal.Footer>
+            </Modal.Body>
           </>
         ) : (
           <>
-            <Modal.Body>
-              Would you like to save your score to the system?
-            </Modal.Body>
+            <Modal.Body>Would you like to save your score?</Modal.Body>
             <Modal.Footer>
               <BtnSuccess
                 clickHandler={handleSubmitScore}
