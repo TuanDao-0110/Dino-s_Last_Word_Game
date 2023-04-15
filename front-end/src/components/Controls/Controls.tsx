@@ -33,6 +33,7 @@ const Controls = () => {
   };
 
   const stopPlaying = () => {
+    console.log("lost, showing modal");
     dispatch(setGameStatus("lost"));
     dispatch(setModal(true));
   };

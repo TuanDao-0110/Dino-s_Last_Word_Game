@@ -85,6 +85,7 @@ const Main = () => {
       guessedLetters.filter((letter) => !wordToGuess.includes(letter)).length >
       8
     ) {
+      console.log("check in main, setting showModal to true");
       dispatch(setGameStatus("lost"));
       dispatch(setModal(true));
     }
