@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Modal, Row, Tab, Tabs } from "react-bootstrap";
 import { Button } from "react-bootstrap";
 import { AuthContext } from "../../../context/auth-context";
@@ -8,14 +8,46 @@ import { setLogin } from "../../../features/GameSlice";
 import LoginForm from "../../../components/Form/LoginForm";
 import RegisterForm from "../../../components/Form/RegisterForm";
 
+import { setPlayerDispatch } from "../../../features/PlayerSlice";
+
+// Firebase
+import { useAuthState } from "react-firebase-hooks/auth";
+import { getAuth } from "firebase/auth";
+
 export const Header = () => {
+  /*  const auth = getAuth();
+  const [user] = useAuthState(auth); */
+
   const dispatch = useAppDispatch();
   const { showLogin } = useAppSelector((state) => state.game);
-  const { currentUser, signOut } = useContext(AuthContext);
+  const { currentUser, setCurrentUser, signOut } = useContext(AuthContext);
   const { players } = useAppSelector((state) => state.player);
+  const [activeTab, setActiveTab] = useState("login");
 
   const handleCloseLogin = () => dispatch(setLogin(false));
-  const handleShowLogin = () => dispatch(setLogin(true));
+  const handleShowLogin = () => {
+    setActiveTab("login");
+    dispatch(setLogin(true));
+  };
+
+  const handleShowRegister = () => {
+    setActiveTab("register");
+    dispatch(setLogin(true));
+  };
+
+  /* useEffect(() => {
+    console.log("CURRUSER", currentUser);
+  }, [currentUser]);
+  useEffect(() => {
+    console.log("USEEFFECT", currentUser, user);
+    if (!currentUser && user) {
+      dispatch(setPlayerDispatch(user));
+      setCurrentUser(user);
+      dispatch(setLogin(false));
+    }
+  }, []);
+
+  console.log("PLAYERS", players); */
 
   return (
     <div>
@@ -30,7 +62,7 @@ export const Header = () => {
                 Login
               </Button>
               <Button
-                onClick={handleShowLogin}
+                onClick={handleShowRegister}
                 className={classes.header_reg_button}
               >
                 Sign up
@@ -51,7 +83,7 @@ export const Header = () => {
               </Button>
             </>
           )}
-        </div>{" "}
+        </div>
       </Row>
       <div>
         <Modal show={showLogin} onHide={handleCloseLogin}>
@@ -60,14 +92,14 @@ export const Header = () => {
               <Modal.Title>Login or signup to join the leaderboard</Modal.Title>
             </Modal.Header>
             <Tabs
-              defaultActiveKey="profile"
+              defaultActiveKey={activeTab}
               id="uncontrolled-tab-example"
               className="mb-3"
             >
-              <Tab eventKey="home" title="Login">
+              <Tab eventKey="login" title="Login">
                 <LoginForm />
               </Tab>
-              <Tab eventKey="profile" title="Register">
+              <Tab eventKey="register" title="Register">
                 <RegisterForm />
               </Tab>
             </Tabs>

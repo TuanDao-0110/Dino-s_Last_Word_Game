@@ -29,6 +29,7 @@ function LoginForm() {
     try {
       // Send the email and password to firebase
       const userCredential = await signInUser(email, password);
+      console.log("SETTING", userCredential?.user);
       if (userCredential) {
         resetFormFields();
         setCurrentUser(userCredential.user);
@@ -36,7 +37,9 @@ function LoginForm() {
         dispatch(setLogin(false));
         navigate("/");
       }
-    } catch (error: any) {}
+    } catch (error: any) {
+      console.log(error);
+    }
   };
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
