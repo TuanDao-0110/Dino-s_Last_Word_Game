@@ -50,63 +50,51 @@ export const Header = () => {
   console.log("PLAYERS", players); */
 
   return (
-    <div>
-      <Row>
-        <div className={classes.header_container}>
-          {!currentUser && (
-            <>
-              <Button
-                onClick={handleShowLogin}
-                className={classes.header_button}
-              >
-                Login
-              </Button>
-              <Button
-                onClick={handleShowRegister}
-                className={classes.header_reg_button}
-              >
-                Sign up
-              </Button>
-            </>
-          )}
-          {currentUser && (
-            <>
-              <h4 className={classes.header_text}>
-                🤩😜🤨🥰🥰🖐🏻 {players?.userInfo._fieldsProto?.name.stringValue}{" "}
-                🤩🥳😜🤨🥰🥰🖐🏻{" "}
-              </h4>
-              <Button
-                onClick={() => signOut()}
-                className={classes.header_button}
-              >
-                Logout
-              </Button>
-            </>
-          )}
+    <div className={classes.header_container}>
+      {!currentUser && (
+        <>
+          <Button onClick={handleShowLogin} className={classes.header_button}>
+            Login
+          </Button>
+          <Button
+            onClick={handleShowRegister}
+            className={classes.header_reg_button}
+          >
+            Sign up
+          </Button>
+        </>
+      )}
+      {currentUser && (
+        <>
+          <h4 className={classes.header_text}>
+            🤩😜🤨🥰🥰🖐🏻 {players?.userInfo._fieldsProto?.name.stringValue}{" "}
+            🤩🥳😜🤨🥰🥰🖐🏻{" "}
+          </h4>
+          <Button onClick={() => signOut()} className={classes.header_button}>
+            Logout
+          </Button>
+        </>
+      )}
+      <Modal show={showLogin} onHide={handleCloseLogin}>
+        <div className={classes.loginModal_container}>
+          <Modal.Header closeButton>
+            <Modal.Title>Login or signup to join the leaderboard</Modal.Title>
+          </Modal.Header>
+          <Tabs
+            defaultActiveKey={activeTab}
+            id="uncontrolled-tab-example"
+            className="mb-3"
+          >
+            <Tab eventKey="login" title="Login">
+              <LoginForm />
+            </Tab>
+            <Tab eventKey="register" title="Register">
+              <RegisterForm />
+            </Tab>
+          </Tabs>
+          <Modal.Footer></Modal.Footer>
         </div>
-      </Row>
-      <div>
-        <Modal show={showLogin} onHide={handleCloseLogin}>
-          <div className={classes.loginModal_container}>
-            <Modal.Header closeButton>
-              <Modal.Title>Login or signup to join the leaderboard</Modal.Title>
-            </Modal.Header>
-            <Tabs
-              defaultActiveKey={activeTab}
-              id="uncontrolled-tab-example"
-              className="mb-3"
-            >
-              <Tab eventKey="login" title="Login">
-                <LoginForm />
-              </Tab>
-              <Tab eventKey="register" title="Register">
-                <RegisterForm />
-              </Tab>
-            </Tabs>
-            <Modal.Footer></Modal.Footer>
-          </div>
-        </Modal>
-      </div>
+      </Modal>
     </div>
   );
 };

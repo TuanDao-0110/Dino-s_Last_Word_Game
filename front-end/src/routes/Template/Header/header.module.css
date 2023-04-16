@@ -1,8 +1,10 @@
 .header_container {
+  position: absolute;
+  top: 0;
+  right: 0;
   display: flex;
   justify-content: flex-end;
   flex-direction: row;
-  background-color: #a0bbff;
 }
 
 .header_button,
