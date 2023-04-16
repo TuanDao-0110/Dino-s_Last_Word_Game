@@ -23,9 +23,12 @@ import m8 from "../../assets/dino_frames/m8.svg";
 
 import "./dino.css";
 
+import { useAppSelector } from "../../hooks/hooks";
+
 const Dino: React.FC<ObjectProps> = ({ wrongGuesses }) => {
+  const { gameStatus } = useAppSelector((state) => state.game);
   const dinoSource = () => {
-    if (wrongGuesses === 0) return dino0;
+    if (wrongGuesses === 0 || gameStatus === "won") return dino0;
     if (wrongGuesses === 1) return dino1;
     if (wrongGuesses === 2) return dino2;
     if (wrongGuesses === 3) return dino3;
