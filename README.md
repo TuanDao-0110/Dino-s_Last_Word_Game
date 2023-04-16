@@ -185,12 +185,15 @@ graph LR;
     }
     ```
   * Response Body
+  
     ```
     {
     statusCode:201,  
-   msg: add success
+    msg: add success
     }
+    
     ```
+    
   * Method GET all score 
     ```
     GET /api/user/ HTTP/1.1
