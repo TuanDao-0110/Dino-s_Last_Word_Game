@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Spinner } from "react-bootstrap";
+import { Spinner, Row } from "react-bootstrap";
 
 import { useAppDispatch, useAppSelector } from "../../../hooks/hooks";
 import {
@@ -101,7 +101,8 @@ const Main = () => {
 
   if (isLoading) return <Spinner />;
   return (
-    <div
+    // classname extra for now
+    <Row
       className={`${classes.main_container} ${
         guessedLetters.filter((letter) => !wordToGuess.includes(letter))
           .length >= 9
@@ -127,7 +128,7 @@ const Main = () => {
         <Category />
         {/* {gameStatus !== "playing" && <Controls />} */}
       </div>
-    </div>
+    </Row>
   );
 };
 
