@@ -14,6 +14,10 @@ import TipsAndUpdatesIcon from "@mui/icons-material/TipsAndUpdates";
 import { IconButton } from "@mui/material";
 import Typography from "@mui/material/Typography";
 import Popover from "@mui/material/Popover";
+import {
+  CircularProgressbarWithChildren,
+  buildStyles,
+} from "react-circular-progressbar";
 
 const Category: React.FC = () => {
   const { category, score, round, gameStatus, guessedLetters, wordToGuess } =
@@ -82,22 +86,47 @@ const Category: React.FC = () => {
             You can open any letter by sacrificing one point
           </Typography>
         </Popover>
-      </div>{" "}
+      </div>
       <div>
         <div className={classes.gameStatus_container}>
           <p className={classes.score}>
             Round: <span>{round}</span>
-          </p>{" "}
+          </p>
           <p className={classes.score}>
             Score: <span>{score}</span>
           </p>
         </div>
 
-        <ProgressBar
+        <div className={classes.circular_progress_bar_container}>
+          <CircularProgressbarWithChildren
+            className={classes.circular_progress_bar}
+            value={getMeteorProgress()}
+            strokeWidth={8}
+            styles={buildStyles({
+              textColor: "#000",
+              pathColor: "#ff8585",
+              trailColor: "#eee",
+              strokeLinecap: "round",
+              pathTransitionDuration: 0.5,
+            })}
+          >
+            <p className={classes.tries}>
+              <span>
+                {
+                  guessedLetters.filter(
+                    (letter) => !wordToGuess.includes(letter)
+                  ).length
+                }
+              </span>
+              /9
+            </p>
+          </CircularProgressbarWithChildren>
+        </div>
+        {/* <ProgressBar
           className={classes.progress_bar}
           variant="danger"
           now={getMeteorProgress()}
-        />
+        /> */}
         <div className={classes.category_info}>
           <p className={classes.category_display}>
             Word category: <span>{category}</span>

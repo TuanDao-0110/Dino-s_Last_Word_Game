@@ -61,6 +61,19 @@
 .progress_bar {
   color: aqua;
 }
+.circular_progress_bar_container {
+  width: 200px;
+}
+.circular_progress_bar {
+}
+
+.tries {
+  font-size: 2rem;
+}
+
+.tries span {
+  color: red;
+}
 
 .game_status {
   font-size: 2rem;

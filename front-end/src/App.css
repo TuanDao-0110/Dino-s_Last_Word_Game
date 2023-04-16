@@ -1,3 +1,17 @@
+:root {
+  --yellow-pale: #fffad2;
+  --yellow: #ffed43;
+  --orange: #ffbd39;
+  --red: #ff8585;
+  --blue: #5050ff;
+  --blue-dark: #3030d1;
+  --green: #35a070;
+  --gray-pale: #eee;
+  --gray-light: #ddd;
+  --gray-mid: #aaa;
+  --gray-dark: #333;
+}
+
 .App {
   display: flex;
   flex-direction: column;
