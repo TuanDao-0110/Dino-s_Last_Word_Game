@@ -1,18 +1,32 @@
+// React
 import { useContext, useEffect, useState } from "react";
-import { Modal, Row, Tab, Tabs } from "react-bootstrap";
-import { Button } from "react-bootstrap";
-import { AuthContext } from "../../../context/auth-context";
-import classes from "./header.module.css";
+
+// Redux
+import { setPlayerDispatch } from "../../../features/PlayerSlice";
 import { useAppDispatch, useAppSelector } from "../../../hooks/hooks";
 import { setLogin } from "../../../features/GameSlice";
-import LoginForm from "../../../components/Form/LoginForm";
-import RegisterForm from "../../../components/Form/RegisterForm";
 
-import { setPlayerDispatch } from "../../../features/PlayerSlice";
-
-// Firebase
+// Firebase, auth
 import { useAuthState } from "react-firebase-hooks/auth";
 import { getAuth } from "firebase/auth";
+import { AuthContext } from "../../../context/auth-context";
+
+// Bootstrap
+import { Modal, Row, Tab, Tabs } from "react-bootstrap";
+import { Button } from "react-bootstrap";
+
+// Resources / Components
+import {
+  LoginForm,
+  RegisterForm,
+  BtnPrimary,
+  BtnSuccess,
+  BtnDanger,
+  BtnWarning,
+} from "../../../assets/export_component/resource";
+
+// Styles
+import classes from "./header.module.css";
 
 export const Header = () => {
   /*  const auth = getAuth();
@@ -50,31 +64,23 @@ export const Header = () => {
   console.log("PLAYERS", players); */
 
   return (
-    <div className={classes.header_container}>
-      {!currentUser && (
-        <>
-          <Button onClick={handleShowLogin} className={classes.header_button}>
-            Login
-          </Button>
-          <Button
-            onClick={handleShowRegister}
-            className={classes.header_reg_button}
-          >
-            Sign up
-          </Button>
-        </>
-      )}
-      {currentUser && (
-        <>
-          <h4 className={classes.header_text}>
-            🤩😜🤨🥰🥰🖐🏻 {players?.userInfo._fieldsProto?.name.stringValue}{" "}
-            🤩🥳😜🤨🥰🥰🖐🏻{" "}
-          </h4>
-          <Button onClick={() => signOut()} className={classes.header_button}>
-            Logout
-          </Button>
-        </>
-      )}
+    <div>
+      <div className={classes.header_container}>
+        {!currentUser && (
+          <>
+            <BtnSuccess text="Login" clickHandler={handleShowLogin} />
+            <BtnPrimary text="Sign up" clickHandler={handleShowRegister} />
+          </>
+        )}
+        {currentUser && (
+          <>
+            <h4 className={classes.header_text}>
+              {players?.userInfo._fieldsProto?.name.stringValue}
+            </h4>
+            <BtnWarning text="Log out" clickHandler={() => signOut()} />
+          </>
+        )}
+      </div>
       <Modal show={showLogin} onHide={handleCloseLogin}>
         <div className={classes.loginModal_container}>
           <Modal.Header closeButton>

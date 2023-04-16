@@ -1,0 +1,9 @@
+.btn_custom_danger {
+  background-color: var(--red);
+  border: none;
+}
+
+.btn_custom_danger:hover {
+  background-color: #de5656;
+  border: none;
+}

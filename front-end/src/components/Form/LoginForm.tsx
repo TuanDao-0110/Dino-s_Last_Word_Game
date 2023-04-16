@@ -2,12 +2,13 @@ import React, { ChangeEvent, FormEvent, useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import FloatingLabel from "react-bootstrap/FloatingLabel";
 import Form from "react-bootstrap/Form";
-import Button from "react-bootstrap/Button";
+import { Button } from "react-bootstrap";
 import { signInUser } from "../../firebase/firebase";
 import { AuthContext } from "../../context/auth-context";
 import { setLogin } from "../../features/GameSlice";
 import { useAppDispatch } from "../../hooks/hooks";
 import { setPlayerDispatch } from "../../features/PlayerSlice";
+import { BtnSubmit } from "../../assets/export_component/resource";
 
 const defaultFormFields = {
   email: "",
@@ -68,9 +69,7 @@ function LoginForm() {
           required
         />
       </FloatingLabel>
-      <Button variant="primary" type="submit">
-        Login
-      </Button>
+      <BtnSubmit text="Login" />
     </Form>
   );
 }

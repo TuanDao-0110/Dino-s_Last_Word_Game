@@ -8,6 +8,7 @@ import { setLogin } from "../../features/GameSlice";
 import { AuthContext } from "../../context/auth-context";
 import { useAppDispatch } from "../../hooks/hooks";
 import { useNavigate } from "react-router-dom";
+import { BtnSubmit } from "../../assets/export_component/resource";
 
 const defaultFormFields = {
   name: "",
@@ -82,7 +83,7 @@ function RegisterForm() {
           required
         />
       </FloatingLabel>
-      <Button type="submit">Submit</Button>
+      <BtnSubmit text="Sign up" />
     </Form>
   );
 }

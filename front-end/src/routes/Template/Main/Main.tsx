@@ -103,11 +103,10 @@ const Main = () => {
   return (
     <div
       className={`${classes.main_container} ${
-        classes[
-          "w" +
-            guessedLetters.filter((letter) => !wordToGuess.includes(letter))
-              .length
-        ]
+        guessedLetters.filter((letter) => !wordToGuess.includes(letter))
+          .length >= 9
+          ? classes.game_over
+          : ""
       }`}
     >
       <div className={classes.mainLeaderboard_container}>

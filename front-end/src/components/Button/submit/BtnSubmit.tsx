@@ -1,18 +1,19 @@
 import { ButtonProps } from "../../../types/hangman.model";
 import { Button } from "react-bootstrap";
 
-import classes from "./btnSuccess.module.css";
+import classes from "./btnSubmit.module.css";
 
-const BtnSuccess: React.FC<ButtonProps> = ({ text, clickHandler }) => {
+const BtnSubmit: React.FC<ButtonProps> = ({ text, clickHandler }) => {
   return (
     <Button
       variant="success"
       className={classes.btn_custom_success}
       onClick={clickHandler}
+      type="submit"
     >
       {text}
     </Button>
   );
 };
 
-export default BtnSuccess;
+export default BtnSubmit;
