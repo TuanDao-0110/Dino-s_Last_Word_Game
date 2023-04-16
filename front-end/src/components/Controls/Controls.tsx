@@ -1,8 +1,4 @@
-import {
-  BtnDanger,
-  BtnPrimary,
-  BtnSuccess,
-} from "../../assets/export_component/resource";
+import { BtnDanger, BtnPrimary } from "../../assets/export_component/resource";
 import { useAppDispatch, useAppSelector } from "../../hooks/hooks";
 import {
   nextGame,
@@ -29,7 +25,7 @@ const Controls = () => {
   };
   const playAgain = () => {
     dispatch(resetGame());
-    dispatch(setRandomCategory())
+    dispatch(setRandomCategory());
     dispatch(setWordToGuess());
     dispatch(setCategory(getRandomCategory()));
   };

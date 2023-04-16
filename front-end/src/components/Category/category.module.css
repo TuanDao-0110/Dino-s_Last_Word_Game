@@ -1,3 +1,11 @@
+.gameStatus_container {
+  background-color: white;
+  text-align: center;
+  display: flex;
+  gap: 20px;
+  justify-content: space-between;
+}
+
 .category_container {
   background-color: white;
   width: 22rem;
@@ -43,7 +51,7 @@
 }
 
 .score {
-  font-size: 2rem;
+  font-size: 1.3rem;
 }
 
 .score span {

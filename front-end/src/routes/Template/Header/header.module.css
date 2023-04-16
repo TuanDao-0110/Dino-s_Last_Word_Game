@@ -1,0 +1,26 @@
+.header_container {
+  display: flex;
+  justify-content: flex-end;
+  flex-direction: row;
+  background-color: #a0bbff;
+}
+
+.header_button,
+.header_reg_button {
+  margin: 10px;
+}
+
+.header_reg_button {
+  background-color: #ff8585;
+  border: none;
+}
+
+.header_text {
+  display: flex;
+  align-items: center;
+  margin-right: 10px;
+}
+
+.loginModal_container {
+  padding: 20px;
+}

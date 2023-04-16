@@ -1,18 +1,13 @@
-import React, {
-  ChangeEvent,
-  FormEvent,
-  useContext,
-  useState,
-  useRef,
-} from "react";
+import React, { ChangeEvent, FormEvent, useContext, useState } from "react";
 import FloatingLabel from "react-bootstrap/FloatingLabel";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import { registerWithEmailAndPassword } from "../../firebase/firebase";
-import Board from "../../routes/Board/Board";
+import { setLogin } from "../../features/GameSlice";
+
 import { AuthContext } from "../../context/auth-context";
-import { useAppDispatch, useAppSelector } from "../../hooks/hooks";
-import { addToLeaderboard, setModal } from "../../features/GameSlice";
+import { useAppDispatch } from "../../hooks/hooks";
+import { useNavigate } from "react-router-dom";
 
 const defaultFormFields = {
   name: "",
@@ -21,13 +16,11 @@ const defaultFormFields = {
 };
 
 function RegisterForm() {
+  const dispatch = useAppDispatch();
   const [formFields, setFormFields] = useState(defaultFormFields);
   const { name, email, password } = formFields;
   const { currentUser, setCurrentUser } = useContext(AuthContext);
-
-  const dispatch = useAppDispatch();
-  const { score, showModal } = useAppSelector((state) => state.game);
-  const nameInput = useRef(null);
+  const navigate = useNavigate();
 
   const resetFormFields = () => {
     return setFormFields(defaultFormFields);
@@ -45,19 +38,19 @@ function RegisterForm() {
       if (userCredential) {
         resetFormFields();
         setCurrentUser(userCredential);
+        dispatch(setLogin(false));
+        navigate("/");
       }
     } catch (error: any) {
       console.log(error);
     }
   };
 
-  const handleClose = () => dispatch(setModal(false));
-
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
     setFormFields({ ...formFields, [name]: value });
   };
-  return !currentUser ? (
+  return (
     <Form onSubmit={handleSubmit}>
       <FloatingLabel controlId="floatingInput" label="Name" className="mb-3">
         <Form.Control
@@ -91,8 +84,6 @@ function RegisterForm() {
       </FloatingLabel>
       <Button type="submit">Submit</Button>
     </Form>
-  ) : (
-    <Board />
   );
 }
 

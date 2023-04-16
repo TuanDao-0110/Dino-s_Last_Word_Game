@@ -1,10 +1,11 @@
 import React, { ChangeEvent, FormEvent, useContext, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import FloatingLabel from "react-bootstrap/FloatingLabel";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import { signInUser } from "../../firebase/firebase";
-import Board from "../../routes/Board/Board";
 import { AuthContext } from "../../context/auth-context";
+import { setLogin } from "../../features/GameSlice";
 import { useAppDispatch } from "../../hooks/hooks";
 import { setPlayerDispatch } from "../../features/PlayerSlice";
 
@@ -14,13 +15,14 @@ const defaultFormFields = {
 };
 
 function LoginForm() {
+  const dispatch = useAppDispatch();
   const [formFields, setFormFields] = useState(defaultFormFields);
   const { email, password } = formFields;
   const { currentUser, setCurrentUser } = useContext(AuthContext);
-  const dispatch = useAppDispatch();
   const resetFormFields = () => {
     return setFormFields(defaultFormFields);
   };
+  const navigate = useNavigate();
 
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -31,6 +33,8 @@ function LoginForm() {
         resetFormFields();
         setCurrentUser(userCredential.user);
         dispatch(setPlayerDispatch(userCredential.user));
+        dispatch(setLogin(false));
+        navigate("/");
       }
     } catch (error: any) {}
   };
@@ -39,7 +43,7 @@ function LoginForm() {
     const { type, value } = event.target;
     setFormFields({ ...formFields, [type]: value });
   };
-  return !currentUser ? (
+  return (
     <Form onSubmit={handleSubmit}>
       <FloatingLabel
         controlId="floatingInput"
@@ -65,8 +69,6 @@ function LoginForm() {
         Login
       </Button>
     </Form>
-  ) : (
-    <Board />
   );
 }
 

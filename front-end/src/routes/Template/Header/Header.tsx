@@ -1,43 +1,80 @@
-import { Container, Nav, Navbar, Row } from "react-bootstrap";
+import React, { useContext } from "react";
+import { Modal, Row, Tab, Tabs } from "react-bootstrap";
 import { Button } from "react-bootstrap";
-import { LinkContainer } from "react-router-bootstrap";
-import { useContext } from "react";
 import { AuthContext } from "../../../context/auth-context";
-import { useAppSelector } from "../../../hooks/hooks";
+import classes from "./header.module.css";
+import { useAppDispatch, useAppSelector } from "../../../hooks/hooks";
+import { setLogin } from "../../../features/GameSlice";
+import LoginForm from "../../../components/Form/LoginForm";
+import RegisterForm from "../../../components/Form/RegisterForm";
 
-/* import classes from "./header.module.css"; */
-
-export const Header: React.FC = () => {
+export const Header = () => {
+  const dispatch = useAppDispatch();
+  const { showLogin } = useAppSelector((state) => state.game);
   const { currentUser, signOut } = useContext(AuthContext);
   const { players } = useAppSelector((state) => state.player);
 
+  const handleCloseLogin = () => dispatch(setLogin(false));
+  const handleShowLogin = () => dispatch(setLogin(true));
+
   return (
-    <Row>
-      <Navbar bg="light" variant="light">
-        <Container className="justify-content-end">
-          <Navbar.Toggle aria-controls="basic-navbar-nav" />
-          <Navbar.Collapse id="basic-navbar-nav">
-            <Nav>
-              <LinkContainer to="/">
-                <Nav.Link>Home</Nav.Link>
-              </LinkContainer>
-              <LinkContainer to="/register">
-                <Nav.Link>Login/Register</Nav.Link>
-              </LinkContainer>
-              <LinkContainer to="/board">
-                <Nav.Link>Board 👾</Nav.Link>
-              </LinkContainer>
-            </Nav>
-          </Navbar.Collapse>
-          {currentUser && (
+    <div>
+      <Row>
+        <div className={classes.header_container}>
+          {!currentUser && (
             <>
-              Hello
-              <h4>🤩😜🤨🥰🥰🖐🏻{players?.userInfo._fieldsProto?.name.stringValue} 🤩🥳😜🤨🥰🥰🖐🏻 </h4>
-              <Button onClick={() => signOut()}>Logout</Button>
+              <Button
+                onClick={handleShowLogin}
+                className={classes.header_button}
+              >
+                Login
+              </Button>
+              <Button
+                onClick={handleShowLogin}
+                className={classes.header_reg_button}
+              >
+                Sign up
+              </Button>
             </>
           )}
-        </Container>
-      </Navbar>
-    </Row>
+          {currentUser && (
+            <>
+              <h4 className={classes.header_text}>
+                🤩😜🤨🥰🥰🖐🏻 {players?.userInfo._fieldsProto?.name.stringValue}{" "}
+                🤩🥳😜🤨🥰🥰🖐🏻{" "}
+              </h4>
+              <Button
+                onClick={() => signOut()}
+                className={classes.header_button}
+              >
+                Logout
+              </Button>
+            </>
+          )}
+        </div>{" "}
+      </Row>
+      <div>
+        <Modal show={showLogin} onHide={handleCloseLogin}>
+          <div className={classes.loginModal_container}>
+            <Modal.Header closeButton>
+              <Modal.Title>Login or signup to join the leaderboard</Modal.Title>
+            </Modal.Header>
+            <Tabs
+              defaultActiveKey="profile"
+              id="uncontrolled-tab-example"
+              className="mb-3"
+            >
+              <Tab eventKey="home" title="Login">
+                <LoginForm />
+              </Tab>
+              <Tab eventKey="profile" title="Register">
+                <RegisterForm />
+              </Tab>
+            </Tabs>
+            <Modal.Footer></Modal.Footer>
+          </div>
+        </Modal>
+      </div>
+    </div>
   );
 };
