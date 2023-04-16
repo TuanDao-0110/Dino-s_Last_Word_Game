@@ -87,7 +87,11 @@ const Main = () => {
     ) {
       console.log("check in main, setting showModal to true");
       dispatch(setGameStatus("lost"));
-      dispatch(setModal(true));
+
+      const timer = setTimeout(() => {
+        dispatch(setModal(true));
+      }, 1500);
+      return () => clearTimeout(timer);
     }
   }, [dispatch, guessedLetters, wordToGuess, category]);
 

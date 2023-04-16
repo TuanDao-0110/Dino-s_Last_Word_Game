@@ -57,14 +57,14 @@ const Message: React.FC = () => {
             </Modal.Body>
             <Modal.Body>
               <Tabs
-                defaultActiveKey="profile"
+                defaultActiveKey="login"
                 id="uncontrolled-tab-example"
                 className="mb-3"
               >
-                <Tab eventKey="home" title="Login">
+                <Tab eventKey="login" title="Login">
                   <LoginForm />
                 </Tab>
-                <Tab eventKey="profile" title="Register">
+                <Tab eventKey="register" title="Register">
                   <RegisterForm />
                 </Tab>
               </Tabs>
