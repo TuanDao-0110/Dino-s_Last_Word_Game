@@ -4,6 +4,8 @@ import BtnWarning from "../../components/Button/error/BtnWarning";
 import BtnSuccess from "../../components/Button/success/BtnSuccess";
 import BtnPrimary from "../../components/Button/primary/BtnPrimary";
 import BtnSubmit from "../../components/Button/submit/BtnSubmit";
+// Dino
+import Dino from "../../components/Dino/Dino";
 // Game
 import Form from "../../components/Form/LoginForm";
 import Key from "../../components/Key/Key";
@@ -19,9 +21,7 @@ import Object from "../../components/Object/Object";
 import WordLetters from "../../components/WordLetters/WordLetters";
 import Controls from "../../components/Controls/Controls";
 import PopoverHint from "../../components/Category/PopoverHint/PopoverHint";
-// Dino
-
-import Dino from "../../components/Dino/Dino";
+import Category from "../../components/Category/Category";
 
 export {
   BtnDanger,
@@ -44,4 +44,5 @@ export {
   PopoverHint,
   Header,
   Footer,
+  Category,
 };

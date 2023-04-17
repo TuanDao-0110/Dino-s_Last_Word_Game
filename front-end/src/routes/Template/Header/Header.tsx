@@ -1,19 +1,15 @@
 // React
-import { useContext, useEffect, useState } from "react";
+import { useContext, useState } from "react";
 
 // Redux
-import { setPlayerDispatch } from "../../../features/PlayerSlice";
 import { useAppDispatch, useAppSelector } from "../../../hooks/hooks";
 import { setLogin } from "../../../features/GameSlice";
 
 // Firebase, auth
-import { useAuthState } from "react-firebase-hooks/auth";
-import { getAuth } from "firebase/auth";
 import { AuthContext } from "../../../context/auth-context";
 
 // Bootstrap
-import { Modal, Row, Tab, Tabs } from "react-bootstrap";
-import { Button } from "react-bootstrap";
+import { Modal, Tab, Tabs } from "react-bootstrap";
 
 // Resources / Components
 import {
@@ -21,7 +17,6 @@ import {
   RegisterForm,
   BtnPrimary,
   BtnSuccess,
-  BtnDanger,
   BtnWarning,
 } from "../../../assets/export_component/resource";
 
@@ -29,9 +24,6 @@ import {
 import classes from "./header.module.css";
 
 const Header = () => {
-  /*  const auth = getAuth();
-  const [user] = useAuthState(auth); */
-
   const dispatch = useAppDispatch();
   const { showLogin } = useAppSelector((state) => state.game);
   const { currentUser, setCurrentUser, signOut } = useContext(AuthContext);

@@ -1,6 +1,7 @@
-import { Col, Container, Nav, Navbar, Row } from "react-bootstrap";
-import { LinkContainer } from "react-router-bootstrap";
+// Bootstrap
+import { Row } from "react-bootstrap";
 
+// Styles
 import classes from "./footer.module.css";
 
 const Footer: React.FC = () => {
