@@ -12,6 +12,10 @@
   );
 }
 
+/* .template:has(.game_over) {
+  background: linear-gradient(180deg, #263735 0%, #2a4138 100%);
+} */
+
 .game_over {
   background: linear-gradient(180deg, #263735 0%, #2a4138 100%);
 }

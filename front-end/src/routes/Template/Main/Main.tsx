@@ -106,14 +106,7 @@ const Main = () => {
   if (isLoading) return <Spinner />;
   return (
     // classname extra for now
-    <Row
-      className={`${classes.main_container} ${
-        guessedLetters.filter((letter) => !wordToGuess.includes(letter))
-          .length >= 9
-          ? classes.game_over
-          : ""
-      }`}
-    >
+    <Row className={classes.main_container}>
       <div className={classes.mainLeaderboard_container}>
         <LeaderBoard />
         {/* <Form /> */}
