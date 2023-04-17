@@ -3,13 +3,14 @@
   flex-direction: column;
   min-height: 100vh;
   background: linear-gradient(
-    180deg,
-    #a0bbff 3.23%,
-    #ffc7de 41.54%,
-    #ffce95 100%,
-    #ffd4a0 100%,
-    #ffd5a4 100%
-  );
+      180deg,
+      #a0bbff 3.23%,
+      #ffc7de 41.54%,
+      #ffce95 100%,
+      #ffd4a0 100%,
+      #ffd5a4 100%
+    )
+    no-repeat fixed;
 }
 
 /* .template:has(.game_over) {
