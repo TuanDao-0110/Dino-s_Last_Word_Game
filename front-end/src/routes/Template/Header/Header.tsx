@@ -1,9 +1,10 @@
 // React
-import { useContext, useState } from "react";
+import { useContext, useState, useEffect } from "react";
 
 // Redux
 import { useAppDispatch, useAppSelector } from "../../../hooks/hooks";
 import { setLogin } from "../../../features/GameSlice";
+import { setPlayerDispatch } from "../../../features/PlayerSlice";
 
 // Firebase, auth
 import { AuthContext } from "../../../context/auth-context";
@@ -42,10 +43,10 @@ const Header = () => {
   };
   useEffect(() => {
     if (currentUser && !players) {
-      console.log('get user')
+      console.log("get user");
       dispatch(setPlayerDispatch(currentUser));
     }
-  }, [currentUser,dispatch,players]);
+  }, [currentUser, dispatch, players]);
   return (
     <div>
       <div className={classes.header_container}>
