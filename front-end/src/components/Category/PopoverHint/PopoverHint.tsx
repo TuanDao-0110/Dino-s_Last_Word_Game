@@ -2,6 +2,8 @@ import Button from "react-bootstrap/Button";
 import OverlayTrigger from "react-bootstrap/OverlayTrigger";
 import Tooltip from "react-bootstrap/Tooltip";
 
+import classes from "./popover.module.css";
+
 function PopoverHint() {
   const renderTooltip = (props: any) => (
     <Tooltip id="button-tooltip" {...props}>
@@ -15,7 +17,9 @@ function PopoverHint() {
       delay={{ show: 250, hide: 400 }}
       overlay={renderTooltip}
     >
-      <i className="bi bi-info-circle-fill"></i>
+      <div className={classes.icon_container}>
+        <i className="bi bi-lightbulb"></i>
+      </div>
     </OverlayTrigger>
   );
 }

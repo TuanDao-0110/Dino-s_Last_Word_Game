@@ -107,9 +107,6 @@ const Category: React.FC = () => {
         </div>
       </div>
       <div className={classes.category_info}>
-        <div className={classes.popover_container}>
-          <PopoverHint />
-        </div>
         <p className={classes.category_display}>
           Word category: {/* <span>{category}</span> */}
         </p>{" "}
@@ -126,6 +123,9 @@ const Category: React.FC = () => {
         </p>
       </div>
       <div className={classes.category_section}>
+        <div className={classes.popover_container}>
+          <PopoverHint />
+        </div>
         {gameStatus === "won" && (
           <p className={classes.game_status}>You won!</p>
         )}
