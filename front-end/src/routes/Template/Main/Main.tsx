@@ -101,7 +101,9 @@ const Main = () => {
   return (
     // classname extra for now
     <Row className={classes.main_container}>
-      <div className={classes.mainLeaderboard_container}>
+      <div
+        className={`${classes.mainLeaderboard_container} ${classes.desktop}`}
+      >
         <LeaderBoard />
         {/* <Form /> */}
       </div>
@@ -118,6 +120,10 @@ const Main = () => {
       <div className={classes.mainCategory_container}>
         <Category />
         {/* {gameStatus !== "playing" && <Controls />} */}
+      </div>
+      <div className={`${classes.mainLeaderboard_container} ${classes.mobile}`}>
+        <LeaderBoard />
+        {/* <Form /> */}
       </div>
     </Row>
   );
