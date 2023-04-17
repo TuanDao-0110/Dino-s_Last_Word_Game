@@ -3,7 +3,7 @@ import { LinkContainer } from "react-router-bootstrap";
 
 import classes from "./footer.module.css";
 
-export const Footer: React.FC = () => {
+const Footer: React.FC = () => {
   return (
     <Row className={classes.footer}>
       <span>
@@ -15,9 +15,5 @@ export const Footer: React.FC = () => {
     </Row>
   );
 };
-/* <Navbar>
-    <Container>
-      <NavbarBrand>
-      </NavbarBrand>
-    </Container>
-  </Navbar> */
+
+export default Footer;

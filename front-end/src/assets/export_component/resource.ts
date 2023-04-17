@@ -12,7 +12,8 @@ import LeaderBoard from "../../components/LeaderBoard/LeaderBoard";
 import Message from "../../components/Message/Message";
 import LoginForm from "../../components/Form/LoginForm";
 import RegisterForm from "../../components/Form/RegisterForm";
-
+import Header from "../../routes/Template/Header/Header";
+import Footer from "../../routes/Template/Footer/Footer";
 import Word from "../../components/Word/Word";
 import Object from "../../components/Object/Object";
 import WordLetters from "../../components/WordLetters/WordLetters";
@@ -41,4 +42,6 @@ export {
   LoginForm,
   RegisterForm,
   PopoverHint,
+  Header,
+  Footer,
 };

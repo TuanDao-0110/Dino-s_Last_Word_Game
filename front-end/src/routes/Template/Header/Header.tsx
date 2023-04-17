@@ -28,7 +28,7 @@ import {
 // Styles
 import classes from "./header.module.css";
 
-export const Header = () => {
+const Header = () => {
   /*  const auth = getAuth();
   const [user] = useAuthState(auth); */
 
@@ -109,3 +109,5 @@ export const Header = () => {
     </div>
   );
 };
+
+export default Header;

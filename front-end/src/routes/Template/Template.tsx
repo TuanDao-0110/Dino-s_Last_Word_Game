@@ -1,3 +1,4 @@
+// React
 import { Outlet } from "react-router-dom";
 
 // Redux
@@ -8,14 +9,14 @@ import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 
 // Components
-import { Header } from "./Header/Header";
-import { Footer } from "./Footer/Footer";
+import { Header, Footer } from "../../assets/export_component/resource";
 
 // Styles
 import classes from "./template.module.css";
 
 export const Template: React.FC = () => {
   const { wordToGuess, guessedLetters } = useAppSelector((state) => state.game);
+
   return (
     <Container
       className={`${classes.template} ${
