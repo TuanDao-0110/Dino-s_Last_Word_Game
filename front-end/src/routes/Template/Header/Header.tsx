@@ -48,19 +48,12 @@ export const Header = () => {
     setActiveTab("register");
     dispatch(setLogin(true));
   };
-
-  // useEffect(() => {
-  //   console.log("CURRUSER", currentUser);
-  // }, [currentUser]);
   useEffect(() => {
     if (currentUser && !players) {
       console.log('get user')
       dispatch(setPlayerDispatch(currentUser));
     }
   }, [currentUser,dispatch,players]);
-
-  console.log("PLAYERS", players); 
-
   return (
     <div>
       <div className={classes.header_container}>
