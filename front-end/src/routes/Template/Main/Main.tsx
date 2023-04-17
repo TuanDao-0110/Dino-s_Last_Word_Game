@@ -1,6 +1,7 @@
+// React
 import { useEffect, useState } from "react";
-import { Spinner, Row } from "react-bootstrap";
 
+// Redux
 import { useAppDispatch, useAppSelector } from "../../../hooks/hooks";
 import {
   setWordToGuess,
@@ -8,39 +9,34 @@ import {
   setNextRound,
   setScore,
   setModal,
-  getWordDispatch,
   setAllWord,
 } from "../../../features/GameSlice";
 
-import { getAllWords } from "../../../api/wordapi";
+// Bootstrap
+import { Spinner, Row } from "react-bootstrap";
 
-import { AppDispatch } from "../../../app/store";
+// Components
 import {
   Word,
   Keyboard,
-  Message,
   Object,
   LeaderBoard,
-  Controls,
-  Form,
+  Category,
 } from "../../../assets/export_component/resource";
 
-import classes from "./main.module.css";
-import Category from "../../../components/Category/Category";
+// API
+import { getAllWords } from "../../../api/wordapi";
+
+// Types
 import { Categories, Word_Type } from "../../../types/API.model";
+
+// Styles
+import classes from "./main.module.css";
 
 const Main = () => {
   const dispatch = useAppDispatch();
-  const {
-    wordToGuess,
-    guessedLetters,
-    gameStatus,
-    category,
-    score,
-    hints,
-    round,
-    showModal,
-  } = useAppSelector((state) => state.game);
+  const { wordToGuess, guessedLetters, gameStatus, category, score, hints } =
+    useAppSelector((state) => state.game);
   const [isLoading, setIsLoading] = useState(true);
 
   // After the page loads, set a word to be guessed
@@ -50,11 +46,9 @@ const Main = () => {
       dispatch(setAllWord(data));
       dispatch(setWordToGuess());
     };
-    console.log("use effect running");
     fetchWords()
       .then(() => {
         dispatch(setWordToGuess());
-        console.log("wordToGuess", wordToGuess);
         setIsLoading(false);
       })
       .catch((err) => alert(err));
@@ -106,14 +100,7 @@ const Main = () => {
   if (isLoading) return <Spinner />;
   return (
     // classname extra for now
-    <Row
-      className={`${classes.main_container} ${
-        guessedLetters.filter((letter) => !wordToGuess.includes(letter))
-          .length >= 9
-          ? classes.game_over
-          : ""
-      }`}
-    >
+    <Row className={classes.main_container}>
       <div className={classes.mainLeaderboard_container}>
         <LeaderBoard />
         {/* <Form /> */}

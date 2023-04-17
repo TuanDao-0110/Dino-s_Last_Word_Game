@@ -1,16 +1,31 @@
+// React
 import React, { useContext } from "react";
+
+// Redux
+import { useAppDispatch, useAppSelector } from "../../hooks/hooks";
+import { resetGame, setModal, setWordToGuess } from "../../features/GameSlice";
+import { getAllScoreDispatch } from "../../features/PlayerSlice";
+
+// Bootstrap
 import Tab from "react-bootstrap/Tab";
 import Tabs from "react-bootstrap/Tabs";
-import { useAppDispatch, useAppSelector } from "../../hooks/hooks";
 import Modal from "react-bootstrap/Modal";
-import LoginForm from "../Form/LoginForm";
-import RegisterForm from "../Form/RegisterForm";
-import { resetGame, setModal, setWordToGuess } from "../../features/GameSlice";
-import classes from "./message.module.css";
+
+// Components
+import {
+  LoginForm,
+  RegisterForm,
+  BtnSuccess,
+} from "../../assets/export_component/resource";
+
+// Firebase, auth
 import { AuthContext } from "../../context/auth-context";
-import BtnSuccess from "../Button/success/BtnSuccess";
+
+// API
 import { postNewScore } from "../../api/userapi";
-import { getAllScoreDispatch } from "../../features/PlayerSlice";
+
+// Styles
+import classes from "./message.module.css";
 
 const Message: React.FC = () => {
   const dispatch = useAppDispatch();

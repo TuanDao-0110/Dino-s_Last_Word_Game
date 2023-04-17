@@ -1,6 +1,11 @@
-import { WordLetterProps } from "../../types/hangman.model";
+// Redux
 import { useAppDispatch, useAppSelector } from "../../hooks/hooks";
 import { addGuessedLetter, setHint } from "../../features/GameSlice";
+
+// Types
+import { WordLetterProps } from "../../types/hangman.model";
+
+// Styles
 import classes from "./wordLetters.module.css";
 
 const WordLetters: React.FC<WordLetterProps> = ({ letter, guessed }) => {

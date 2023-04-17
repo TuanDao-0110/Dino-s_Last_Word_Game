@@ -26,7 +26,4 @@
 }
 
 @media only screen and (max-width: 800px) {
-  .main_container {
-    background-color: lightblue;
-  }
 }

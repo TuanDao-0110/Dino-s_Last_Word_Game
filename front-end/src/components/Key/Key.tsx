@@ -1,6 +1,7 @@
-import { KeyProps } from "../../types/hangman.model";
 import { useAppDispatch, useAppSelector } from "../../hooks/hooks";
 import { addGuessedLetter } from "../../features/GameSlice";
+
+import { KeyProps } from "../../types/hangman.model";
 
 import classes from "./key.module.css";
 import { useEffect } from "react";

@@ -8,6 +8,7 @@
   justify-content: center;
   padding: 1rem;
   gap: 1rem;
+  z-index: 1;
 }
 
 .header_text {
@@ -22,9 +23,6 @@
 
 .modal_header {
   padding: 1.5rem 2rem;
-  /*   display: flex;
-  justify-content: center;
-  align-items: center; */
 }
 
 .modal_title {
