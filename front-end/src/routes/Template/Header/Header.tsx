@@ -1,80 +1,111 @@
-import React, { useContext } from "react";
-import { Modal, Row, Tab, Tabs } from "react-bootstrap";
-import { Button } from "react-bootstrap";
-import { AuthContext } from "../../../context/auth-context";
-import classes from "./header.module.css";
+// React
+import { useContext, useEffect, useState } from "react";
+
+// Redux
+import { setPlayerDispatch } from "../../../features/PlayerSlice";
 import { useAppDispatch, useAppSelector } from "../../../hooks/hooks";
 import { setLogin } from "../../../features/GameSlice";
-import LoginForm from "../../../components/Form/LoginForm";
-import RegisterForm from "../../../components/Form/RegisterForm";
+
+// Firebase, auth
+import { useAuthState } from "react-firebase-hooks/auth";
+import { getAuth } from "firebase/auth";
+import { AuthContext } from "../../../context/auth-context";
+
+// Bootstrap
+import { Modal, Row, Tab, Tabs } from "react-bootstrap";
+import { Button } from "react-bootstrap";
+
+// Resources / Components
+import {
+  LoginForm,
+  RegisterForm,
+  BtnPrimary,
+  BtnSuccess,
+  BtnDanger,
+  BtnWarning,
+} from "../../../assets/export_component/resource";
+
+// Styles
+import classes from "./header.module.css";
 
 export const Header = () => {
+  /*  const auth = getAuth();
+  const [user] = useAuthState(auth); */
+
   const dispatch = useAppDispatch();
   const { showLogin } = useAppSelector((state) => state.game);
-  const { currentUser, signOut } = useContext(AuthContext);
+  const { currentUser, setCurrentUser, signOut } = useContext(AuthContext);
   const { players } = useAppSelector((state) => state.player);
+  const [activeTab, setActiveTab] = useState("login");
 
   const handleCloseLogin = () => dispatch(setLogin(false));
-  const handleShowLogin = () => dispatch(setLogin(true));
+  const handleShowLogin = () => {
+    setActiveTab("login");
+    dispatch(setLogin(true));
+  };
+
+  const handleShowRegister = () => {
+    setActiveTab("register");
+    dispatch(setLogin(true));
+  };
+
+  /* useEffect(() => {
+    console.log("CURRUSER", currentUser);
+  }, [currentUser]);
+  useEffect(() => {
+    console.log("USEEFFECT", currentUser, user);
+    if (!currentUser && user) {
+      dispatch(setPlayerDispatch(user));
+      setCurrentUser(user);
+      dispatch(setLogin(false));
+    }
+  }, []);
+
+  console.log("PLAYERS", players); */
 
   return (
     <div>
-      <Row>
-        <div className={classes.header_container}>
-          {!currentUser && (
-            <>
-              <Button
-                onClick={handleShowLogin}
-                className={classes.header_button}
-              >
-                Login
-              </Button>
-              <Button
-                onClick={handleShowLogin}
-                className={classes.header_reg_button}
-              >
-                Sign up
-              </Button>
-            </>
-          )}
-          {currentUser && (
-            <>
-              <h4 className={classes.header_text}>
-                🤩😜🤨🥰🥰🖐🏻 {players?.userInfo._fieldsProto?.name.stringValue}{" "}
-                🤩🥳😜🤨🥰🥰🖐🏻{" "}
-              </h4>
-              <Button
-                onClick={() => signOut()}
-                className={classes.header_button}
-              >
-                Logout
-              </Button>
-            </>
-          )}
-        </div>{" "}
-      </Row>
-      <div>
-        <Modal show={showLogin} onHide={handleCloseLogin}>
-          <div className={classes.loginModal_container}>
-            <Modal.Header closeButton>
-              <Modal.Title>Login or signup to join the leaderboard</Modal.Title>
-            </Modal.Header>
-            <Tabs
-              defaultActiveKey="profile"
-              id="uncontrolled-tab-example"
-              className="mb-3"
-            >
-              <Tab eventKey="home" title="Login">
-                <LoginForm />
-              </Tab>
-              <Tab eventKey="profile" title="Register">
-                <RegisterForm />
-              </Tab>
-            </Tabs>
-            <Modal.Footer></Modal.Footer>
-          </div>
-        </Modal>
+      <div className={classes.header_container}>
+        {!currentUser && (
+          <>
+            <BtnSuccess text="Login" clickHandler={handleShowLogin} />
+            <BtnPrimary text="Sign up" clickHandler={handleShowRegister} />
+          </>
+        )}
+        {currentUser && (
+          <>
+            <h4 className={classes.header_text}>
+              {players?.userInfo._fieldsProto?.name.stringValue}
+            </h4>
+            <BtnWarning text="Log out" clickHandler={() => signOut()} />
+          </>
+        )}
       </div>
+      <Modal
+        className={classes.modal}
+        show={showLogin}
+        onHide={handleCloseLogin}
+        size="sm"
+      >
+        <Modal.Header
+          className={`border-0 ${classes.modal_header}`}
+          closeButton
+        >
+          <Modal.Title className={classes.modal_title}>Hi there!</Modal.Title>
+        </Modal.Header>
+        <Tabs
+          defaultActiveKey={activeTab}
+          id="uncontrolled-tab-example"
+          className={`mb-3 ${classes.tabs}`}
+        >
+          <Tab className={classes.tab} eventKey="login" title="Login">
+            <LoginForm />
+          </Tab>
+          <Tab className={classes.tab} eventKey="register" title="Register">
+            <RegisterForm />
+          </Tab>
+        </Tabs>
+      </Modal>
     </div>
   );
 };

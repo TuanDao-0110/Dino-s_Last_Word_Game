@@ -1,0 +1,9 @@
+.btn_custom_warning {
+  border: none;
+  border-radius: 100rem;
+  padding: 0.5rem 1.5rem;
+}
+
+.btn_custom_warning:hover {
+  background-color: var(--yellow);
+}

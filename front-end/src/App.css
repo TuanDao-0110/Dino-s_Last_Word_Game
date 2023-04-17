@@ -1,3 +1,18 @@
+:root {
+  --yellow-pale: #fffad2;
+  --yellow: #ffed43;
+  --orange: #ffbd39;
+  --red: #ff8585;
+  --pink: #fda4ff;
+  --blue: #5050ff;
+  --blue-dark: #3030d1;
+  --green: #35a070;
+  --gray-pale: #eee;
+  --gray-light: #ddd;
+  --gray-mid: #aaa;
+  --gray-dark: #333;
+}
+
 .App {
   display: flex;
   flex-direction: column;
@@ -7,4 +22,30 @@
 
 a {
   color: inherit;
+}
+
+.form-control {
+  border: 1px solid black;
+  border-radius: 1rem;
+}
+
+.nav-tabs {
+  gap: 0.5rem;
+}
+
+.nav-tabs .nav-link {
+  border: 1px solid black;
+  border-bottom: none;
+  border-radius: 1rem 1rem 0 0;
+}
+
+.nav-tabs .nav-link.active {
+  border: 1px solid black;
+  border-bottom: none;
+}
+
+.nav-tabs .nav-link:hover {
+  background-color: black;
+  color: white;
+  border-bottom: none;
 }

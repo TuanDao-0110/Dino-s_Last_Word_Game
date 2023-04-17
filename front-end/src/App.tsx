@@ -8,6 +8,9 @@ import RegisterForm from "./components/Form/RegisterForm";
 // import LoginForm from "./components/Form/LoginForm";
 
 function App() {
+  /* setCurrentUser(userCredential.user);
+        dispatch(setPlayerDispatch(userCredential.user));
+        dispatch(setLogin(false)); */
   return (
     <Routes>
       <Route path="/" element={<Template />}>

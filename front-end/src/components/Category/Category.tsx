@@ -1,6 +1,6 @@
 import React, { ReactEventHandler } from "react";
 import Form from "react-bootstrap/Form";
-import ProgressBar from "react-bootstrap/ProgressBar";
+
 import { useAppSelector, useAppDispatch } from "../../hooks/hooks";
 import { Categories } from "../../types/API.model";
 import {
@@ -9,11 +9,16 @@ import {
   setWordToGuess,
 } from "../../features/GameSlice";
 import classes from "./category.module.css";
-import { Message, Controls } from "../../assets/export_component/resource";
-import TipsAndUpdatesIcon from "@mui/icons-material/TipsAndUpdates";
-import { IconButton } from "@mui/material";
-import Typography from "@mui/material/Typography";
-import Popover from "@mui/material/Popover";
+import {
+  Message,
+  Controls,
+  PopoverHint,
+} from "../../assets/export_component/resource";
+
+import {
+  CircularProgressbarWithChildren,
+  buildStyles,
+} from "react-circular-progressbar";
 
 const Category: React.FC = () => {
   const { category, score, round, gameStatus, guessedLetters, wordToGuess } =
@@ -49,71 +54,78 @@ const Category: React.FC = () => {
     return (wrongGuesses / 9) * 100;
   };
 
+  const getMeteorClass = () => {
+    const wrongGuesses = guessedLetters.filter(
+      (letter) => !wordToGuess.includes(letter)
+    ).length;
+    return Math.floor(wrongGuesses / 3);
+  };
+
   return (
     <div className={classes.category_container}>
-      <div>
-        <IconButton
-          onMouseEnter={handlePopoverOpen}
-          onMouseLeave={handlePopoverClose}
-          aria-owns={open ? "mouse-over-popover" : undefined}
-          aria-haspopup="true"
-        >
-          <TipsAndUpdatesIcon color="warning" sx={{ fontSize: 30 }} />
-        </IconButton>
-        <Popover
-          id="mouse-over-popover"
-          sx={{
-            pointerEvents: "none",
-          }}
-          open={open}
-          anchorEl={anchorEl}
-          anchorOrigin={{
-            vertical: "top",
-            horizontal: "center",
-          }}
-          transformOrigin={{
-            vertical: "center",
-            horizontal: "center",
-          }}
-          onClose={handlePopoverClose}
-          disableRestoreFocus
-        >
-          <Typography sx={{ p: 1 }}>
-            You can open any letter by sacrificing one point
-          </Typography>
-        </Popover>
-      </div>{" "}
-      <div>
-        <div className={classes.gameStatus_container}>
+      <div className={classes.category_section}>
+        <div className={classes.game_status_container}>
           <p className={classes.score}>
             Round: <span>{round}</span>
-          </p>{" "}
+          </p>
           <p className={classes.score}>
             Score: <span>{score}</span>
           </p>
         </div>
 
-        <ProgressBar
-          className={classes.progress_bar}
-          variant="danger"
-          now={getMeteorProgress()}
-        />
-        <div className={classes.category_info}>
-          <p className={classes.category_display}>
-            Word category: <span>{category}</span>
-          </p>
-          <p className={classes.points_earned}>
-            Points to be earned: {category === "all" ? 2 : 1}
-          </p>
-          <Form.Select
-            disabled={guessedLetters.length > 0 || gameStatus !== "playing"}
-            aria-label="select category"
-            onChange={setUpCategory}
-            className={classes.category_select}
+        <div className={classes.circular_progress_bar_container}>
+          <CircularProgressbarWithChildren
+            className={classes.circular_progress_bar}
+            value={getMeteorProgress()}
+            strokeWidth={8}
+            styles={buildStyles({
+              textColor: "#000",
+              pathColor: "#ff8585",
+              trailColor: "#5050ff",
+              strokeLinecap: "round",
+              pathTransitionDuration: 0.5,
+            })}
           >
-            {renderOption()}
-          </Form.Select>{" "}
+            <p
+              className={`${classes.tries} ${
+                classes["wrong" + getMeteorClass()]
+              }`}
+            >
+              <span>
+                <span>
+                  {
+                    guessedLetters.filter(
+                      (letter) => !wordToGuess.includes(letter)
+                    ).length
+                  }
+                </span>
+                /9
+              </span>{" "}
+              tries
+            </p>
+          </CircularProgressbarWithChildren>
         </div>
+      </div>
+      <div className={classes.category_info}>
+        <div className={classes.popover_container}>
+          <PopoverHint />
+        </div>
+        <p className={classes.category_display}>
+          Word category: {/* <span>{category}</span> */}
+        </p>{" "}
+        <Form.Select
+          disabled={guessedLetters.length > 0 || gameStatus !== "playing"}
+          aria-label="select category"
+          onChange={setUpCategory}
+          className={classes.category_select}
+        >
+          {renderOption()}
+        </Form.Select>
+        <p className={classes.points_earned}>
+          Points to be earned: {category === "all" ? 2 : 1}
+        </p>
+      </div>
+      <div className={classes.category_section}>
         {gameStatus === "won" && (
           <p className={classes.game_status}>You won!</p>
         )}
@@ -121,8 +133,8 @@ const Category: React.FC = () => {
           <p className={classes.game_status}>Ouch. You lost!</p>
         )}
         <Controls />
-        {gameStatus === "lost" && <Message />}
       </div>
+      {gameStatus === "lost" && <Message />}
     </div>
   );
 };

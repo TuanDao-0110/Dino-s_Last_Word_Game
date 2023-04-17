@@ -40,8 +40,9 @@ const Message: React.FC = () => {
           handleClose();
         }}
         animation={false}
+        size="sm"
       >
-        <Modal.Header closeButton>
+        <Modal.Header className="border-0" closeButton>
           <Modal.Title>
             Great job
             {currentUser
@@ -51,29 +52,22 @@ const Message: React.FC = () => {
           </Modal.Title>
         </Modal.Header>
         {!currentUser ? (
-          <>
-            <Modal.Body>
-              Enter your nickname to join the leaderboard:{" "}
-            </Modal.Body>
-            <Modal.Body>
-              <Tabs
-                defaultActiveKey="profile"
-                id="uncontrolled-tab-example"
-                className="mb-3"
-              >
-                <Tab eventKey="home" title="Login">
-                  <LoginForm />
-                </Tab>
-                <Tab eventKey="profile" title="Register">
-                  <RegisterForm />
-                </Tab>
-              </Tabs>
-            </Modal.Body>
-          </>
+          <Tabs
+            defaultActiveKey="login"
+            id="uncontrolled-tab-example"
+            className={`mb-3 ${classes.tabs}`}
+          >
+            <Tab eventKey="login" title="Login">
+              <LoginForm />
+            </Tab>
+            <Tab eventKey="register" title="Register">
+              <RegisterForm />
+            </Tab>
+          </Tabs>
         ) : (
           <>
             <Modal.Body>Would you like to save your score?</Modal.Body>
-            <Modal.Footer>
+            <Modal.Footer className="border-0">
               <BtnSuccess
                 clickHandler={handleSubmitScore}
                 text="Yes, save it!"

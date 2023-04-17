@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Spinner } from "react-bootstrap";
+import { Spinner, Row } from "react-bootstrap";
 
 import { useAppDispatch, useAppSelector } from "../../../hooks/hooks";
 import {
@@ -87,7 +87,11 @@ const Main = () => {
     ) {
       console.log("check in main, setting showModal to true");
       dispatch(setGameStatus("lost"));
-      dispatch(setModal(true));
+
+      const timer = setTimeout(() => {
+        dispatch(setModal(true));
+      }, 1000);
+      return () => clearTimeout(timer);
     }
   }, [dispatch, guessedLetters, wordToGuess, category]);
 
@@ -101,13 +105,13 @@ const Main = () => {
 
   if (isLoading) return <Spinner />;
   return (
-    <div
+    // classname extra for now
+    <Row
       className={`${classes.main_container} ${
-        classes[
-          "w" +
-            guessedLetters.filter((letter) => !wordToGuess.includes(letter))
-              .length
-        ]
+        guessedLetters.filter((letter) => !wordToGuess.includes(letter))
+          .length >= 9
+          ? classes.game_over
+          : ""
       }`}
     >
       <div className={classes.mainLeaderboard_container}>
@@ -128,7 +132,7 @@ const Main = () => {
         <Category />
         {/* {gameStatus !== "playing" && <Controls />} */}
       </div>
-    </div>
+    </Row>
   );
 };
 

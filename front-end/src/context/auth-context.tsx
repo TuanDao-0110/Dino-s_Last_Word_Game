@@ -7,17 +7,16 @@ interface Props {
   children?: ReactNode;
 }
 
-
 declare interface OAuthCredentialParams {
-    idToken?: string | null;
-    accessToken?: string | null;
-    oauthToken?: string;
-    secret?: string;
-    oauthTokenSecret?: string;
-    nonce?: string;
-    pendingToken?: string;
-    providerId: string;
-    signInMethod: string;
+  idToken?: string | null;
+  accessToken?: string | null;
+  oauthToken?: string;
+  secret?: string;
+  oauthTokenSecret?: string;
+  nonce?: string;
+  pendingToken?: string;
+  providerId: string;
+  signInMethod: string;
 }
 
 export const AuthContext = createContext({
@@ -30,7 +29,7 @@ export const AuthContext = createContext({
 export const AuthProvider = ({ children }: Props) => {
   const [currentUser, setCurrentUser] = useState<User | null>(null);
   const navigate = useNavigate();
-// 
+  //
   useEffect(() => {
     const unsubscribe = userStateListener((user) => {
       if (user) {

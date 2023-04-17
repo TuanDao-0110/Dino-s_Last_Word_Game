@@ -47,5 +47,5 @@ export interface ControlsProps {
 
 export interface ButtonProps {
   text: string;
-  clickHandler: () => void;
+  clickHandler?: () => void;
 }

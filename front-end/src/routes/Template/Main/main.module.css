@@ -1,35 +1,8 @@
 .main_container {
   padding: 0 0 3rem;
   display: grid;
-  grid-template-columns: 2fr 2fr 2fr;
+  grid-template-columns: 1fr 1fr 1fr;
   align-content: baseline;
-  background: linear-gradient(
-    180deg,
-    #a0bbff 3.23%,
-    #ffc7de 41.54%,
-    #ffce95 100%,
-    #ffd4a0 100%,
-    #ffd5a4 100%
-  );
-}
-
-.w0 {
-  background: linear-gradient(
-    180deg,
-    #a0bbff 3.23%,
-    #ffc7de 41.54%,
-    #ffce95 100%,
-    #ffd4a0 100%,
-    #ffd5a4 100%
-  );
-}
-
-/* .w9 {
-  background: linear-gradient(180deg, #ffcc6e 0%, #cd5757 41.54%, #782a62 100%);
-} */
-
-.w9 {
-  background: linear-gradient(180deg, #263735 0%, #2a4138 100%);
 }
 
 .mainLeaderboard_container,
@@ -49,4 +22,11 @@
 
 .mainObject_container {
   align-self: baseline;
+  padding: 0 0.7rem;
+}
+
+@media only screen and (max-width: 800px) {
+  .main_container {
+    background-color: lightblue;
+  }
 }

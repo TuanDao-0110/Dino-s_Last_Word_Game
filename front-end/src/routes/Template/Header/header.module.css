@@ -1,26 +1,40 @@
 .header_container {
+  position: absolute;
+  top: 0;
+  right: 0;
   display: flex;
-  justify-content: flex-end;
   flex-direction: row;
-  background-color: #a0bbff;
-}
-
-.header_button,
-.header_reg_button {
-  margin: 10px;
-}
-
-.header_reg_button {
-  background-color: #ff8585;
-  border: none;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  gap: 1rem;
 }
 
 .header_text {
-  display: flex;
-  align-items: center;
-  margin-right: 10px;
+  margin: 0;
 }
 
-.loginModal_container {
-  padding: 20px;
+.modal {
+  padding: 1rem;
+  display: flex;
+  justify-content: center;
+}
+
+.modal_header {
+  padding: 1.5rem 2rem;
+  /*   display: flex;
+  justify-content: center;
+  align-items: center; */
+}
+
+.modal_title {
+}
+
+.tabs {
+  display: flex;
+  justify-content: center;
+  border-bottom: 1px solid;
+}
+
+.tab {
 }

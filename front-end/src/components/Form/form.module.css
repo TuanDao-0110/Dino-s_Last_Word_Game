@@ -1,0 +1,12 @@
+.form {
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.form:last-child {
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}

@@ -5,14 +5,14 @@ import classes from "./footer.module.css";
 
 export const Footer: React.FC = () => {
   return (
-    <footer className={classes.footer}>
+    <Row className={classes.footer}>
       <span>
         <a href="https://github.com/TuanDao-0110/HangMan_Game">Dino game</a> -
         by <a href="https://github.com/TuanDao-0110/">Tuan Dao</a>,{" "}
         <a href="https://github.com/CodeLaMat">Eyvaz Alishov</a> and{" "}
         <a href="https://github.com/pixelsnow">Valeria Vagapova</a>
       </span>
-    </footer>
+    </Row>
   );
 };
 /* <Navbar>
