@@ -22,6 +22,7 @@ function LoginForm() {
   const [formFields, setFormFields] = useState(defaultFormFields);
   const { email, password } = formFields;
   const { currentUser, setCurrentUser } = useContext(AuthContext);
+  
   const resetFormFields = () => {
     return setFormFields(defaultFormFields);
   };
@@ -33,7 +34,7 @@ function LoginForm() {
       // Send the email and password to firebase
       const userCredential = await signInUser(email, password);
       console.log("SETTING", userCredential?.user);
-      if (userCredential) {
+      if (userCredential ) {
         resetFormFields();
         setCurrentUser(userCredential.user);
         dispatch(setPlayerDispatch(userCredential.user));

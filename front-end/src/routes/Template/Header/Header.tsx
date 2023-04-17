@@ -49,19 +49,16 @@ export const Header = () => {
     dispatch(setLogin(true));
   };
 
-  /* useEffect(() => {
-    console.log("CURRUSER", currentUser);
-  }, [currentUser]);
+  // useEffect(() => {
+  //   console.log("CURRUSER", currentUser);
+  // }, [currentUser]);
   useEffect(() => {
-    console.log("USEEFFECT", currentUser, user);
-    if (!currentUser && user) {
-      dispatch(setPlayerDispatch(user));
-      setCurrentUser(user);
-      dispatch(setLogin(false));
+    if (currentUser) {
+      dispatch(setPlayerDispatch(currentUser));
     }
-  }, []);
+  }, [currentUser,dispatch]);
 
-  console.log("PLAYERS", players); */
+  console.log("PLAYERS", players); 
 
   return (
     <div>

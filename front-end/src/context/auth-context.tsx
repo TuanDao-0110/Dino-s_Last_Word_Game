@@ -1,4 +1,4 @@
-import { User, UserCredential } from "firebase/auth";
+import {  User,} from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 import { SignOutUser, userStateListener } from "../firebase/firebase";
 import { createContext, useState, useEffect, ReactNode } from "react";
