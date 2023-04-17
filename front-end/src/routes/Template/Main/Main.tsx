@@ -106,7 +106,7 @@ const Main = () => {
   if (isLoading) return <Spinner />;
   return (
     // classname extra for now
-    <Row
+    <div
       className={`${classes.main_container} ${
         guessedLetters.filter((letter) => !wordToGuess.includes(letter))
           .length >= 9
@@ -132,7 +132,7 @@ const Main = () => {
         <Category />
         {/* {gameStatus !== "playing" && <Controls />} */}
       </div>
-    </Row>
+    </div>
   );
 };
 

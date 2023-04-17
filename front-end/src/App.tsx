@@ -1,6 +1,5 @@
 import "./App.css";
 import { Route, Routes } from "react-router-dom";
-
 import Main from "./routes/Template/Main/Main";
 import { Template } from "./routes/Template/Template";
 import LoginForm from "./components/Form/LoginForm";

@@ -16,8 +16,9 @@
 .App {
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: 1rem;
   align-items: center;
+  padding: 1rem;
 }
 
 a {
@@ -27,25 +28,16 @@ a {
 .form-control {
   border: 1px solid black;
   border-radius: 1rem;
+  padding: 0.5rem;
+  width: 100%;
 }
 
-.nav-tabs {
-  gap: 0.5rem;
-}
+@media only screen and (min-width: 480px) and (max-width: 800px) {
+  .nav-tabs {
+    flex-wrap: wrap;
+  }
 
-.nav-tabs .nav-link {
-  border: 1px solid black;
-  border-bottom: none;
-  border-radius: 1rem 1rem 0 0;
-}
-
-.nav-tabs .nav-link.active {
-  border: 1px solid black;
-  border-bottom: none;
-}
-
-.nav-tabs .nav-link:hover {
-  background-color: black;
-  color: white;
-  border-bottom: none;
+  .nav-tabs .nav-link {
+    font-size: 0.8rem;
+  }
 }
