@@ -25,5 +25,22 @@
   padding: 0 0.7rem;
 }
 
-@media only screen and (max-width: 800px) {
+.mobile {
+  display: none;
+}
+
+@media only screen and (max-width: 1200px) {
+  .main_container {
+    display: grid;
+    grid-template-columns: 1fr;
+    align-content: baseline;
+  }
+  .desktop {
+    display: none;
+  }
+  .mobile {
+    display: inline;
+    display: flex;
+    justify-content: center;
+  }
 }
