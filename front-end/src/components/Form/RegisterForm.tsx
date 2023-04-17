@@ -10,6 +10,8 @@ import { useAppDispatch } from "../../hooks/hooks";
 import { useNavigate } from "react-router-dom";
 import { BtnSubmit } from "../../assets/export_component/resource";
 
+import classes from "./form.module.css";
+
 const defaultFormFields = {
   name: "",
   email: "",
@@ -52,38 +54,42 @@ function RegisterForm() {
     setFormFields({ ...formFields, [name]: value });
   };
   return (
-    <Form onSubmit={handleSubmit}>
-      <FloatingLabel controlId="floatingInput" label="Name" className="mb-3">
-        <Form.Control
-          type="text"
-          name="name"
-          onChange={handleChange}
-          required
-        />
-      </FloatingLabel>
-      <FloatingLabel
-        controlId="floatingInput"
-        label="Email address"
-        className="mb-3"
-      >
-        <Form.Control
-          type="email"
-          name="email"
-          value={email}
-          onChange={handleChange}
-          required
-        />
-      </FloatingLabel>
-      <FloatingLabel controlId="floatingPassword" label="Password">
-        <Form.Control
-          type="password"
-          name="password"
-          value={password}
-          onChange={handleChange}
-          required
-        />
-      </FloatingLabel>
-      <BtnSubmit text="Sign up" />
+    <Form className={classes.form} onSubmit={handleSubmit}>
+      <div>
+        <FloatingLabel controlId="floatingInput" label="Name" className="mb-3">
+          <Form.Control
+            type="text"
+            name="name"
+            onChange={handleChange}
+            required
+          />
+        </FloatingLabel>
+        <FloatingLabel
+          controlId="floatingInput"
+          label="Email address"
+          className="mb-3"
+        >
+          <Form.Control
+            type="email"
+            name="email"
+            value={email}
+            onChange={handleChange}
+            required
+          />
+        </FloatingLabel>
+        <FloatingLabel controlId="floatingPassword" label="Password">
+          <Form.Control
+            type="password"
+            name="password"
+            value={password}
+            onChange={handleChange}
+            required
+          />
+        </FloatingLabel>
+      </div>
+      <div>
+        <BtnSubmit text="Sign up" />
+      </div>
     </Form>
   );
 }

@@ -1,4 +1,6 @@
 .btn_custom_success {
   background-color: var(--green);
   border: none;
+  border-radius: 100rem;
+  padding: 0.5rem 1.5rem;
 }

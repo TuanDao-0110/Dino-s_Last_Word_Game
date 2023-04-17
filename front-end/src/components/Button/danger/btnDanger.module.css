@@ -1,9 +1,10 @@
 .btn_custom_danger {
   background-color: var(--red);
   border: none;
+  border-radius: 100rem;
+  padding: 0.5rem 1.5rem;
 }
 
 .btn_custom_danger:hover {
   background-color: #de5656;
-  border: none;
 }

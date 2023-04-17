@@ -90,7 +90,7 @@ const Main = () => {
 
       const timer = setTimeout(() => {
         dispatch(setModal(true));
-      }, 1500);
+      }, 1000);
       return () => clearTimeout(timer);
     }
   }, [dispatch, guessedLetters, wordToGuess, category]);

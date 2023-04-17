@@ -17,6 +17,7 @@ import Word from "../../components/Word/Word";
 import Object from "../../components/Object/Object";
 import WordLetters from "../../components/WordLetters/WordLetters";
 import Controls from "../../components/Controls/Controls";
+import PopoverHint from "../../components/Category/PopoverHint/PopoverHint";
 // Dino
 
 import Dino from "../../components/Dino/Dino";
@@ -39,4 +40,5 @@ export {
   Dino,
   LoginForm,
   RegisterForm,
+  PopoverHint,
 };

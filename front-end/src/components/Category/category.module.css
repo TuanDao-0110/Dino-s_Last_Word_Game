@@ -1,53 +1,24 @@
-.gameStatus_container {
-  background-color: white;
-  text-align: center;
-  display: flex;
-  gap: 20px;
-  justify-content: space-between;
-}
-
+/* Containers */
 .category_container {
   background-color: white;
-  width: 22rem;
-  min-height: 500px;
-  padding: 3rem;
-  border-radius: 20px;
+  width: 18rem;
+  padding: 2rem 0;
+  border-radius: 1rem;
   text-align: center;
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
 }
 
-.category_info {
-  background-color: #e8e8e8;
-  padding: 2rem;
-  margin: 2rem 0;
-  border-radius: 20px;
+.category_section {
+  padding: 0 2rem;
+}
+
+/* Round and score */
+.game_status_container {
+  text-align: center;
   display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-}
-
-.category_info p {
-  margin: 0;
-}
-
-.category_info p {
-  margin: 0;
-}
-
-.category_container h2 {
-  margin-bottom: 1rem;
-}
-
-.category_display {
-  font-size: 1.2rem;
-}
-
-.category_display span {
-  display: block;
-  color: rgb(81, 51, 255);
-  font-size: 2rem;
+  gap: 1rem;
+  justify-content: space-between;
 }
 
 .score {
@@ -58,27 +29,93 @@
   color: rgb(81, 51, 255);
 }
 
-.progress_bar {
-  color: aqua;
-}
+/* Progress */
+
 .circular_progress_bar_container {
-  width: 200px;
 }
+
 .circular_progress_bar {
+  padding-top: 1rem;
 }
 
 .tries {
-  font-size: 2rem;
+  font-size: 1rem;
 }
 
-.tries span {
-  color: red;
+.tries > span {
+  font-size: 1.5rem;
 }
 
-.game_status {
+.tries > span span {
+  font-size: 2.5rem;
+}
+
+.wrong0 > span span {
+  color: var(--green);
+}
+
+.wrong1 > span span {
+  color: var(--orange);
+}
+
+.wrong2 > span span,
+.wrong3 > span span {
+  color: var(--red);
+}
+
+/* Popover */
+
+.popover_container {
+  display: flex;
+  justify-content: flex-end;
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+}
+
+.popover_container i {
+  font-size: 1.2rem;
+}
+
+/* Category */
+.category_info {
+  position: relative;
+  background-color: var(--gray-pale);
+  padding: 1.5rem 2rem;
+  margin: 2rem 0;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.category_select {
+  background-color: white;
+  border: 1px solid black;
+  border-radius: 100rem;
+}
+
+.category_info p {
+  margin: 0;
+}
+
+.category_display {
+  font-size: 1rem;
+}
+
+.category_display span {
+  display: block;
+  color: rgb(81, 51, 255);
   font-size: 2rem;
 }
 
 .points_earned {
-  color: #888;
+  font-size: 0.9rem;
+  color: var(--gray-mid);
+}
+
+/* Game message */
+
+.game_status {
+  font-size: 2rem;
 }

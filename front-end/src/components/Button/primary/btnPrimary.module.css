@@ -1,4 +1,10 @@
 .btn_custom_primary {
-  background-color: var(--pink);
+  background-color: var(--blue);
   border: none;
+  border-radius: 100rem;
+  padding: 0.5rem 1.5rem;
+}
+
+.btn_custom_primary:hover {
+  background-color: var(--blue-dark);
 }

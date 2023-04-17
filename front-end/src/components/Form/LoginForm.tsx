@@ -10,6 +10,8 @@ import { useAppDispatch } from "../../hooks/hooks";
 import { setPlayerDispatch } from "../../features/PlayerSlice";
 import { BtnSubmit } from "../../assets/export_component/resource";
 
+import classes from "./form.module.css";
+
 const defaultFormFields = {
   email: "",
   password: "",
@@ -48,28 +50,32 @@ function LoginForm() {
     setFormFields({ ...formFields, [type]: value });
   };
   return (
-    <Form onSubmit={handleSubmit}>
-      <FloatingLabel
-        controlId="floatingInput"
-        label="Email address"
-        className="mb-3"
-      >
-        <Form.Control
-          type="email"
-          value={email}
-          onChange={handleChange}
-          required
-        />
-      </FloatingLabel>
-      <FloatingLabel controlId="floatingPassword" label="Password">
-        <Form.Control
-          type="password"
-          value={password}
-          onChange={handleChange}
-          required
-        />
-      </FloatingLabel>
-      <BtnSubmit text="Login" />
+    <Form className={classes.form} onSubmit={handleSubmit}>
+      <div>
+        <FloatingLabel
+          controlId="floatingInput"
+          label="Email address"
+          className="mb-3"
+        >
+          <Form.Control
+            type="email"
+            value={email}
+            onChange={handleChange}
+            required
+          />
+        </FloatingLabel>
+        <FloatingLabel controlId="floatingPassword" label="Password">
+          <Form.Control
+            type="password"
+            value={password}
+            onChange={handleChange}
+            required
+          />
+        </FloatingLabel>
+      </div>
+      <div>
+        <BtnSubmit text="Login" />
+      </div>
     </Form>
   );
 }

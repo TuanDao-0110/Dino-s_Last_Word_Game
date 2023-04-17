@@ -81,25 +81,30 @@ export const Header = () => {
           </>
         )}
       </div>
-      <Modal show={showLogin} onHide={handleCloseLogin}>
-        <div className={classes.loginModal_container}>
-          <Modal.Header closeButton>
-            <Modal.Title>Login or signup to join the leaderboard</Modal.Title>
-          </Modal.Header>
-          <Tabs
-            defaultActiveKey={activeTab}
-            id="uncontrolled-tab-example"
-            className="mb-3"
-          >
-            <Tab eventKey="login" title="Login">
-              <LoginForm />
-            </Tab>
-            <Tab eventKey="register" title="Register">
-              <RegisterForm />
-            </Tab>
-          </Tabs>
-          <Modal.Footer></Modal.Footer>
-        </div>
+      <Modal
+        className={classes.modal}
+        show={showLogin}
+        onHide={handleCloseLogin}
+        size="sm"
+      >
+        <Modal.Header
+          className={`border-0 ${classes.modal_header}`}
+          closeButton
+        >
+          <Modal.Title className={classes.modal_title}>Hi there!</Modal.Title>
+        </Modal.Header>
+        <Tabs
+          defaultActiveKey={activeTab}
+          id="uncontrolled-tab-example"
+          className={`mb-3 ${classes.tabs}`}
+        >
+          <Tab className={classes.tab} eventKey="login" title="Login">
+            <LoginForm />
+          </Tab>
+          <Tab className={classes.tab} eventKey="register" title="Register">
+            <RegisterForm />
+          </Tab>
+        </Tabs>
       </Modal>
     </div>
   );
