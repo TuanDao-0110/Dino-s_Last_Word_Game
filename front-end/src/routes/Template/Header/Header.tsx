@@ -53,10 +53,11 @@ export const Header = () => {
   //   console.log("CURRUSER", currentUser);
   // }, [currentUser]);
   useEffect(() => {
-    if (currentUser) {
+    if (currentUser && !players) {
+      console.log('get user')
       dispatch(setPlayerDispatch(currentUser));
     }
-  }, [currentUser,dispatch]);
+  }, [currentUser,dispatch,players]);
 
   console.log("PLAYERS", players); 
 
