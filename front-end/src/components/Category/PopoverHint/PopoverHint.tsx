@@ -1,7 +1,8 @@
-import Button from "react-bootstrap/Button";
+// Bootstrap
 import OverlayTrigger from "react-bootstrap/OverlayTrigger";
 import Tooltip from "react-bootstrap/Tooltip";
 
+// Styles
 import classes from "./popover.module.css";
 
 function PopoverHint() {

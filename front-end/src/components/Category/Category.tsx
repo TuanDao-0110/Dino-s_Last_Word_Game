@@ -1,38 +1,38 @@
+// React
 import React, { ReactEventHandler } from "react";
-import Form from "react-bootstrap/Form";
 
+// Redux
 import { useAppSelector, useAppDispatch } from "../../hooks/hooks";
-import { Categories } from "../../types/API.model";
 import {
   getWordDispatch,
   setCategory,
   setWordToGuess,
 } from "../../features/GameSlice";
-import classes from "./category.module.css";
+
+// Bootstrap
+import Form from "react-bootstrap/Form";
+
+// Components
 import {
   Message,
   Controls,
   PopoverHint,
 } from "../../assets/export_component/resource";
-
 import {
   CircularProgressbarWithChildren,
   buildStyles,
 } from "react-circular-progressbar";
 
+// Types
+import { Categories } from "../../types/API.model";
+
+// Styles
+import classes from "./category.module.css";
+
 const Category: React.FC = () => {
   const { category, score, round, gameStatus, guessedLetters, wordToGuess } =
     useAppSelector((state) => state.game);
   const dispatch = useAppDispatch();
-  const [anchorEl, setAnchorEl] = React.useState<HTMLElement | null>(null);
-  const handlePopoverOpen = (event: React.MouseEvent<HTMLElement>) => {
-    setAnchorEl(event.currentTarget);
-  };
-  const handlePopoverClose = () => {
-    setAnchorEl(null);
-  };
-
-  const open = Boolean(anchorEl);
 
   const renderOption = () => {
     return Object.values(Categories).map((category, index) => (

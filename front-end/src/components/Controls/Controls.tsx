@@ -1,4 +1,4 @@
-import { BtnDanger, BtnPrimary } from "../../assets/export_component/resource";
+// Redux
 import { useAppDispatch, useAppSelector } from "../../hooks/hooks";
 import {
   nextGame,
@@ -11,6 +11,9 @@ import {
   setRandomCategory,
 } from "../../features/GameSlice";
 import { Categories } from "../../types/API.model";
+
+// Components
+import { BtnDanger, BtnPrimary } from "../../assets/export_component/resource";
 
 const Controls = () => {
   const dispatch = useAppDispatch();
