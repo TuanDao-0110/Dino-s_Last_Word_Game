@@ -1,19 +1,16 @@
 // React
-import { useContext, useEffect, useState } from "react";
+import { useContext, useState, useEffect } from "react";
 
 // Redux
-import { setPlayerDispatch } from "../../../features/PlayerSlice";
 import { useAppDispatch, useAppSelector } from "../../../hooks/hooks";
 import { setLogin } from "../../../features/GameSlice";
+import { setPlayerDispatch } from "../../../features/PlayerSlice";
 
 // Firebase, auth
-import { useAuthState } from "react-firebase-hooks/auth";
-import { getAuth } from "firebase/auth";
 import { AuthContext } from "../../../context/auth-context";
 
 // Bootstrap
-import { Modal, Row, Tab, Tabs } from "react-bootstrap";
-import { Button } from "react-bootstrap";
+import { Modal, Tab, Tabs } from "react-bootstrap";
 
 // Resources / Components
 import {
@@ -21,17 +18,13 @@ import {
   RegisterForm,
   BtnPrimary,
   BtnSuccess,
-  BtnDanger,
   BtnWarning,
 } from "../../../assets/export_component/resource";
 
 // Styles
 import classes from "./header.module.css";
 
-export const Header = () => {
-  /*  const auth = getAuth();
-  const [user] = useAuthState(auth); */
-
+const Header = () => {
   const dispatch = useAppDispatch();
   const { showLogin } = useAppSelector((state) => state.game);
   const { currentUser, setCurrentUser, signOut } = useContext(AuthContext);
@@ -48,18 +41,12 @@ export const Header = () => {
     setActiveTab("register");
     dispatch(setLogin(true));
   };
-
-  // useEffect(() => {
-  //   console.log("CURRUSER", currentUser);
-  // }, [currentUser]);
   useEffect(() => {
-    if (currentUser) {
+    if (currentUser && !players) {
+      console.log("get user");
       dispatch(setPlayerDispatch(currentUser));
     }
-  }, [currentUser,dispatch]);
-
-  console.log("PLAYERS", players); 
-
+  }, [currentUser, dispatch, players]);
   return (
     <div>
       <div className={classes.header_container}>
@@ -106,3 +93,5 @@ export const Header = () => {
     </div>
   );
 };
+
+export default Header;

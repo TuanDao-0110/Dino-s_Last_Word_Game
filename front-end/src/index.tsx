@@ -27,3 +27,11 @@ root.render(
     </Provider>
   </BrowserRouter>
 );
+
+// React
+// Redux
+// Bootstrap
+// Components
+// API
+// Types
+// Styles

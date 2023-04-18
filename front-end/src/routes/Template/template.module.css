@@ -3,28 +3,19 @@
   flex-direction: column;
   min-height: 100vh;
   background: linear-gradient(
-    180deg,
-    #a0bbff 3.23%,
-    #ffc7de 41.54%,
-    #ffce95 100%,
-    #ffd4a0 100%,
-    #ffd5a4 100%
-  );
+      180deg,
+      #a0bbff 3.23%,
+      #ffc7de 41.54%,
+      #ffce95 100%,
+      #ffd4a0 100%,
+      #ffd5a4 100%
+    )
+    no-repeat fixed;
 }
 
 .game_over {
   background: linear-gradient(180deg, #263735 0%, #2a4138 100%);
 }
 
-@media only screen and (max-width: 480px) {
-  .template {
-    min-height: auto;
-  }
-}
-
-@media only screen and (max-width: 800px) {
-  .template {
-    background-size: cover;
-    background-position: center;
-  }
+.main_row {
 }

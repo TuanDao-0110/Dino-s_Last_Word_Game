@@ -1,12 +1,18 @@
+// React
 import { useEffect } from "react";
 
+// Redux
 import { getAllScoreDispatch } from "../../features/PlayerSlice";
 import { useAppDispatch, useAppSelector } from "../../hooks/hooks";
+
+// Types
 import {
   AllScore_Type,
   Player_ScoreBoard_Type,
   ScoreBoard_Type,
 } from "../../types/hangman.model";
+
+// Styles
 import classes from "./leaderboard.module.css";
 
 const LeaderBoard = () => {
@@ -15,7 +21,8 @@ const LeaderBoard = () => {
   useEffect(() => {
     dispatch(getAllScoreDispatch());
   }, [dispatch]);
-  const renderDate = (timestamp: number) => {
+
+  /* const renderDate = (timestamp: number) => {
     const date = new Date(timestamp);
     return date.toLocaleString();
   };
@@ -28,7 +35,8 @@ const LeaderBoard = () => {
       domain.length - 2
     )}${domain.charAt(domain.length - 1)}`;
     return `${obfuscatedName}@${obfuscatedDomain}`;
-  };
+  }; */
+
   const restructureLeaderBoard = (
     allScore: AllScore_Type
   ): { email: string; name: string; score: number; timestamp: number }[] => {
@@ -48,7 +56,6 @@ const LeaderBoard = () => {
     });
 
     return newArray.sort((a, b) => b.score - a.score);
-    // return []
   };
 
   const renderScoreTable = (allScore: AllScore_Type) => {

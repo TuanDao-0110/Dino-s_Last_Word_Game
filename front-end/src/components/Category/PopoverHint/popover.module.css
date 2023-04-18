@@ -1,0 +1,13 @@
+.icon_container {
+  background-color: black;
+  color: white;
+  height: 1.7rem;
+  width: 1.7rem;
+  border-radius: 100rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.icon_container i {
+}
