@@ -71,7 +71,7 @@ const Main = () => {
       ) {
         dispatch(setScore(+1));
       } else if (hints.length >= 1) {
-        dispatch(setScore(score - hints.length));
+        dispatch(setScore((currScore: number) => currScore - hints.length));
       }
       dispatch(setGameStatus(GameStatus.win));
       dispatch(setNextRound());
@@ -86,6 +86,7 @@ const Main = () => {
       return () => clearTimeout(timer);
     }
   }, [dispatch, guessedLetters, wordToGuess, category, hints, score]);
+  }, [dispatch, guessedLetters, wordToGuess, category, hints]);
 
   if (isLoading) return <Spinner />;
   return (
