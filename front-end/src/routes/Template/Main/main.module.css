@@ -23,6 +23,7 @@
 
 .mainObject_container {
   padding: 0 0.5rem;
+  align-self: flex-start;
 }
 
 @media only screen and (min-width: 800px) {

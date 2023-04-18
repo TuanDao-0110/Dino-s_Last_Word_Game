@@ -58,9 +58,9 @@ const Header = () => {
         )}
         {currentUser && (
           <>
-            <h4 className={classes.header_text}>
+            <p className={classes.header_text}>
               {players?.userInfo._fieldsProto?.name.stringValue}
-            </h4>
+            </p>
             <BtnWarning text="Log out" clickHandler={() => signOut()} />
           </>
         )}
