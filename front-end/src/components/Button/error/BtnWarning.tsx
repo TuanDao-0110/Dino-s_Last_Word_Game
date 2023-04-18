@@ -1,5 +1,6 @@
+import Button from "react-bootstrap/Button";
+
 import { ButtonProps } from "../../../types/hangman.model";
-import { Button } from "react-bootstrap";
 
 import classes from "./btnWarning.module.css";
 

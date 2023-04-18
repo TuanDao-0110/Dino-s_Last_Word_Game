@@ -1,15 +1,23 @@
-import React, { ChangeEvent, FormEvent, useContext, useState } from "react";
+// React
+import { ChangeEvent, FormEvent, useContext, useState } from "react";
+import { useNavigate } from "react-router-dom";
+
+// Redux
+import { setLogin } from "../../features/GameSlice";
+import { useAppDispatch } from "../../hooks/hooks";
+
+// Firebase, auth
+import { registerWithEmailAndPassword } from "../../firebase/firebase";
+import { AuthContext } from "../../context/auth-context";
+
+// Bootstrap
 import FloatingLabel from "react-bootstrap/FloatingLabel";
 import Form from "react-bootstrap/Form";
-import Button from "react-bootstrap/Button";
-import { registerWithEmailAndPassword } from "../../firebase/firebase";
-import { setLogin } from "../../features/GameSlice";
 
-import { AuthContext } from "../../context/auth-context";
-import { useAppDispatch } from "../../hooks/hooks";
-import { useNavigate } from "react-router-dom";
+// Components
 import { BtnSubmit } from "../../assets/export_component/resource";
 
+// Styles
 import classes from "./form.module.css";
 
 const defaultFormFields = {

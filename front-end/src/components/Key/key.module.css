@@ -31,3 +31,22 @@
   background-color: #66b391;
   color: #000000;
 }
+
+@media only screen and (max-width: 480px) {
+  .key_container {
+    width: 1.7rem;
+    height: 1.7rem;
+  }
+
+  .key_container > button {
+    font-size: 1rem;
+    border-radius: 0.4rem;
+  }
+}
+
+@media only screen and (max-width: 800px) and (min-width: 481px) {
+  .key_container {
+    width: 2rem;
+    height: 2rem;
+  }
+}

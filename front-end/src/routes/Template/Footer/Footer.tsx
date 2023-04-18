@@ -1,9 +1,10 @@
-import { Col, Container, Nav, Navbar, Row } from "react-bootstrap";
-import { LinkContainer } from "react-router-bootstrap";
+// Bootstrap
+import { Row } from "react-bootstrap";
 
+// Styles
 import classes from "./footer.module.css";
 
-export const Footer: React.FC = () => {
+const Footer: React.FC = () => {
   return (
     <Row className={classes.footer}>
       <span>
@@ -15,9 +16,5 @@ export const Footer: React.FC = () => {
     </Row>
   );
 };
-/* <Navbar>
-    <Container>
-      <NavbarBrand>
-      </NavbarBrand>
-    </Container>
-  </Navbar> */
+
+export default Footer;

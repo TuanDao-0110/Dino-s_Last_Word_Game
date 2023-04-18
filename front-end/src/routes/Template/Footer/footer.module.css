@@ -6,6 +6,18 @@
   justify-content: center;
   text-align: center;
   font-weight: 300;
-  font-size: 0.9rem;
+  font-size: 0.8rem;
   padding: 0.2rem;
+}
+
+@media only screen and (min-width: 480px) {
+  .footer {
+    font-size: 0.9rem;
+  }
+}
+
+@media only screen and (min-width: 800px) {
+  .footer {
+    font-size: 1rem;
+  }
 }

@@ -1,19 +1,16 @@
 // React
-import { useContext, useEffect, useState } from "react";
+import { useContext, useState, useEffect } from "react";
 
 // Redux
-import { setPlayerDispatch } from "../../../features/PlayerSlice";
 import { useAppDispatch, useAppSelector } from "../../../hooks/hooks";
 import { setLogin } from "../../../features/GameSlice";
+import { setPlayerDispatch } from "../../../features/PlayerSlice";
 
 // Firebase, auth
-import { useAuthState } from "react-firebase-hooks/auth";
-import { getAuth } from "firebase/auth";
 import { AuthContext } from "../../../context/auth-context";
 
 // Bootstrap
-import { Modal, Row, Tab, Tabs } from "react-bootstrap";
-import { Button } from "react-bootstrap";
+import { Modal, Tab, Tabs } from "react-bootstrap";
 
 // Resources / Components
 import {
@@ -21,17 +18,13 @@ import {
   RegisterForm,
   BtnPrimary,
   BtnSuccess,
-  BtnDanger,
   BtnWarning,
 } from "../../../assets/export_component/resource";
 
 // Styles
 import classes from "./header.module.css";
 
-export const Header = () => {
-  /*  const auth = getAuth();
-  const [user] = useAuthState(auth); */
-
+const Header = () => {
   const dispatch = useAppDispatch();
   const { showLogin } = useAppSelector((state) => state.game);
   const { currentUser, setCurrentUser, signOut } = useContext(AuthContext);
@@ -50,10 +43,10 @@ export const Header = () => {
   };
   useEffect(() => {
     if (currentUser && !players) {
-      console.log('get user')
+      console.log("get user");
       dispatch(setPlayerDispatch(currentUser));
     }
-  }, [currentUser,dispatch,players]);
+  }, [currentUser, dispatch, players]);
   return (
     <div>
       <div className={classes.header_container}>
@@ -65,9 +58,9 @@ export const Header = () => {
         )}
         {currentUser && (
           <>
-            <h4 className={classes.header_text}>
+            <p className={classes.header_text}>
               {players?.userInfo._fieldsProto?.name.stringValue}
-            </h4>
+            </p>
             <BtnWarning text="Log out" clickHandler={() => signOut()} />
           </>
         )}
@@ -100,3 +93,5 @@ export const Header = () => {
     </div>
   );
 };
+
+export default Header;
