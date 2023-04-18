@@ -3,7 +3,12 @@ import React, { useContext } from "react";
 
 // Redux
 import { useAppDispatch, useAppSelector } from "../../hooks/hooks";
-import { resetGame, setModal, setWordToGuess } from "../../features/GameSlice";
+import {
+  resetGame,
+  setModal,
+  setShowWord,
+  setWordToGuess,
+} from "../../features/GameSlice";
 import { getAllScoreDispatch } from "../../features/PlayerSlice";
 
 // Bootstrap
@@ -35,6 +40,7 @@ const Message: React.FC = () => {
 
   const handleClose = () => {
     dispatch(setModal(false));
+    dispatch(setShowWord(false));
     dispatch(resetGame());
     dispatch(setWordToGuess());
   };

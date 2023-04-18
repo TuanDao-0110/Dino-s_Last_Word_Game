@@ -10,10 +10,11 @@ import {
   setScore,
   setModal,
   setAllWord,
+  setShowWord,
 } from "../../../features/GameSlice";
 
 // Bootstrap
-import { Spinner, Row } from "react-bootstrap";
+import { Spinner } from "react-bootstrap";
 
 // Components
 import {
@@ -35,8 +36,9 @@ import classes from "./main.module.css";
 
 const Main = () => {
   const dispatch = useAppDispatch();
-  const { wordToGuess, guessedLetters, category, score, hints } =
-    useAppSelector((state) => state.game);
+  const { wordToGuess, guessedLetters, category, hints } = useAppSelector(
+    (state) => state.game
+  );
   const [isLoading, setIsLoading] = useState(true);
 
   // After the page loads, set a word to be guessed
@@ -80,12 +82,12 @@ const Main = () => {
       8
     ) {
       dispatch(setGameStatus(GameStatus.lose));
+      dispatch(setShowWord(true));
       const timer = setTimeout(() => {
         dispatch(setModal(true));
       }, 1000);
       return () => clearTimeout(timer);
     }
-  }, [dispatch, guessedLetters, wordToGuess, category, hints, score]);
   }, [dispatch, guessedLetters, wordToGuess, category, hints]);
 
   if (isLoading) return <Spinner />;

@@ -18,6 +18,7 @@ interface GameState {
   hints: string[];
   showModal: boolean;
   showLogin: boolean;
+  showWord: boolean;
 }
 
 const initialState: GameState = {
@@ -31,6 +32,7 @@ const initialState: GameState = {
   hints: [],
   showModal: false,
   showLogin: false,
+  showWord: false,
 };
 
 const gameSlice = createSlice({
@@ -49,6 +51,9 @@ const gameSlice = createSlice({
 
     setModal: (state, action) => {
       state.showModal = action.payload;
+    },
+    setShowWord: (state, action) => {
+      state.showWord = action.payload;
     },
 
     setLogin: (state, action) => {
@@ -73,12 +78,23 @@ const gameSlice = createSlice({
         if (state.category !== Categories.ALL && Array.isArray(word)) {
           const index = Math.floor(Math.random() * word.length);
           state.wordToGuess = word[index].toUpperCase();
-        } else if (state.category === Categories.ALL && typeof word === "object" && Categories.ANIMALS in word) {
+        } else if (
+          state.category === Categories.ALL &&
+          typeof word === "object" &&
+          Categories.ANIMALS in word
+        ) {
           // if category is ALL, word array is object and
-          const categoriesArray = Object.values(Categories).filter((category) => category !== Categories.ALL);
-          const randomIndex = Math.floor(Math.random() * categoriesArray.length);
-          const index = Math.floor(Math.random() * word[categoriesArray[randomIndex]].length);
-          state.wordToGuess = word[categoriesArray[randomIndex]][index].toUpperCase();
+          const categoriesArray = Object.values(Categories).filter(
+            (category) => category !== Categories.ALL
+          );
+          const randomIndex = Math.floor(
+            Math.random() * categoriesArray.length
+          );
+          const index = Math.floor(
+            Math.random() * word[categoriesArray[randomIndex]].length
+          );
+          state.wordToGuess =
+            word[categoriesArray[randomIndex]][index].toUpperCase();
         }
       }
     },
@@ -102,7 +118,10 @@ const gameSlice = createSlice({
       state.gameStatus = GameStatus.playing;
       setWordToGuess();
     },
-    addToLeaderboard: (state, action: PayloadAction<{ name: string; score: number }>) => {
+    addToLeaderboard: (
+      state,
+      action: PayloadAction<{ name: string; score: number }>
+    ) => {
       state.leaderboard.push(action.payload);
     },
   },
@@ -137,6 +156,7 @@ export const {
   setHint,
   setModal,
   setLogin,
+  setShowWord,
   nextGame,
 } = gameSlice.actions;
 export default gameSlice.reducer;

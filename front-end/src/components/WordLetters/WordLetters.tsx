@@ -10,7 +10,7 @@ import classes from "./wordLetters.module.css";
 
 const WordLetters: React.FC<WordLetterProps> = ({ letter, guessed }) => {
   const dispatch = useAppDispatch();
-  const { score, showModal } = useAppSelector((state) => state.game);
+  const { score, showWord } = useAppSelector((state) => state.game);
 
   // Here we define function to show the letter once it is clicked
   const showHint = () => {
@@ -19,16 +19,20 @@ const WordLetters: React.FC<WordLetterProps> = ({ letter, guessed }) => {
       dispatch(setHint(letter));
     }
   };
-  const showWord = () => {
-    if (showModal) {
+  const displayWord = () => {
+    if (showWord) {
       return letter;
     } else {
       return guessed ? letter : "";
     }
   };
   return (
-    <button disabled={guessed ? true : false} className={`${guessed ? classes.guessed : ""} ${classes.letter}`} onClick={showHint}>
-      {showWord()}
+    <button
+      disabled={guessed ? true : false}
+      className={`${guessed ? classes.guessed : ""} ${classes.letter}`}
+      onClick={showHint}
+    >
+      {displayWord()}
     </button>
   );
 };
