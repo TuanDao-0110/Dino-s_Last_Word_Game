@@ -34,8 +34,8 @@
 
 @media only screen and (max-width: 480px) {
   .key_container {
-    width: 1.7rem;
-    height: 1.7rem;
+    width: 2rem;
+    height: 2rem;
   }
 
   .key_container > button {
