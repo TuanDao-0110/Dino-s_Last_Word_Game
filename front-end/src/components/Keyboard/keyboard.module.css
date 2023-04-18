@@ -3,6 +3,7 @@
   flex-direction: column;
   gap: 0.4rem;
   align-items: center;
+  justify-content: center;
 }
 
 .keyboard_line_container {
@@ -12,4 +13,11 @@
 
 .keyboard_line_container:nth-child(3) {
   margin-right: 2.5rem;
+}
+
+@media only screen and (max-width: 480px) {
+  .word_container {
+    font-size: 1.5rem;
+    gap: 0.3rem;
+  }
 }

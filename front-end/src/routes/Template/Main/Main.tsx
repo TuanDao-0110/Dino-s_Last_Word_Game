@@ -100,7 +100,7 @@ const Main = () => {
   if (isLoading) return <Spinner />;
   return (
     // classname extra for now
-    <Row className={classes.main_container}>
+    <div className={classes.main_container}>
       <div
         className={`${classes.mainLeaderboard_container} ${classes.desktop}`}
       >
@@ -125,7 +125,7 @@ const Main = () => {
         <LeaderBoard />
         {/* <Form /> */}
       </div>
-    </Row>
+    </div>
   );
 };
 
