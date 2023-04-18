@@ -135,15 +135,15 @@ graph LR;
     {
     statusCode:200,
     "result": {
-        "easy": [
-            "easyword"
+        "sport": [
+            "sport"
         ],
-        "hard": [
-            "supperhard",
-            "newword"
+        "animal": [
+            "animal_1",
+            "animal_2"
         ],
-        "medium": [
-            "mediumword"
+        "food": [
+            "food_1"
         ]
 
       }
@@ -174,7 +174,7 @@ graph LR;
     ```
     {
       newword:'newword',
-      level:'hard'
+      category:'food'
     }
     ```
     - Response Body
