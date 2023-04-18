@@ -25,11 +25,9 @@ export const getAllScore = async () => {
       method: METHOD.GET,
       // headers: setUpheader(token),
     });
-    console.log("DATA GETALLSCORE", data);
-    console.log("RESULT GETALLSCORE", data.result);
     return data.result;
   } catch (error) {
-    console.log("getAllScore error", error);
+    alert(error)
   }
 };
 
@@ -41,8 +39,9 @@ export const getUserInfo = async (currentUser: User) => {
       url: `${URL.USER_URL}/${uid}`,
       headers: setUpheader(token),
     });
-    console.log(data);
     // data now can dispatch to redux
     return data;
-  } catch (error) {}
+  } catch (error) {
+    alert(error);
+  }
 };

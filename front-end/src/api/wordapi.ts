@@ -26,7 +26,6 @@ export const getWordByCategory = async (
       method: METHOD.GET,
       url: `${URL.WORD_URL}/${category}`,
     });
-    console.log("data from getWordByCategory: ", data);
     return data;
   } catch (error) {}
 };
