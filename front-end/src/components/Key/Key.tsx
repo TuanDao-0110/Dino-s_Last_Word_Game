@@ -15,7 +15,6 @@ const Key: React.FC<KeyProps> = ({ letter, status }) => {
       }
     };
     window.addEventListener("keydown", handleKeyDown);
-
     return () => {
       window.removeEventListener("keydown", handleKeyDown);
     };
