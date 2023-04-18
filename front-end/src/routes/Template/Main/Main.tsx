@@ -3,40 +3,26 @@ import { useEffect, useState } from "react";
 
 // Redux
 import { useAppDispatch, useAppSelector } from "../../../hooks/hooks";
-import {
-  setWordToGuess,
-  setGameStatus,
-  setNextRound,
-  setScore,
-  setModal,
-  setAllWord,
-} from "../../../features/GameSlice";
+import { setWordToGuess, setGameStatus, setNextRound, setScore, setModal, setAllWord } from "../../../features/GameSlice";
 
 // Bootstrap
 import { Spinner, Row } from "react-bootstrap";
 
 // Components
-import {
-  Word,
-  Keyboard,
-  Object,
-  LeaderBoard,
-  Category,
-} from "../../../assets/export_component/resource";
+import { Word, Keyboard, Object, LeaderBoard, Category } from "../../../assets/export_component/resource";
 
 // API
 import { getAllWords } from "../../../api/wordapi";
 
 // Types
-import { Categories, Word_Type } from "../../../types/API.model";
+import { Categories, GameStatus, Word_Type } from "../../../types/API.model";
 
 // Styles
 import classes from "./main.module.css";
 
 const Main = () => {
   const dispatch = useAppDispatch();
-  const { wordToGuess, guessedLetters, gameStatus, category, score, hints } =
-    useAppSelector((state) => state.game);
+  const { wordToGuess, guessedLetters, category, score, hints } = useAppSelector((state) => state.game);
   const [isLoading, setIsLoading] = useState(true);
 
   // After the page loads, set a word to be guessed
@@ -56,10 +42,7 @@ const Main = () => {
 
   // Every time a new letter is guessed, check if the game is won or lost
   useEffect(() => {
-    if (
-      wordToGuess &&
-      wordToGuess.split("").every((letter) => guessedLetters.includes(letter))
-    ) {
+    if (wordToGuess && wordToGuess.split("").every((letter) => guessedLetters.includes(letter))) {
       if (category === Categories.ALL) {
         dispatch(setScore(+2));
       } else if (
@@ -73,57 +56,33 @@ const Main = () => {
       } else if (hints.length >= 1) {
         dispatch(setScore(score - hints.length));
       }
-      dispatch(setGameStatus("won"));
+      dispatch(setGameStatus(GameStatus.win));
       dispatch(setNextRound());
-    } else if (
-      guessedLetters.filter((letter) => !wordToGuess.includes(letter)).length >
-      8
-    ) {
-      console.log("check in main, setting showModal to true");
-      dispatch(setGameStatus("lost"));
-
+    } else if (guessedLetters.filter((letter) => !wordToGuess.includes(letter)).length > 8) {
+      dispatch(setGameStatus(GameStatus.lose));
       const timer = setTimeout(() => {
         dispatch(setModal(true));
       }, 1000);
       return () => clearTimeout(timer);
     }
-  }, [dispatch, guessedLetters, wordToGuess, category]);
-
-  useEffect(
-    () => console.log("word to Guess rerender: ", wordToGuess),
-    [wordToGuess]
-  );
-
-  useEffect(() => console.log("category changed: ", category), [category]);
-  useEffect(() => console.log("game status: ", gameStatus), [gameStatus]);
+  }, [dispatch, guessedLetters, wordToGuess, category,hints,score]);
 
   if (isLoading) return <Spinner />;
   return (
-    // classname extra for now
     <div className={classes.main_container}>
-      <div
-        className={`${classes.mainLeaderboard_container} ${classes.desktop}`}
-      >
+      <div className={`${classes.mainLeaderboard_container} ${classes.desktop}`}>
         <LeaderBoard />
-        {/* <Form /> */}
       </div>
       <div className={classes.mainObject_container}>
-        <Object
-          wrongGuesses={
-            guessedLetters.filter((letter) => !wordToGuess.includes(letter))
-              .length
-          }
-        />
+        <Object wrongGuesses={guessedLetters.filter((letter) => !wordToGuess.includes(letter)).length} />
         <Word />
         <Keyboard />
       </div>
       <div className={classes.mainCategory_container}>
         <Category />
-        {/* {gameStatus !== "playing" && <Controls />} */}
       </div>
       <div className={`${classes.mainLeaderboard_container} ${classes.mobile}`}>
         <LeaderBoard />
-        {/* <Form /> */}
       </div>
     </div>
   );

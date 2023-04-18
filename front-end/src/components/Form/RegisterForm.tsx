@@ -30,7 +30,7 @@ function RegisterForm() {
   const dispatch = useAppDispatch();
   const [formFields, setFormFields] = useState(defaultFormFields);
   const { name, email, password } = formFields;
-  const { currentUser, setCurrentUser } = useContext(AuthContext);
+  const {  setCurrentUser } = useContext(AuthContext);
   const navigate = useNavigate();
 
   const resetFormFields = () => {
@@ -41,11 +41,7 @@ function RegisterForm() {
     event.preventDefault();
     try {
       // Send the email and password to firebase
-      const userCredential = await registerWithEmailAndPassword(
-        name,
-        email,
-        password
-      );
+      const userCredential = await registerWithEmailAndPassword(name, email, password);
       if (userCredential) {
         resetFormFields();
         setCurrentUser(userCredential);
@@ -53,7 +49,7 @@ function RegisterForm() {
         navigate("/");
       }
     } catch (error: any) {
-      console.log(error);
+      alert(error);
     }
   };
 
@@ -65,34 +61,13 @@ function RegisterForm() {
     <Form className={classes.form} onSubmit={handleSubmit}>
       <div>
         <FloatingLabel controlId="floatingInput" label="Name" className="mb-3">
-          <Form.Control
-            type="text"
-            name="name"
-            onChange={handleChange}
-            required
-          />
+          <Form.Control type="text" name="name" onChange={handleChange} required />
         </FloatingLabel>
-        <FloatingLabel
-          controlId="floatingInput"
-          label="Email address"
-          className="mb-3"
-        >
-          <Form.Control
-            type="email"
-            name="email"
-            value={email}
-            onChange={handleChange}
-            required
-          />
+        <FloatingLabel controlId="floatingInput" label="Email address" className="mb-3">
+          <Form.Control type="email" name="email" value={email} onChange={handleChange} required />
         </FloatingLabel>
         <FloatingLabel controlId="floatingPassword" label="Password">
-          <Form.Control
-            type="password"
-            name="password"
-            value={password}
-            onChange={handleChange}
-            required
-          />
+          <Form.Control type="password" name="password" value={password} onChange={handleChange} required />
         </FloatingLabel>
       </div>
       <div>

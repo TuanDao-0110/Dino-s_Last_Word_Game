@@ -6,7 +6,11 @@ export enum Categories {
   PROFESSION = "professions",
   SPORTS = "sports",
 }
-
+export enum GameStatus {
+  win = "win",
+  lose = "lose",
+  playing = "playing",
+}
 export enum METHOD {
   GET = "GET",
   POST = "POST",

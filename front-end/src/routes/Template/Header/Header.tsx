@@ -43,7 +43,6 @@ const Header = () => {
   };
   useEffect(() => {
     if (currentUser && !players) {
-      console.log("get user");
       dispatch(setPlayerDispatch(currentUser));
     }
   }, [currentUser, dispatch, players]);

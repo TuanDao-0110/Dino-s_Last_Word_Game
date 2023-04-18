@@ -84,7 +84,6 @@ describe("testing POST:/api/word/", () => {
       .expect(200)
       .expect(Content_Type, Content_ApplicationJson);
     expect(result.body.result.sports).toContain("testing");
-    console.log("RESULT TEST", result.body.result);
   });
 });
 afterAll(async () => {

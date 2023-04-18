@@ -42,7 +42,6 @@ function LoginForm() {
     try {
       // Send the email and password to firebase
       const userCredential = await signInUser(email, password);
-      console.log("SETTING", userCredential?.user);
       if (userCredential ) {
         resetFormFields();
         setCurrentUser(userCredential.user);
@@ -51,7 +50,7 @@ function LoginForm() {
         navigate("/");
       }
     } catch (error: any) {
-      console.log(error);
+    alert(error);
     }
   };
 
