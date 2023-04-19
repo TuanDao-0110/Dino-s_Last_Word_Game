@@ -42,7 +42,7 @@ const Main = () => {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    console.log("wordToGuess CHANGE", wordToGuess);
+    /* console.log("wordToGuess CHANGE", wordToGuess); */
   }, [wordToGuess]);
 
   // After the page loads, set a word to be guessed
@@ -50,12 +50,12 @@ const Main = () => {
     const fetchWords = async () => {
       const data = (await getAllWords()) as Word_Type;
       dispatch(setAllWord(data));
-      console.log("setWordToGuess fetchWords");
+      /* console.log("setWordToGuess fetchWords"); */
       dispatch(setWordToGuess());
     };
     fetchWords()
       .then(() => {
-        console.log("setWordToGuess wordsFetched");
+        /*  console.log("setWordToGuess wordsFetched"); */
         dispatch(setWordToGuess());
         setIsLoading(false);
       })
@@ -64,9 +64,9 @@ const Main = () => {
 
   // Every time a new letter is guessed, check if the game is won or lost
   useEffect(() => {
-    console.log("USEEFFECT");
+    /* console.log("USEEFFECT");
     console.log("USEEFFECT guessedLetters", guessedLetters);
-    console.log("USEEFFECT wordToGuess", wordToGuess);
+    console.log("USEEFFECT wordToGuess", wordToGuess); */
     if (
       wordToGuess &&
       wordToGuess.split("").every((letter) => guessedLetters.includes(letter))
@@ -90,7 +90,7 @@ const Main = () => {
       guessedLetters.filter((letter) => !wordToGuess.includes(letter)).length >=
       9
     ) {
-      console.log("guessedLetters", guessedLetters);
+      /*  console.log("guessedLetters", guessedLetters);
       console.log("wordToGuess", wordToGuess);
       console.log(
         "guessedLetters.filter((letter) => !wordToGuess.includes(letter))",
@@ -99,15 +99,16 @@ const Main = () => {
       console.log(
         "length",
         guessedLetters.filter((letter) => !wordToGuess.includes(letter)).length
-      );
+      ); */
       dispatch(setGameStatus(GameStatus.lose));
-      console.log("game loss detected");
+      /*  console.log("game loss detected"); */
       dispatch(setShowWord(true));
       const timer = setTimeout(() => {
         dispatch(setModal(true));
       }, 1000);
       return () => clearTimeout(timer);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dispatch, guessedLetters, /* wordToGuess,  */ category, hints]);
 
   if (isLoading) return <Spinner />;

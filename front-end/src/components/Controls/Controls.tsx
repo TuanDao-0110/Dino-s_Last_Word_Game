@@ -27,7 +27,7 @@ const Controls = () => {
   };
   const playAgain = () => {
     dispatch(resetGame());
-    console.log("setWordToGuess playagain Controls");
+    /* console.log("setWordToGuess playagain Controls"); */
     dispatch(setWordToGuess());
     dispatch(setCategory(getRandomCategory()));
   };
@@ -39,7 +39,7 @@ const Controls = () => {
 
   const playNext = async () => {
     await dispatch(getWordDispatch(category));
-    console.log("setWordToGuess playNext Controls");
+    /* console.log("setWordToGuess playNext Controls"); */
     dispatch(nextGame());
     dispatch(setWordToGuess());
   };

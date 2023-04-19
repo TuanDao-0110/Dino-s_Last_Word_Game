@@ -12,8 +12,11 @@ const Key: React.FC<KeyProps> = ({ letter, status }) => {
   const { gameStatus, showModal } = useAppSelector((state) => state.game);
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
-      if (!showModal && event.key === letter.toLowerCase() && gameStatus === GameStatus.playing) {
-        console.log("go here");
+      if (
+        !showModal &&
+        event.key === letter.toLowerCase() &&
+        gameStatus === GameStatus.playing
+      ) {
         dispatch(addGuessedLetter(letter));
       }
     };
@@ -24,7 +27,11 @@ const Key: React.FC<KeyProps> = ({ letter, status }) => {
   }, [letter, status, gameStatus, dispatch, showModal]);
   return (
     <div className={classes.key_container}>
-      <button className={classes[status]} onClick={() => dispatch(addGuessedLetter(letter))} disabled={gameStatus !== GameStatus.playing}>
+      <button
+        className={classes[status]}
+        onClick={() => dispatch(addGuessedLetter(letter))}
+        disabled={gameStatus !== GameStatus.playing}
+      >
         {letter}
       </button>
     </div>
