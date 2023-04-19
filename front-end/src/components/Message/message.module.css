@@ -21,7 +21,35 @@
 .modal_body,
 .modal_footer {
   word-break: break-all;
-  text-align: center;
   display: flex;
   justify-content: center;
+}
+
+.modal_title {
+  font-size: 1.4rem;
+  padding: 0.5rem 1rem 0;
+  display: flex;
+  align-items: center;
+}
+
+.modal_title span {
+  color: var(--blue);
+  font-size: 2rem;
+  margin: 0 0.5rem;
+}
+
+.modal_header {
+  background-color: var(--gray-pale);
+  display: flex;
+}
+
+.modal_header button {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  color: black;
+}
+
+.game_over_summary {
+  text-align: center;
 }
