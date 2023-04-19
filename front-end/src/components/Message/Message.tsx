@@ -68,17 +68,17 @@ const Message: React.FC = () => {
           className={`${classes.modal_header} border-0`}
           closeButton
         >
-          <Modal.Title className={classes.modal_title}>
-            Great job
+          <div></div>
+          <h2 className={classes.modal_title}>
+            You got <span> {score} </span> points
             {currentUser
               ? ", " + player.players?.userInfo._fieldsProto?.name.stringValue
               : ""}
-            !
-          </Modal.Title>
+          </h2>
         </Modal.Header>
         {!currentUser ? (
           <Tabs
-            defaultActiveKey="login"
+            defaultActiveKey="register"
             id="uncontrolled-tab-example"
             className={`mb-3 ${classes.tabs}`}
           >
@@ -86,6 +86,11 @@ const Message: React.FC = () => {
               <LoginForm />
             </Tab>
             <Tab eventKey="register" title="Register">
+              {
+                <div className={classes.game_over_summary}>
+                  <p>Sign up to save your next score</p>
+                </div>
+              }
               <RegisterForm />
             </Tab>
           </Tabs>

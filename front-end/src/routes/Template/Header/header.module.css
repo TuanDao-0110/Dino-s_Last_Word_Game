@@ -23,13 +23,33 @@
 }
 
 .modal_header {
-  padding: 1.5rem 2rem;
+  background-color: var(--gray-pale);
+  display: flex;
+  justify-content: space-between;
+  text-align: center;
+}
+
+.modal_header h2 {
+  padding-top: 0.5rem;
+  width: 100%;
+  font-size: 2rem;
+}
+
+.modal_header button {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  color: black;
 }
 
 .tabs {
   display: flex;
   justify-content: center;
   border-bottom: 1px solid;
+}
+
+.tab {
+  padding-top: 1rem;
 }
 
 @media only screen and (max-width: 480px) {
@@ -45,12 +65,11 @@
     padding: 0.5rem;
   }
 
-  .modal_title {
-    font-size: 1rem;
+  .modal_header h2 {
+    font-size: 1.5rem;
   }
 
   .tabs {
-    margin-top: 0.5rem;
     font-size: 0.8rem;
   }
 
@@ -73,12 +92,7 @@
     padding: 1rem;
   }
 
-  .modal_title {
-    font-size: 1.2rem;
-  }
-
   .tabs {
-    margin-top: 1rem;
     font-size: 1rem;
   }
 
