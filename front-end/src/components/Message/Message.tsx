@@ -88,17 +88,6 @@ const Message: React.FC = () => {
                 </div>
               }
               <LoginForm />
-              {/* <div className={classes.login_suggestion}>
-                <p>Credentials for testing:</p>
-                <ul>
-                  <li>
-                    <span>Email: </span>test@test.com
-                  </li>
-                  <li>
-                    <span>Password: </span>test1234
-                  </li>
-                </ul>
-              </div> */}
             </Tab>
             <Tab eventKey="register" title="Register">
               <RegisterForm />

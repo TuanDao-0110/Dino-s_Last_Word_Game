@@ -30,6 +30,7 @@
   padding: 0.5rem 1rem 0;
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
 }
 
 .modal_title span {
@@ -52,4 +53,11 @@
 
 .game_over_summary {
   text-align: center;
+}
+
+.modal_footer {
+  padding-top: 0;
+}
+.modal_footer button {
+  margin-top: 0;
 }
