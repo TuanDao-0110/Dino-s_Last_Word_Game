@@ -5,13 +5,15 @@ import { KeyProps } from "../../types/hangman.model";
 
 import classes from "./key.module.css";
 import { useEffect } from "react";
+import { GameStatus } from "../../types/API.model";
 
 const Key: React.FC<KeyProps> = ({ letter, status }) => {
   const dispatch = useAppDispatch();
-  const gameStatus = useAppSelector((state) => state.game.gameStatus);
+  const { gameStatus, showModal } = useAppSelector((state) => state.game);
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
-      if (event.key === letter.toLowerCase() && gameStatus === "playing" && status === "blank") {
+      if (!showModal && event.key === letter.toLowerCase() && gameStatus === GameStatus.playing) {
+        console.log("go here");
         dispatch(addGuessedLetter(letter));
       }
     };
@@ -19,14 +21,10 @@ const Key: React.FC<KeyProps> = ({ letter, status }) => {
     return () => {
       window.removeEventListener("keydown", handleKeyDown);
     };
-  }, [letter, status, gameStatus, dispatch]);
+  }, [letter, status, gameStatus, dispatch, showModal]);
   return (
     <div className={classes.key_container}>
-      <button
-        className={classes[status]}
-        onClick={() => dispatch(addGuessedLetter(letter))}
-        disabled={gameStatus !== "playing" || status !== "blank"}
-      >
+      <button className={classes[status]} onClick={() => dispatch(addGuessedLetter(letter))} disabled={gameStatus !== GameStatus.playing}>
         {letter}
       </button>
     </div>

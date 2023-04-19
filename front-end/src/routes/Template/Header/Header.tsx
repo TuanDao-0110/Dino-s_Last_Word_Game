@@ -3,7 +3,7 @@ import { useContext, useState, useEffect } from "react";
 
 // Redux
 import { useAppDispatch, useAppSelector } from "../../../hooks/hooks";
-import { setLogin } from "../../../features/GameSlice";
+import { setLogin, setModal } from "../../../features/GameSlice";
 import { setPlayerDispatch } from "../../../features/PlayerSlice";
 
 // Firebase, auth
@@ -13,13 +13,7 @@ import { AuthContext } from "../../../context/auth-context";
 import { Modal, Tab, Tabs } from "react-bootstrap";
 
 // Resources / Components
-import {
-  LoginForm,
-  RegisterForm,
-  BtnPrimary,
-  BtnSuccess,
-  BtnWarning,
-} from "../../../assets/export_component/resource";
+import { LoginForm, RegisterForm, BtnPrimary, BtnSuccess, BtnWarning } from "../../../assets/export_component/resource";
 
 // Styles
 import classes from "./header.module.css";
@@ -31,13 +25,18 @@ const Header = () => {
   const { players } = useAppSelector((state) => state.player);
   const [activeTab, setActiveTab] = useState("login");
 
-  const handleCloseLogin = () => dispatch(setLogin(false));
+  const handleCloseLogin = () => {
+    dispatch(setModal(false));
+    dispatch(setLogin(false));
+  };
   const handleShowLogin = () => {
     setActiveTab("login");
+    dispatch(setModal(true))
     dispatch(setLogin(true));
   };
 
   const handleShowRegister = () => {
+    dispatch(setModal(true));
     setActiveTab("register");
     dispatch(setLogin(true));
   };
@@ -57,30 +56,16 @@ const Header = () => {
         )}
         {currentUser && (
           <>
-            <p className={classes.header_text}>
-              {players?.userInfo._fieldsProto?.name.stringValue}
-            </p>
+            <p className={classes.header_text}>{players?.userInfo._fieldsProto?.name.stringValue}</p>
             <BtnWarning text="Log out" clickHandler={() => signOut()} />
           </>
         )}
       </div>
-      <Modal
-        className={classes.modal}
-        show={showLogin}
-        onHide={handleCloseLogin}
-        size="sm"
-      >
-        <Modal.Header
-          className={`border-0 ${classes.modal_header}`}
-          closeButton
-        >
+      <Modal className={classes.modal} show={showLogin} onHide={handleCloseLogin} size="sm">
+        <Modal.Header className={`border-0 ${classes.modal_header}`} closeButton>
           <Modal.Title className={classes.modal_title}>Hi there!</Modal.Title>
         </Modal.Header>
-        <Tabs
-          defaultActiveKey={activeTab}
-          id="uncontrolled-tab-example"
-          className={`mb-3 ${classes.tabs}`}
-        >
+        <Tabs defaultActiveKey={activeTab} id="uncontrolled-tab-example" className={`mb-3 ${classes.tabs}`}>
           <Tab className={classes.tab} eventKey="login" title="Login">
             <LoginForm />
           </Tab>
