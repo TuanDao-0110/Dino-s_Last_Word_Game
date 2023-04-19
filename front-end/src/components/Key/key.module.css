@@ -12,6 +12,7 @@
   border-radius: 0.5rem;
   cursor: pointer;
   background-color: white;
+  color: black;
 }
 
 .key_container > button:hover:not(:disabled) {
