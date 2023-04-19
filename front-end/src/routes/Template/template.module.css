@@ -14,7 +14,7 @@
 }
 
 .game_over {
-  background: linear-gradient(180deg, #263735 0%, #2a4138 100%);
+  background: linear-gradient(180deg, #263735 0%, #2a4138 100%) no-repeat fixed;
 }
 
 .main_row {
@@ -32,5 +32,8 @@
         #ffd5a4 100%
       )
       no-repeat;
+  }
+  .game_over {
+    background: linear-gradient(180deg, #263735 0%, #2a4138 100%) no-repeat;
   }
 }
