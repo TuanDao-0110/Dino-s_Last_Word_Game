@@ -6,5 +6,22 @@
 .tabs {
   display: flex;
   justify-content: center;
-  border-bottom: 1px solid;
+  border-bottom: 1px solid black;
+}
+
+.tabs li button {
+  border: none;
+}
+
+.modal {
+  display: flex;
+}
+
+.modal_title,
+.modal_body,
+.modal_footer {
+  word-break: break-all;
+  text-align: center;
+  display: flex;
+  justify-content: center;
 }

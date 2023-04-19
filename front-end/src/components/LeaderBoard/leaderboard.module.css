@@ -1,8 +1,8 @@
 .leaderboard_container {
   background-color: #ffffff;
-  width: 20rem;
+  width: 22rem;
   min-height: 500px;
-  padding: 2rem 0;
+  padding: 2.5rem;
   border-radius: 1rem;
 }
 
@@ -19,18 +19,19 @@
 .leaderboard td,
 .leaderboard th {
   border: none;
-  padding: 0.7rem 1rem;
+  padding: 0.5rem 0.5rem;
   word-break: break-all;
 }
 
 .leaderboard td:nth-child(1),
 .leaderboard th:nth-child(1) {
-  min-width: 3rem;
+  min-width: 2.5rem;
+  text-align: right;
 }
 
 .leaderboard td:nth-child(3),
 .leaderboard th:nth-child(3) {
-  min-width: 5rem;
+  min-width: 4.5rem;
 }
 
 .table_header {

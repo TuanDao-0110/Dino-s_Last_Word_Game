@@ -56,6 +56,7 @@ const Message: React.FC = () => {
   return (
     <div className={classes.modal_container}>
       <Modal
+        className={classes.modal}
         show={showModal}
         onHide={() => {
           handleClose();
@@ -63,8 +64,11 @@ const Message: React.FC = () => {
         animation={false}
         size="sm"
       >
-        <Modal.Header className="border-0" closeButton>
-          <Modal.Title>
+        <Modal.Header
+          className={`${classes.modal_header} border-0`}
+          closeButton
+        >
+          <Modal.Title className={classes.modal_title}>
             Great job
             {currentUser
               ? ", " + player.players?.userInfo._fieldsProto?.name.stringValue
@@ -87,8 +91,10 @@ const Message: React.FC = () => {
           </Tabs>
         ) : (
           <>
-            <Modal.Body>Would you like to save your score?</Modal.Body>
-            <Modal.Footer className="border-0">
+            <Modal.Body className={classes.modal_body}>
+              Would you like to save your score?
+            </Modal.Body>
+            <Modal.Footer className={`${classes.modal_footer} border-0`}>
               <BtnSuccess
                 clickHandler={handleSubmitScore}
                 text="Yes, save it!"

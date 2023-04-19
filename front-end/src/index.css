@@ -19,3 +19,30 @@ body {
   padding: 0px;
   overflow-x: hidden;
 }
+
+.form-control {
+  border: 1px solid black;
+  border-radius: 1rem;
+}
+
+.nav-tabs {
+  gap: 0.5rem;
+  /* border-bottom: 1px solid black; */
+}
+
+.nav-tabs .nav-link {
+  border: 1px solid black;
+  border-bottom: none;
+  border-radius: 1rem 1rem 0 0;
+}
+
+.nav-tabs .nav-link.active {
+  border: 1px solid black;
+  border-bottom: none;
+}
+
+.nav-tabs .nav-link:hover {
+  background-color: black;
+  color: white;
+  border-bottom: none;
+}
