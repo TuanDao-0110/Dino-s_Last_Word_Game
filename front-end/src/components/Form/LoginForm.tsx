@@ -3,7 +3,7 @@ import { ChangeEvent, FormEvent, useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 // Redux
-import { setLogin } from "../../features/GameSlice";
+import { setLogin ,setModal} from "../../features/GameSlice";
 import { useAppDispatch } from "../../hooks/hooks";
 import { setPlayerDispatch } from "../../features/PlayerSlice";
 
@@ -46,6 +46,7 @@ function LoginForm() {
         resetFormFields();
         setCurrentUser(userCredential.user);
         dispatch(setPlayerDispatch(userCredential.user));
+        dispatch(setModal(false))
         dispatch(setLogin(false));
         navigate("/");
       }
