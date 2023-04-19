@@ -40,8 +40,10 @@ const Message: React.FC = () => {
 
   const handleClose = () => {
     dispatch(setModal(false));
+    console.log("modal closed, setShowWord to false");
     dispatch(setShowWord(false));
     dispatch(resetGame());
+    console.log("setWordToGuess handleClose Message");
     dispatch(setWordToGuess());
   };
 

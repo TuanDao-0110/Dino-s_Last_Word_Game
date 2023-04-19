@@ -1,6 +1,14 @@
 // Redux
 import { useAppDispatch, useAppSelector } from "../../hooks/hooks";
-import { nextGame, resetGame, setCategory, setGameStatus, setModal, setWordToGuess, getWordDispatch } from "../../features/GameSlice";
+import {
+  nextGame,
+  resetGame,
+  setCategory,
+  setGameStatus,
+  setModal,
+  setWordToGuess,
+  getWordDispatch,
+} from "../../features/GameSlice";
 import { Categories, GameStatus } from "../../types/API.model";
 
 // Components
@@ -11,12 +19,15 @@ const Controls = () => {
   const { score, gameStatus, category } = useAppSelector((state) => state.game);
 
   const getRandomCategory = (): Categories => {
-    const categories = Object.values(Categories).filter((category) => category !== Categories.ALL);
+    const categories = Object.values(Categories).filter(
+      (category) => category !== Categories.ALL
+    );
     const randomIndex = Math.floor(Math.random() * categories.length);
     return categories[randomIndex];
   };
   const playAgain = () => {
     dispatch(resetGame());
+    console.log("setWordToGuess playagain Controls");
     dispatch(setWordToGuess());
     dispatch(setCategory(getRandomCategory()));
   };
@@ -28,8 +39,9 @@ const Controls = () => {
 
   const playNext = async () => {
     await dispatch(getWordDispatch(category));
-    dispatch(setWordToGuess());
+    console.log("setWordToGuess playNext Controls");
     dispatch(nextGame());
+    dispatch(setWordToGuess());
   };
 
   const renderButton = (status: string, score: number) => {

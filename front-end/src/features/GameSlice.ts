@@ -132,6 +132,7 @@ export const getWordDispatch = (category: Categories) => {
     return async (dispatch: AppDispatch) => {
       const data = (await getAllWords()) as Word_Type;
       dispatch(setAllWord(data));
+      console.log("setWordToGuess getWordDispatch GameSlice");
       dispatch(setWordToGuess());
     };
   }
