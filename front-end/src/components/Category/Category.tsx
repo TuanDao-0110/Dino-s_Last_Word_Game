@@ -44,6 +44,7 @@ const Category: React.FC = () => {
   const setUpCategory: ReactEventHandler<HTMLSelectElement> = async (e) => {
     dispatch(setCategory(e.currentTarget.value as Categories));
     await dispatch(getWordDispatch(e.currentTarget.value as Categories));
+    /* console.log("setWordToGuess setUpCategory"); */
     dispatch(setWordToGuess());
   };
 
