@@ -45,6 +45,10 @@
   border-bottom: 1px solid;
 }
 
+.tab {
+  padding-top: 1rem;
+}
+
 @media only screen and (max-width: 480px) {
   .header_container {
     padding: 1rem;
