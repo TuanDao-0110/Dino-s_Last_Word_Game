@@ -23,25 +23,13 @@
   word-break: break-all;
   display: flex;
   justify-content: center;
-}
-
-.modal_title {
-  font-size: 1.4rem;
-  padding: 0.5rem 1rem 0;
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-}
-
-.modal_title span {
-  color: var(--blue);
-  font-size: 2rem;
-  margin: 0 0.5rem;
+  text-align: center;
 }
 
 .modal_header {
   background-color: var(--gray-pale);
   display: flex;
+  width: 100%;
 }
 
 .modal_header button {
@@ -49,6 +37,21 @@
   top: 1rem;
   right: 1rem;
   color: black;
+}
+.modal_title {
+  font-size: 1.4rem;
+  padding: 0.5rem 1rem 0;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  padding-top: 0.5rem;
+  width: 100%;
+}
+
+.modal_title span {
+  color: var(--blue);
+  font-size: 2rem;
+  margin: 0 0.5rem;
 }
 
 .game_over_summary {

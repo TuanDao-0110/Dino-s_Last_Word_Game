@@ -68,6 +68,7 @@ const Message: React.FC = () => {
           className={`${classes.modal_header} border-0`}
           closeButton
         >
+          <div></div>
           <h2 className={classes.modal_title}>
             You got <span> {score} </span> points
             {currentUser
@@ -77,19 +78,19 @@ const Message: React.FC = () => {
         </Modal.Header>
         {!currentUser ? (
           <Tabs
-            defaultActiveKey="login"
+            defaultActiveKey="register"
             id="uncontrolled-tab-example"
             className={`mb-3 ${classes.tabs}`}
           >
             <Tab eventKey="login" title="Login">
-              {
-                <div className={classes.game_over_summary}>
-                  <p>Log in to save your score</p>
-                </div>
-              }
               <LoginForm />
             </Tab>
             <Tab eventKey="register" title="Register">
+              {
+                <div className={classes.game_over_summary}>
+                  <p>Sign up to save your next score</p>
+                </div>
+              }
               <RegisterForm />
             </Tab>
           </Tabs>

@@ -28,10 +28,12 @@
   justify-content: space-between;
   text-align: center;
 }
+
 .modal_header h2 {
   padding-top: 0.5rem;
   width: 100%;
 }
+
 .modal_header button {
   position: absolute;
   top: 1rem;
