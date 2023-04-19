@@ -65,6 +65,7 @@
     padding: 0;
   }
   .play_buttonShow {
+    margin-top: 1rem;
     justify-self: center;
     display: flex;
     order: 1;
@@ -100,6 +101,7 @@
     padding: 0;
   }
   .play_buttonShow {
+    margin-top: 0.5rem;
     justify-self: center;
     display: flex;
     order: 1;
