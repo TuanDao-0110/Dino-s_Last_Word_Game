@@ -23,6 +23,7 @@ import {
   Object,
   LeaderBoard,
   Category,
+  Controls,
 } from "../../../assets/export_component/resource";
 
 // API
@@ -36,9 +37,8 @@ import classes from "./main.module.css";
 
 const Main = () => {
   const dispatch = useAppDispatch();
-  const { wordToGuess, guessedLetters, category, hints } = useAppSelector(
-    (state) => state.game
-  );
+  const { wordToGuess, guessedLetters, category, hints, gameStatus } =
+    useAppSelector((state) => state.game);
   const [isLoading, setIsLoading] = useState(true);
 
   // After the page loads, set a word to be guessed
@@ -114,6 +114,11 @@ const Main = () => {
       <div className={`${classes.mainLeaderboard_container} ${classes.mobile}`}>
         <LeaderBoard />
       </div>
+      {gameStatus === GameStatus.win && (
+        <div className={`${classes.play_buttonShow} ${classes.mobile}`}>
+          <Controls />
+        </div>
+      )}
     </div>
   );
 };

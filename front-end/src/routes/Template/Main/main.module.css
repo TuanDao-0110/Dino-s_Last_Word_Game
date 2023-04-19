@@ -37,11 +37,16 @@
   .mainCategory_container {
     margin-top: 5rem;
   }
+  .play_buttonShow {
+    justify-self: center;
+    display: flex;
+    order: 1;
+  }
 }
 
 @media only screen and (max-width: 480px) {
   .main_container {
-    padding: 0 0.5rem;
+    padding: 0.5rem;
   }
 
   .mainLeaderboard_container {
@@ -55,6 +60,11 @@
   .mainObject_container {
     order: 1;
     padding: 0;
+  }
+  .play_buttonShow {
+    justify-self: center;
+    display: flex;
+    order: 1;
   }
 }
 
@@ -89,5 +99,10 @@
   .mainObject_container {
     order: 1;
     padding: 0;
+  }
+  .play_buttonShow {
+    justify-self: center;
+    display: flex;
+    order: 1;
   }
 }
