@@ -20,3 +20,29 @@
 .main_row {
   min-height: 90vh;
 }
+
+@media screen {
+  .template:before {
+    content: "";
+    display: block;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -10;
+    background: linear-gradient(
+        180deg,
+        #a0bbff 3.23%,
+        #ffc7de 41.54%,
+        #ffce95 100%,
+        #ffd4a0 100%,
+        #ffd5a4 100%
+      )
+      no-repeat center center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+  }
+}
