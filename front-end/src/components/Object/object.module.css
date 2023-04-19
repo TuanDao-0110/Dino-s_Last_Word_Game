@@ -1,9 +1,13 @@
 .object_container {
-  max-width: 450px;
-  max-height: 450px;
+  max-width: 500px;
+  max-height: 500px;
 }
 
 @media only screen and (max-width: 480px) {
+  .object_container {
+    max-width: 450px;
+    max-height: 450px;
+  }
   .object_container {
     scale: 90%;
     transform-origin: top left;
