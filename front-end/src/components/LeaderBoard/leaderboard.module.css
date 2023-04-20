@@ -1,13 +1,15 @@
 .leaderboard_container {
   background-color: #ffffff;
-  width: 22rem;
+  width: 20rem;
   min-height: 500px;
   padding: 2.5rem;
   border-radius: 1rem;
+  margin-bottom: 0.5rem;
 }
 
 .leaderboard_container h2 {
   text-align: center;
+  font-size: 2rem;
   margin-bottom: 2rem;
 }
 
@@ -19,7 +21,7 @@
 .leaderboard td,
 .leaderboard th {
   border: none;
-  padding: 0.5rem 0.5rem;
+  padding: 0.5rem 0.3rem;
   word-break: break-all;
 }
 
@@ -31,7 +33,7 @@
 
 .leaderboard td:nth-child(3),
 .leaderboard th:nth-child(3) {
-  min-width: 4.5rem;
+  min-width: 4rem;
 }
 
 .table_header {
@@ -40,4 +42,9 @@
 
 .table_row:nth-child(odd) {
   background-color: #ebebeb;
+}
+
+@media only screen and (max-width: 480px) {
+  .leaderboard_container {
+  }
 }

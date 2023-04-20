@@ -3,7 +3,7 @@ import { ChangeEvent, FormEvent, useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 // Redux
-import { setLogin ,setModal} from "../../features/GameSlice";
+import { setLogin, setModal } from "../../features/GameSlice";
 import { useAppDispatch } from "../../hooks/hooks";
 import { setPlayerDispatch } from "../../features/PlayerSlice";
 
@@ -31,7 +31,7 @@ function LoginForm() {
   const [formFields, setFormFields] = useState(defaultFormFields);
   const { email, password } = formFields;
   const { currentUser, setCurrentUser } = useContext(AuthContext);
-  
+
   const resetFormFields = () => {
     return setFormFields(defaultFormFields);
   };
@@ -42,16 +42,16 @@ function LoginForm() {
     try {
       // Send the email and password to firebase
       const userCredential = await signInUser(email, password);
-      if (userCredential ) {
+      if (userCredential) {
         resetFormFields();
         setCurrentUser(userCredential.user);
         dispatch(setPlayerDispatch(userCredential.user));
-        dispatch(setModal(false))
+        dispatch(setModal(false));
         dispatch(setLogin(false));
         navigate("/");
       }
     } catch (error: any) {
-    alert(error);
+      alert(error);
     }
   };
 
@@ -62,11 +62,7 @@ function LoginForm() {
   return (
     <Form className={classes.form} onSubmit={handleSubmit}>
       <div>
-        <FloatingLabel
-          controlId="floatingInput"
-          label="Email address"
-          className="mb-3"
-        >
+        <FloatingLabel label="Email address" className="mb-3">
           <Form.Control
             type="email"
             value={email}
@@ -74,7 +70,7 @@ function LoginForm() {
             required
           />
         </FloatingLabel>
-        <FloatingLabel controlId="floatingPassword" label="Password">
+        <FloatingLabel label="Password">
           <Form.Control
             type="password"
             value={password}

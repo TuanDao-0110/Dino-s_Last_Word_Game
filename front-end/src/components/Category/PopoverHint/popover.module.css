@@ -1,6 +1,6 @@
 .icon_container {
-  background-color: black;
-  color: white;
+  background-color: var(--gray-light);
+  color: black;
   height: 1.7rem;
   width: 1.7rem;
   border-radius: 100rem;
@@ -10,4 +10,5 @@
 }
 
 .icon_container i {
+  font-size: 1.5rem;
 }

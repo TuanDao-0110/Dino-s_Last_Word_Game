@@ -18,20 +18,23 @@ export const Template: React.FC = () => {
   const { wordToGuess, guessedLetters } = useAppSelector((state) => state.game);
 
   return (
-    <Container
-      className={`${classes.template} ${
-        guessedLetters.filter((letter) => !wordToGuess.includes(letter))
-          .length >= 9
-          ? classes.game_over
-          : ""
-      }`}
-      fluid
-    >
-      <Header />
-      <Row className={classes.main_row}>
-        <Outlet />
-      </Row>
-      <Footer />
-    </Container>
+    <>
+      <div className={classes.bg}></div>
+      <Container
+        className={`${classes.template} ${
+          guessedLetters.filter((letter) => !wordToGuess.includes(letter))
+            .length >= 9
+            ? classes.game_over
+            : ""
+        }`}
+        fluid
+      >
+        <Header />
+        <Row className={classes.main_row}>
+          <Outlet />
+        </Row>
+        <Footer />
+      </Container>
+    </>
   );
 };

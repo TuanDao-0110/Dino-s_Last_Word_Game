@@ -14,9 +14,26 @@
 }
 
 .game_over {
-  background: linear-gradient(180deg, #263735 0%, #2a4138 100%);
+  background: linear-gradient(180deg, #263735 0%, #2a4138 100%) no-repeat fixed;
 }
 
 .main_row {
   min-height: 90vh;
+}
+
+@media only screen and (max-width: 480px) {
+  .template {
+    background: linear-gradient(
+        180deg,
+        #a0bbff 3.23%,
+        #ffc7de 41.54%,
+        #ffce95 100%,
+        #ffd4a0 100%,
+        #ffd5a4 100%
+      )
+      no-repeat;
+  }
+  .game_over {
+    background: linear-gradient(180deg, #263735 0%, #2a4138 100%) no-repeat;
+  }
 }

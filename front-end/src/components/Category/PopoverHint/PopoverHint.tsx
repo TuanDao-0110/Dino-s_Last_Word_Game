@@ -19,7 +19,7 @@ function PopoverHint() {
       overlay={renderTooltip}
     >
       <div className={classes.icon_container}>
-        <i className="bi bi-lightbulb"></i>
+        <i className="bi bi-info"></i>
       </div>
     </OverlayTrigger>
   );

@@ -2,3 +2,21 @@
   max-width: 500px;
   max-height: 500px;
 }
+
+@media only screen and (max-width: 480px) {
+  .object_container {
+    max-width: 440px;
+    max-height: 440px;
+    scale: 88%;
+    transform-origin: top left;
+  }
+}
+
+@media only screen and (max-width: 480px) and (max-height: 630px) {
+  .object_container {
+    max-width: 400px;
+    max-height: 400px;
+    scale: 80%;
+    transform-origin: top left;
+  }
+}
