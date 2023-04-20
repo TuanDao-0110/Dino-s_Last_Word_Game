@@ -109,7 +109,7 @@ const Main = () => {
       return () => clearTimeout(timer);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [dispatch, guessedLetters, /* wordToGuess,  */ category, hints]);
+  }, [dispatch, guessedLetters, wordToGuess, category, hints]);
 
   if (isLoading) return <Spinner />;
   return (

@@ -51,6 +51,9 @@
     background-color: #66b391;
     color: #000000;
   }
+  .key_container > button:hover:not(:disabled) {
+    background-color: #e2e2e2;
+  }
 }
 
 @media only screen and (max-width: 800px) and (min-width: 481px) {
@@ -65,5 +68,8 @@
   .key_container > button.correct {
     background-color: #66b391;
     color: #000000;
+  }
+  .key_container > button:hover:not(:disabled) {
+    background-color: #e2e2e2;
   }
 }
