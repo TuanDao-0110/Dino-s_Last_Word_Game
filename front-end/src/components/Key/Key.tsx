@@ -9,7 +9,7 @@ import { GameStatus } from "../../types/API.model";
 
 const Key: React.FC<KeyProps> = ({ letter, status }) => {
   const dispatch = useAppDispatch();
-  const { gameStatus, showModal } = useAppSelector((state) => state.game);
+  const { gameStatus, showModal,guessedLetters,wordToGuess } = useAppSelector((state) => state.game);
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
       if (
@@ -27,11 +27,10 @@ const Key: React.FC<KeyProps> = ({ letter, status }) => {
   }, [letter, status, gameStatus, dispatch, showModal]);
   return (
     <div className={classes.key_container}>
-      <button
-        className={classes[status]}
-        onClick={() => dispatch(addGuessedLetter(letter))}
-        disabled={gameStatus !== GameStatus.playing}
-      >
+      <button 
+      className={classes[status]} 
+      onClick={() => dispatch(addGuessedLetter(letter))} 
+      disabled={guessedLetters.includes(letter)}>
         {letter}
       </button>
     </div>
