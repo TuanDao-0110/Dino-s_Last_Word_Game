@@ -27,7 +27,7 @@ const Key: React.FC<KeyProps> = ({ letter, status }) => {
     return () => {
       window.removeEventListener("keydown", handleKeyDown);
     };
-  }, [letter, status, gameStatus, dispatch, showModal]);
+  }, [letter, status, gameStatus, dispatch, showModal, guessedLetters]);
   return (
     <div className={classes.key_container}>
       <button
